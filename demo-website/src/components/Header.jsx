@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './Header.css';
 
 const EvincedLogo = () => (
@@ -43,7 +44,7 @@ const navItems = [
 ];
 
 export default function Header() {
-  const [cartCount] = useState(0);
+  const { totalCount, openCart } = useCart();
   const location = useLocation();
 
   return (
@@ -64,10 +65,10 @@ export default function Header() {
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <span>Search</span>
             </button>
-            <button className="icon-btn cart-btn" aria-label="Shopping cart">
+            <button className="icon-btn cart-btn" aria-label={`Shopping cart, ${totalCount} items`} onClick={openCart}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
               <span>Basket</span>
-              <span className="cart-count">{cartCount}</span>
+              <span className="cart-count" aria-hidden="true">{totalCount}</span>
             </button>
             <button className="icon-btn" aria-label="Login">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>

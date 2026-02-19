@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import products from '../data/products.json';
 import styles from './ProductPage.module.css';
 
 export default function ProductPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const product = products.find((p) => p.id === parseInt(id, 10));
 
   const [quantity, setQuantity] = useState(1);
@@ -103,7 +104,11 @@ export default function ProductPage() {
                 </div>
               </div>
 
-              <button className={styles.addToCartBtn} aria-label={`Add ${product.name} to cart`}>
+              <button
+                className={styles.addToCartBtn}
+                aria-label={`Add ${product.name} to cart`}
+                onClick={() => addToCart(product, quantity)}
+              >
                 ADD TO CART
               </button>
 
