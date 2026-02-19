@@ -1,160 +1,301 @@
 [
   {
     "id": 1,
+    "sku": "GGOEGFBA241499",
     "name": "Chrome Dino Maps Tourist Accessory Pack",
+    "description": "Meet the ultimate adventure enthusiast! Chrome Dino is determined to see the world. Wearing a cap and trusty camera, this T-rex is trying to find a special spot on this map. Do you know where they're headed?",
     "price": 16.00,
-    "description": "Hit the road with this fun Chrome Dino Maps Tourist Accessory Pack. Includes a bandana, sticker sheet, and enamel pin — perfect for the adventurous Googler.",
+    "available": 292,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "Accessories only, Chrome Dino sold separately",
+      "Accessory pack includes: Hat, camera and secret map",
+      "Small parts, not intended for children under 14",
+      "This is not a toy"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGFBA241499.jpg?nid=6672",
     "category": "Accessories",
     "brand": "Google"
   },
   {
     "id": 2,
+    "sku": "GGOEAODH252999",
     "name": "Android a-MAZE-ing Collectible",
+    "description": "Navigate the maze inside this limited-edition Android collectible figure. A must-have for Android fans and puzzle lovers alike. Can you guide the ball through the maze?",
     "price": 24.00,
-    "description": "Navigate the maze inside this limited-edition Android collectible figure. A must-have for Android fans and puzzle lovers alike.",
+    "available": 145,
     "sizes": ["XS", "SM", "MD"],
+    "details": [
+      "Limited edition collectible figure",
+      "Features a working ball maze inside",
+      "Made from durable clear plastic",
+      "Not intended for children under 3"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEAODH252999.jpg?nid=6672",
     "category": "Fun & Games",
     "brand": "Android"
   },
   {
     "id": 3,
+    "sku": "GGOEGCBB258899",
     "name": "Chrome Dino Bandana",
+    "description": "Show your love for the classic Chrome Dino with this stylish paisley bandana. Great for pets, people, and everything in between. Features an all-over Chrome Dino paisley print.",
     "price": 14.00,
-    "description": "Show your love for the classic Chrome Dino with this stylish paisley bandana. Great for pets, people, and everything in between.",
+    "available": 380,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "100% cotton construction",
+      "All-over Chrome Dino paisley print",
+      "Versatile — wear as a headband, neck scarf, or pet bandana",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGCBB258899.jpg?nid=6672",
     "category": "Accessories",
     "brand": "Google"
   },
   {
     "id": 4,
+    "sku": "GGOEGCBL258999",
     "name": "Google Bike Bandana",
+    "description": "A sleek Google Bike-themed bandana in deep navy. Wear it around your neck, head, or wrist for an on-trend Google look. Features a subtle Google Bike pattern throughout.",
     "price": 14.00,
-    "description": "A sleek Google Bike-themed bandana in deep navy. Wear it around your neck, head, or wrist for an on-trend Google look.",
+    "available": 210,
     "sizes": ["SM", "MD", "LG", "XL"],
+    "details": [
+      "100% cotton construction",
+      "Google Bike pattern in deep navy",
+      "Versatile styling options",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGCBL258999.jpg?nid=6672",
     "category": "Accessories",
     "brand": "Google"
   },
   {
     "id": 5,
+    "sku": "GGOEGXXX2582",
     "name": "Doogler Reversible Red Bandana",
+    "description": "Two looks in one! This reversible Doogler bandana features a bold red Google-branded side and a fun Doogler pattern on the other. Perfect for dogs and their humans.",
     "price": 15.00,
-    "description": "Two looks in one! This reversible Doogler bandana features a bold red Google-branded side and a fun Doogler pattern on the other.",
+    "available": 175,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "Reversible design — two bandanas in one",
+      "One side features Google branding, other side has Doogler print",
+      "100% cotton",
+      "Great for pets and people alike"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2582.jpg?nid=6672",
     "category": "Pets",
     "brand": "Google"
   },
   {
     "id": 6,
+    "sku": "GGOEACBH252099",
     "name": "Android Pint-sized Keychain",
+    "description": "Carry a tiny Android friend wherever you go! This adorable pint-sized Android keychain is the perfect addition to your keys or bag. A great gift for any Android fan.",
     "price": 20.00,
-    "description": "Carry a tiny Android friend wherever you go! This adorable pint-sized Android keychain is the perfect addition to your keys or bag.",
+    "available": 88,
     "sizes": ["XS", "SM"],
+    "details": [
+      "Soft PVC construction",
+      "Sturdy metal keyring attachment",
+      "Approximately 2 inches tall",
+      "Officially licensed Android merchandise"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEACBH252099.jpg?nid=6672",
     "category": "Keychains",
     "brand": "Android"
   },
   {
     "id": 7,
+    "sku": "GGOEYCKR252299",
     "name": "YouTube Plush Keychain",
+    "description": "Fluffy, fun, and ready to play! This YouTube plush keychain features the iconic YouTube logo in a soft, squeezable form. Clip it to your bag or keys for a pop of color.",
     "price": 16.00,
-    "description": "Fluffy, fun, and ready to play! This YouTube plush keychain features the iconic YouTube logo in a soft, squeezable form.",
+    "available": 63,
     "sizes": ["XS", "SM"],
+    "details": [
+      "Soft plush construction",
+      "Features iconic YouTube logo",
+      "Metal keyring attachment",
+      "Approximately 3 inches tall"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEYCKR252299.jpg?nid=6672",
     "category": "Keychains",
     "brand": "YouTube"
   },
   {
     "id": 8,
+    "sku": "GGOEGOXB257699",
     "name": "Chrome Dino Utensil Set",
+    "description": "Eat like a Dino! This Chrome Dino utensil set includes a fork, knife, and spoon in a fun dino-themed carrying case. Eco-friendly and reusable — perfect for on-the-go meals.",
     "price": 18.00,
-    "description": "Eat like a Dino! This Chrome Dino utensil set includes a fork, knife, and spoon in a fun dino-themed carrying case. Eco-friendly and reusable.",
+    "available": 204,
     "sizes": ["XS", "SM", "MD"],
+    "details": [
+      "Set includes fork, knife, and spoon",
+      "Comes with a Chrome Dino-themed carrying case",
+      "Made from food-safe stainless steel",
+      "Reusable and eco-friendly",
+      "Dishwasher safe"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGOXB257699.jpg?nid=6672",
     "category": "Accessories",
     "brand": "Google"
   },
   {
     "id": 9,
+    "sku": "GGOEGCBB257799",
     "name": "Chrome Dino rPET Wristlet",
+    "description": "A compact and eco-friendly wristlet made from recycled PET materials, featuring the beloved Chrome Dino. Perfect for carrying essentials on your next adventure.",
     "price": 8.00,
-    "description": "A compact and eco-friendly wristlet made from recycled PET materials, featuring the beloved Chrome Dino. Perfect for carrying essentials.",
+    "available": 317,
     "sizes": ["XS", "SM", "MD", "LG"],
+    "details": [
+      "Made from recycled PET (rPET) materials",
+      "Zip closure with wrist strap",
+      "Chrome Dino graphic print",
+      "Approximately 7\" x 4\"",
+      "Eco-friendly construction"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGCBB257799.jpg?nid=6672",
     "category": "Backpacks & Totes",
     "brand": "Google"
   },
   {
     "id": 10,
+    "sku": "GGOEGDNL258099",
     "name": "Google Inkwell Straw Tumbler",
+    "description": "Stay hydrated in style with the Google Inkwell Straw Tumbler. Features double-wall insulation, a reusable straw, and the iconic Google logo. Keeps drinks cold for 24 hours.",
     "price": 19.00,
-    "description": "Stay hydrated in style with the Google Inkwell Straw Tumbler. Features double-wall insulation, a reusable straw, and the iconic Google logo.",
+    "available": 156,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "Double-wall vacuum insulation",
+      "Keeps drinks cold up to 24 hours",
+      "Includes reusable straw",
+      "BPA-free construction",
+      "20 oz capacity",
+      "Hand wash recommended"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGDNL258099.jpg?nid=6672",
     "category": "Mugs & Tumblers",
     "brand": "Google"
   },
   {
     "id": 11,
+    "sku": "GGOEGBBL258699",
     "name": "Google Bike Eco Canvas Duffel",
-    "price": 50.00,
     "description": "A spacious eco-friendly canvas duffel bag featuring the Google Bike design. Made from sustainable materials — great for the gym, travel, or daily adventures.",
+    "price": 50.00,
+    "available": 72,
     "sizes": ["MD", "LG", "XL"],
+    "details": [
+      "Made from 100% recycled canvas",
+      "Google Bike graphic on exterior",
+      "Adjustable shoulder strap",
+      "Interior zip pocket",
+      "Approximately 20\" x 11\" x 10\"",
+      "Eco-friendly and sustainable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGBBL258699.jpg?nid=6672",
     "category": "Backpacks & Totes",
     "brand": "Google"
   },
   {
     "id": 12,
+    "sku": "GGOEGXXX2480",
     "name": "Google Driftwood 1/4 Zip",
+    "description": "Layer up in comfort with the Google Driftwood 1/4 Zip. Crafted from a soft fleece blend with a subtle Google logo embroidery on the chest. Perfect for cool days.",
     "price": 69.00,
-    "description": "Layer up in comfort with the Google Driftwood 1/4 Zip. Crafted from a soft fleece blend with a subtle Google logo embroidery on the chest.",
+    "available": 98,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "80% cotton, 20% polyester fleece blend",
+      "Embroidered Google logo on chest",
+      "1/4 zip with chin guard",
+      "Ribbed cuffs and hem",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2480.jpg?nid=6672",
     "category": "Jackets & Vests",
     "brand": "Google"
   },
   {
     "id": 13,
+    "sku": "GGOEGXXX2481",
     "name": "Google Driftwood Women's 1/4 Zip",
+    "description": "A women's-cut version of the beloved Driftwood 1/4 Zip. Cozy fleece fabric with a tailored fit and Google logo embroidery. Stay warm and stylish.",
     "price": 69.00,
-    "description": "A women's-cut version of the beloved Driftwood 1/4 Zip. Cozy fleece fabric with a tailored fit and Google logo embroidery.",
+    "available": 84,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "80% cotton, 20% polyester fleece blend",
+      "Embroidered Google logo on chest",
+      "Women's tailored fit",
+      "1/4 zip with chin guard",
+      "Ribbed cuffs and hem",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2481.jpg?nid=6672",
     "category": "Jackets & Vests",
     "brand": "Google"
   },
   {
     "id": 14,
+    "sku": "GGOEGXXX2560",
     "name": "Google Kyoto Tee",
+    "description": "Inspired by the beauty of Kyoto, this unisex tee features a unique Google-branded graphic print. Soft cotton, relaxed fit — perfect for everyday wear.",
     "price": 32.00,
-    "description": "Inspired by the beauty of Kyoto, this unisex tee features a unique Google-branded graphic print. Soft cotton, relaxed fit.",
+    "available": 241,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "100% ring-spun cotton",
+      "Kyoto-inspired Google graphic print",
+      "Relaxed unisex fit",
+      "Screen printed artwork",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2560.jpg?nid=6672",
     "category": "Tees",
     "brand": "Google"
   },
   {
     "id": 15,
+    "sku": "GGOEGXXX2561",
     "name": "Google Kyoto Women's Tee",
+    "description": "A women's-fit version of the Kyoto Tee with a beautiful Kyoto-inspired Google graphic. Lightweight cotton with a flattering silhouette for everyday style.",
     "price": 34.00,
-    "description": "A women's-fit version of the Kyoto Tee with a beautiful Kyoto-inspired Google graphic. Lightweight cotton with a flattering silhouette.",
+    "available": 189,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "100% ring-spun cotton",
+      "Kyoto-inspired Google graphic print",
+      "Women's fitted silhouette",
+      "Screen printed artwork",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2561.jpg?nid=6672",
     "category": "Tees",
     "brand": "Google"
   },
   {
     "id": 16,
+    "sku": "GGOEGXXX2562",
     "name": "Google Kyoto Sweatshirt",
+    "description": "Stay cozy with the Google Kyoto Sweatshirt. Features a premium fleece interior, ribbed cuffs, and the iconic Kyoto-inspired Google graphic on the chest.",
     "price": 69.00,
-    "description": "Stay cozy with the Google Kyoto Sweatshirt. Features a premium fleece interior, ribbed cuffs, and the iconic Kyoto-inspired Google graphic.",
+    "available": 113,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "details": [
+      "80% cotton, 20% polyester",
+      "Soft fleece interior",
+      "Kyoto-inspired Google graphic on chest",
+      "Ribbed cuffs and hem",
+      "Classic crewneck fit",
+      "Machine washable"
+    ],
     "image": "https://ik.imagekit.io/RM/tr:h-400,dpr-2,f-auto,q-75/store/20160512512/assets/items/largeimages/GGOEGXXX2562.jpg?nid=6672",
     "category": "Sweatshirts",
     "brand": "Google"

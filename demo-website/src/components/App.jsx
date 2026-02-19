@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import HomePage from '../pages/HomePage';
 import NewPage from '../pages/NewPage';
+import ProductPage from '../pages/ProductPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop/new" element={<NewPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
           </Routes>
         </main>
         <Footer />
