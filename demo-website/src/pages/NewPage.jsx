@@ -16,6 +16,7 @@ const SORT_OPTIONS = [
 export default function NewPage() {
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const [sort, setSort] = useState('relevance');
   const [sortOpen, setSortOpen] = useState(false);
 
@@ -30,6 +31,12 @@ export default function NewPage() {
   const handleSizeChange = (size) => {
     setSelectedSizes((prev) =>
       prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+    );
+  };
+
+  const handleBrandChange = (brand) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
     );
   };
 
@@ -50,6 +57,11 @@ export default function NewPage() {
       );
     }
 
+    // Brand filter
+    if (selectedBrands.length > 0) {
+      result = result.filter((p) => selectedBrands.includes(p.brand));
+    }
+
     // Sort
     switch (sort) {
       case 'a-z':
@@ -66,13 +78,14 @@ export default function NewPage() {
     }
 
     return result;
-  }, [selectedPrices, selectedSizes, sort]);
+  }, [selectedPrices, selectedSizes, selectedBrands, sort]);
 
-  const activeFiltersCount = selectedPrices.length + selectedSizes.length;
+  const activeFiltersCount = selectedPrices.length + selectedSizes.length + selectedBrands.length;
 
   const clearAllFilters = () => {
     setSelectedPrices([]);
     setSelectedSizes([]);
+    setSelectedBrands([]);
   };
 
   const currentSortLabel = SORT_OPTIONS.find((o) => o.value === sort)?.label || 'Relevance';
@@ -96,8 +109,10 @@ export default function NewPage() {
             products={products}
             selectedPrices={selectedPrices}
             selectedSizes={selectedSizes}
+            selectedBrands={selectedBrands}
             onPriceChange={handlePriceChange}
             onSizeChange={handleSizeChange}
+            onBrandChange={handleBrandChange}
           />
 
           {/* Products area */}
@@ -147,7 +162,7 @@ export default function NewPage() {
             </div>
 
             {/* Active filter chips */}
-            {(selectedPrices.length > 0 || selectedSizes.length > 0) && (
+            {(selectedPrices.length > 0 || selectedSizes.length > 0 || selectedBrands.length > 0) && (
               <div className="active-filters" aria-label="Active filters">
                 {selectedPrices.map((r) => (
                   <button
@@ -168,6 +183,17 @@ export default function NewPage() {
                     aria-label={`Remove size filter ${s}`}
                   >
                     Size: {s}
+                    <span aria-hidden="true">×</span>
+                  </button>
+                ))}
+                {selectedBrands.map((b) => (
+                  <button
+                    key={b}
+                    className="filter-chip"
+                    onClick={() => handleBrandChange(b)}
+                    aria-label={`Remove brand filter ${b}`}
+                  >
+                    Brand: {b}
                     <span aria-hidden="true">×</span>
                   </button>
                 ))}

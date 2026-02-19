@@ -10,9 +10,13 @@ const PRICE_RANGES = [
 
 const SIZES = ['XS', 'SM', 'MD', 'LG', 'XL'];
 
-export default function FilterSidebar({ products, selectedPrices, selectedSizes, onPriceChange, onSizeChange }) {
+export default function FilterSidebar({ products, selectedPrices, selectedSizes, selectedBrands, onPriceChange, onSizeChange, onBrandChange }) {
   const [priceOpen, setPriceOpen] = useState(true);
   const [sizeOpen, setSizeOpen] = useState(true);
+  const [brandOpen, setBrandOpen] = useState(true);
+
+  // Derive sorted unique brands from the products data
+  const allBrands = [...new Set(products.map((p) => p.brand))].sort();
 
   // Count products per price range
   const priceCount = (range) =>
@@ -21,6 +25,10 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
   // Count products per size
   const sizeCount = (size) =>
     products.filter((p) => p.sizes.includes(size)).length;
+
+  // Count products per brand
+  const brandCount = (brand) =>
+    products.filter((p) => p.brand === brand).length;
 
   return (
     <aside className="filter-sidebar" aria-label="Product filters">
@@ -114,6 +122,50 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
                     />
                     <span className="filter-option-label">
                       {size}
+                      <span className="filter-count">({count})</span>
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+
+      {/* Brand Filter */}
+      <div className="filter-group">
+        <button
+          className="filter-group-header"
+          onClick={() => setBrandOpen((o) => !o)}
+          aria-expanded={brandOpen}
+          aria-controls="filter-brand"
+        >
+          <span>Brand</span>
+          <svg
+            className={`filter-chevron ${brandOpen ? 'open' : ''}`}
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        {brandOpen && (
+          <ul id="filter-brand" className="filter-options" role="group" aria-label="Filter by brand">
+            {allBrands.map((brand) => {
+              const count = brandCount(brand);
+              const checked = selectedBrands.includes(brand);
+              return (
+                <li key={brand}>
+                  <label className="filter-option">
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => onBrandChange(brand)}
+                      aria-label={`Brand ${brand} (${count} products)`}
+                    />
+                    <span className="filter-option-label">
+                      {brand}
                       <span className="filter-count">({count})</span>
                     </span>
                   </label>
