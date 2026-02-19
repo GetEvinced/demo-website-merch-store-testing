@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HeroBanner.css';
 
 const HERO_IMAGE = 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/New_Tees.png?tr=w-1000';
@@ -9,7 +10,7 @@ export default function HeroBanner() {
       <div className="hero-content">
         <h1>Winter Basics</h1>
         <p>Warm hues for cooler days</p>
-        <a href="#" className="hero-btn">Shop New</a>
+        <Link to="/shop/new" className="hero-btn">Shop New</Link>
       </div>
       <div className="hero-image">
         <img src={HERO_IMAGE} alt="Winter Basics - Google branded t-shirts in warm colors" />
