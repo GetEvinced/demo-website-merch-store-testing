@@ -1,0 +1,80 @@
+.featured-pair {
+  max-width: 1280px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.featured-card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 0;
+  min-height: 380px;
+  transition: box-shadow 0.2s;
+}
+
+.featured-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.featured-card-info {
+  padding-bottom: 12px;
+}
+
+.featured-eyebrow {
+  font-size: 0.8rem;
+  color: #5f6368;
+  margin: 0 0 6px;
+  font-family: 'Google Sans', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.featured-card-info h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #202124;
+  margin: 0 0 16px;
+  font-family: 'Google Sans', Arial, sans-serif;
+  line-height: 1.3;
+}
+
+.shop-link-outline {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1.5px solid #3c4043;
+  color: #3c4043;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Google Sans', Arial, sans-serif;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.shop-link-outline:hover {
+  background: #3c4043;
+  color: #fff;
+}
+
+.featured-card-image {
+  margin-top: auto;
+}
+
+.featured-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  max-height: 280px;
+}
+
+@media (max-width: 768px) {
+  .featured-pair {
+    grid-template-columns: 1fr;
+  }
+}

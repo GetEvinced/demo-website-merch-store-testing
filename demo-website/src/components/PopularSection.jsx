@@ -1,0 +1,57 @@
+import React from 'react';
+import './PopularSection.css';
+
+const products = [
+  {
+    id: 1,
+    title: 'True Blue',
+    subtitle: 'Hydration to-go',
+    shopLabel: 'Shop Drinkware',
+    shopHref: '#drinkware',
+    image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/inkwell_tumbler.png?tr=w-750',
+    imageAlt: 'Drinkware',
+    bg: '#e8f0fe',
+  },
+  {
+    id: 2,
+    title: 'Piece by Piece',
+    subtitle: 'Brainpower unleashed',
+    shopLabel: 'Shop Fun and Games',
+    shopHref: '#fun-and-games',
+    image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/CDBricks.png?tr=w-750',
+    imageAlt: 'Google Logo Brick Puzzle Set',
+    bg: '#f0f4f0',
+  },
+  {
+    id: 3,
+    title: 'Blank Pages, Bold Ideas',
+    subtitle: 'Notebooks that inspire',
+    shopLabel: 'Shop Stationery',
+    shopHref: '#stationery',
+    image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/notebooks_082522b.png?tr=w-750',
+    imageAlt: 'Google Notebook',
+    bg: '#fef9e7',
+  },
+];
+
+export default function PopularSection() {
+  return (
+    <section className="popular-section" aria-labelledby="popular-heading">
+      <h2 id="popular-heading">Popular on the Google Merch Shop</h2>
+      <div className="popular-grid">
+        {products.map((product) => (
+          <div key={product.id} className="product-card" style={{ background: product.bg }}>
+            <div className="product-card-info">
+              <h3>{product.title}</h3>
+              <p>{product.subtitle}</p>
+              <a href={product.shopHref} className="shop-link">{product.shopLabel}</a>
+            </div>
+            <div className="product-card-image">
+              <img src={product.image} alt={product.imageAlt} loading="lazy" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

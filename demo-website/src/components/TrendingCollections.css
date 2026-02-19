@@ -1,0 +1,87 @@
+.trending-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px 32px;
+}
+
+.trending-section h2 {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #202124;
+  margin: 0 0 32px;
+  font-family: 'Google Sans', Arial, sans-serif;
+}
+
+.trending-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.trending-card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 0;
+  transition: box-shadow 0.2s;
+}
+
+.trending-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.trending-card-info {
+  padding-bottom: 12px;
+}
+
+.trending-card-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #202124;
+  margin: 0 0 4px;
+  font-family: 'Google Sans', Arial, sans-serif;
+}
+
+.trending-card-info p {
+  font-size: 0.85rem;
+  color: #5f6368;
+  margin: 0 0 12px;
+  font-family: 'Google Sans', Arial, sans-serif;
+}
+
+.shop-link-sm {
+  display: inline-block;
+  padding: 7px 16px;
+  border: 1.5px solid #3c4043;
+  color: #3c4043;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Google Sans', Arial, sans-serif;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.shop-link-sm:hover {
+  background: #3c4043;
+  color: #fff;
+}
+
+.trending-card-image {
+  margin-top: auto;
+}
+
+.trending-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .trending-grid {
+    grid-template-columns: 1fr;
+  }
+}
