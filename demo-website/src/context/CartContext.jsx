@@ -26,6 +26,11 @@ export function CartProvider({ children }) {
     setItems((prev) => prev.filter((i) => i.id !== productId));
   }, []);
 
+  const clearCart = useCallback(() => {
+    setItems([]);
+    setIsOpen(false);
+  }, []);
+
   const updateQuantity = useCallback((productId, quantity) => {
     if (quantity <= 0) {
       setItems((prev) => prev.filter((i) => i.id !== productId));
@@ -40,7 +45,7 @@ export function CartProvider({ children }) {
   const totalPrice = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ items, isOpen, openCart, closeCart, addToCart, removeFromCart, updateQuantity, totalCount, totalPrice }}>
+    <CartContext.Provider value={{ items, isOpen, openCart, closeCart, addToCart, removeFromCart, updateQuantity, clearCart, totalCount, totalPrice }}>
       {children}
     </CartContext.Provider>
   );

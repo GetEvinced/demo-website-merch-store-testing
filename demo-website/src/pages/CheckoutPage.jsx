@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './CheckoutPage.css';
@@ -6,7 +6,7 @@ import './CheckoutPage.css';
 const STEPS = ['basket', 'shipping'];
 
 export default function CheckoutPage() {
-  const { items, totalPrice, updateQuantity, removeFromCart } = useCart();
+  const { items, totalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
   const [step, setStep] = useState('basket');
   const navigate = useNavigate();
 
@@ -30,6 +30,11 @@ export default function CheckoutPage() {
     }
   };
 
+  const generateOrderId = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    return Array.from({ length: 10 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  };
+
   const handleShipIt = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -38,7 +43,12 @@ export default function CheckoutPage() {
       if (!val.trim()) newErrors[key] = true;
     });
     setErrors(newErrors);
-    // If no errors, form is valid (button does nothing further per spec)
+
+    if (Object.keys(newErrors).length === 0) {
+      const orderId = generateOrderId();
+      clearCart();
+      navigate('/order-confirmation', { state: { orderId, firstName: form.firstName } });
+    }
   };
 
   const totalCount = items.reduce((s, i) => s + i.quantity, 0);

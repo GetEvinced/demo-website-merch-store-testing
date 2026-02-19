@@ -9,10 +9,11 @@ import HomePage from '../pages/HomePage';
 import NewPage from '../pages/NewPage';
 import ProductPage from '../pages/ProductPage';
 import CheckoutPage from '../pages/CheckoutPage';
+import OrderConfirmationPage from '../pages/OrderConfirmationPage';
 
 function AppInner() {
   const location = useLocation();
-  const isCheckout = location.pathname === '/checkout';
+  const hideCart = ['/checkout', '/order-confirmation'].includes(location.pathname);
 
   return (
     <div className="app">
@@ -24,10 +25,11 @@ function AppInner() {
           <Route path="/shop/new" element={<NewPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
         </Routes>
       </main>
       <Footer />
-      {!isCheckout && <CartModal />}
+      {!hideCart && <CartModal />}
     </div>
   );
 }
