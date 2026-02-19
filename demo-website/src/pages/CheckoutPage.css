@@ -444,6 +444,27 @@
   color: #bbb;
 }
 
+.form-input--error {
+  border-color: #d93025;
+  box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.15);
+}
+
+.form-input--error:focus {
+  border-color: #d93025;
+  box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.25);
+}
+
+.form-label--error {
+  color: #d93025;
+}
+
+.form-error {
+  font-size: 12px;
+  color: #d93025;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
 /* ─── Form Action Buttons ────────────────────────────────────────────────────── */
 .shipping-form-actions {
   display: flex;

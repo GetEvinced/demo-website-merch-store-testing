@@ -18,9 +18,27 @@ export default function CheckoutPage() {
     expirationDate: '',
   });
 
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error for this field as soon as the user starts typing
+    if (submitted && errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
+  };
+
+  const handleShipIt = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    const newErrors = {};
+    Object.entries(form).forEach(([key, val]) => {
+      if (!val.trim()) newErrors[key] = true;
+    });
+    setErrors(newErrors);
+    // If no errors, form is valid (button does nothing further per spec)
   };
 
   const totalCount = items.reduce((s, i) => s + i.quantity, 0);
@@ -137,7 +155,7 @@ export default function CheckoutPage() {
             {/* Form */}
             <form
               className="shipping-form"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleShipIt}
               aria-label="Shipping and payment form"
               noValidate
             >
@@ -146,45 +164,60 @@ export default function CheckoutPage() {
 
                 <div className="form-row form-row--2col">
                   <div className="form-group">
-                    <label htmlFor="firstName" className="form-label">First Name</label>
+                    <label htmlFor="firstName" className={`form-label${errors.firstName ? ' form-label--error' : ''}`}>First Name</label>
                     <input
                       id="firstName"
                       name="firstName"
                       type="text"
-                      className="form-input"
+                      className={`form-input${errors.firstName ? ' form-input--error' : ''}`}
                       value={form.firstName}
                       onChange={handleFormChange}
                       autoComplete="given-name"
                       placeholder="Jane"
+                      aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+                      aria-invalid={errors.firstName ? 'true' : undefined}
                     />
+                    {errors.firstName && (
+                      <span id="firstName-error" className="form-error" role="alert">First Name is required</span>
+                    )}
                   </div>
                   <div className="form-group">
-                    <label htmlFor="lastName" className="form-label">Last Name</label>
+                    <label htmlFor="lastName" className={`form-label${errors.lastName ? ' form-label--error' : ''}`}>Last Name</label>
                     <input
                       id="lastName"
                       name="lastName"
                       type="text"
-                      className="form-input"
+                      className={`form-input${errors.lastName ? ' form-input--error' : ''}`}
                       value={form.lastName}
                       onChange={handleFormChange}
                       autoComplete="family-name"
                       placeholder="Smith"
+                      aria-describedby={errors.lastName ? 'lastName-error' : undefined}
+                      aria-invalid={errors.lastName ? 'true' : undefined}
                     />
+                    {errors.lastName && (
+                      <span id="lastName-error" className="form-error" role="alert">Last Name is required</span>
+                    )}
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="address" className="form-label">Address</label>
+                  <label htmlFor="address" className={`form-label${errors.address ? ' form-label--error' : ''}`}>Address</label>
                   <input
                     id="address"
                     name="address"
                     type="text"
-                    className="form-input"
+                    className={`form-input${errors.address ? ' form-input--error' : ''}`}
                     value={form.address}
                     onChange={handleFormChange}
                     autoComplete="street-address"
                     placeholder="1600 Amphitheatre Pkwy, Mountain View, CA 94043"
+                    aria-describedby={errors.address ? 'address-error' : undefined}
+                    aria-invalid={errors.address ? 'true' : undefined}
                   />
+                  {errors.address && (
+                    <span id="address-error" className="form-error" role="alert">Address is required</span>
+                  )}
                 </div>
               </fieldset>
 
@@ -192,35 +225,45 @@ export default function CheckoutPage() {
                 <legend className="form-section-legend">Payment</legend>
 
                 <div className="form-group">
-                  <label htmlFor="cardNumber" className="form-label">Credit Card Number</label>
+                  <label htmlFor="cardNumber" className={`form-label${errors.cardNumber ? ' form-label--error' : ''}`}>Credit Card Number</label>
                   <input
                     id="cardNumber"
                     name="cardNumber"
                     type="text"
-                    className="form-input"
+                    className={`form-input${errors.cardNumber ? ' form-input--error' : ''}`}
                     value={form.cardNumber}
                     onChange={handleFormChange}
                     autoComplete="cc-number"
                     placeholder="1234 5678 9012 3456"
                     inputMode="numeric"
                     maxLength={19}
+                    aria-describedby={errors.cardNumber ? 'cardNumber-error' : undefined}
+                    aria-invalid={errors.cardNumber ? 'true' : undefined}
                   />
+                  {errors.cardNumber && (
+                    <span id="cardNumber-error" className="form-error" role="alert">Credit Card Number is required</span>
+                  )}
                 </div>
 
                 <div className="form-row form-row--2col">
                   <div className="form-group">
-                    <label htmlFor="expirationDate" className="form-label">Expiration Date</label>
+                    <label htmlFor="expirationDate" className={`form-label${errors.expirationDate ? ' form-label--error' : ''}`}>Expiration Date</label>
                     <input
                       id="expirationDate"
                       name="expirationDate"
                       type="text"
-                      className="form-input"
+                      className={`form-input${errors.expirationDate ? ' form-input--error' : ''}`}
                       value={form.expirationDate}
                       onChange={handleFormChange}
                       autoComplete="cc-exp"
                       placeholder="MM / YY"
                       maxLength={7}
+                      aria-describedby={errors.expirationDate ? 'expirationDate-error' : undefined}
+                      aria-invalid={errors.expirationDate ? 'true' : undefined}
                     />
+                    {errors.expirationDate && (
+                      <span id="expirationDate-error" className="form-error" role="alert">Expiration Date is required</span>
+                    )}
                   </div>
                 </div>
               </fieldset>
