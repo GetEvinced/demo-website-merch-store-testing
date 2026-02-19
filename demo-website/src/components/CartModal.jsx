@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import styles from './CartModal.module.css';
 
@@ -6,6 +7,12 @@ export default function CartModal() {
   const { items, isOpen, closeCart, removeFromCart, updateQuantity, totalPrice } = useCart();
   const modalRef = useRef(null);
   const closeBtnRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    closeCart();
+    navigate('/checkout');
+  };
 
   // Close on Escape key
   useEffect(() => {
@@ -126,7 +133,7 @@ export default function CartModal() {
               <span className={styles.subtotalValue}>${totalPrice.toFixed(2)}</span>
             </div>
             <p className={styles.shippingNote}>Shipping and taxes calculated at checkout</p>
-            <button className={styles.checkoutBtn}>Proceed to Checkout</button>
+            <button className={styles.checkoutBtn} onClick={handleCheckout}>Proceed to Checkout</button>
             <button className={styles.continueBtn} onClick={closeCart}>Continue Shopping</button>
           </div>
         )}
