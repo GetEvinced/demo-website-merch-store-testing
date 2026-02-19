@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './TheDrop.css';
 
 const DROP_IMAGE = 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/2bags_charms1.png?tr=w-600';
@@ -25,7 +26,7 @@ export default function TheDrop() {
             But be quick! They're only available while supplies last, and trust us, they won't last long.
             Happy collecting!
           </p>
-          <a href="#shop-now" className="drop-btn">Shop Now</a>
+          <Link to="/shop/new" className="drop-btn">Shop Now</Link>
         </div>
       </div>
     </section>

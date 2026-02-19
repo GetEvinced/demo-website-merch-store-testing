@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './TrendingCollections.css';
 
 const collections = [
@@ -7,7 +8,7 @@ const collections = [
     title: 'Hello Android',
     subtitle: 'An truly a-MAZE-ing collectible',
     shopLabel: 'Shop Android',
-    shopHref: '#android',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/AmazeingAndroid.png?tr=w-750',
     imageAlt: 'Android Googler',
     bg: '#f0f8f0',
@@ -17,7 +18,7 @@ const collections = [
     title: 'YouTube Kids',
     subtitle: 'Color, Create, Play',
     shopLabel: 'Shop YouTube',
-    shopHref: '#youtube',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/YouTubeKids.png?tr=w-750',
     imageAlt: 'YouTube Kids',
     bg: '#fff5f5',
@@ -27,7 +28,7 @@ const collections = [
     title: 'Calling Stylish Pups',
     subtitle: 'Make your furry friend happy',
     shopLabel: 'Shop Doogler/Mewgler',
-    shopHref: '#doogler',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/Bandana.png?tr=w-750',
     imageAlt: 'Doogler',
     bg: '#fdf5f5',
@@ -44,7 +45,7 @@ export default function TrendingCollections() {
             <div className="trending-card-info">
               <h3>{col.title}</h3>
               <p>{col.subtitle}</p>
-              <a href={col.shopHref} className="shop-link-sm">{col.shopLabel}</a>
+              <Link to={col.shopHref} className="shop-link-sm">{col.shopLabel}</Link>
             </div>
             <div className="trending-card-image">
               <img src={col.image} alt={col.imageAlt} loading="lazy" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PopularSection.css';
 
 const products = [
@@ -7,7 +8,7 @@ const products = [
     title: 'True Blue',
     subtitle: 'Hydration to-go',
     shopLabel: 'Shop Drinkware',
-    shopHref: '#drinkware',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/inkwell_tumbler.png?tr=w-750',
     imageAlt: 'Drinkware',
     bg: '#e8f0fe',
@@ -17,7 +18,7 @@ const products = [
     title: 'Piece by Piece',
     subtitle: 'Brainpower unleashed',
     shopLabel: 'Shop Fun and Games',
-    shopHref: '#fun-and-games',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/CDBricks.png?tr=w-750',
     imageAlt: 'Google Logo Brick Puzzle Set',
     bg: '#f0f4f0',
@@ -27,7 +28,7 @@ const products = [
     title: 'Blank Pages, Bold Ideas',
     subtitle: 'Notebooks that inspire',
     shopLabel: 'Shop Stationery',
-    shopHref: '#stationery',
+    shopHref: '/shop/new',
     image: 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/notebooks_082522b.png?tr=w-750',
     imageAlt: 'Google Notebook',
     bg: '#fef9e7',
@@ -44,7 +45,7 @@ export default function PopularSection() {
             <div className="product-card-info">
               <h3>{product.title}</h3>
               <p>{product.subtitle}</p>
-              <a href={product.shopHref} className="shop-link">{product.shopLabel}</a>
+              <Link to={product.shopHref} className="shop-link">{product.shopLabel}</Link>
             </div>
             <div className="product-card-image">
               <img src={product.image} alt={product.imageAlt} loading="lazy" />
