@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useLocalStorage('cart-items', []);
   const [isOpen, setIsOpen] = useState(false);
 
   const openCart = useCallback(() => setIsOpen(true), []);

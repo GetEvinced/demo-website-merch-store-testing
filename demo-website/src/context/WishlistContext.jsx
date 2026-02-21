@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const WishlistContext = createContext(null);
 
 export function WishlistProvider({ children }) {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useLocalStorage('wishlist-items', []);
   const [isOpen, setIsOpen] = useState(false);
 
   const openWishlist = useCallback(() => setIsOpen(true), []);
