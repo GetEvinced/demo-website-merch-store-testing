@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import products from '../data/products.json';
 import styles from './ProductPage.module.css';
 
 export default function ProductPage() {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const product = products.find((p) => p.id === parseInt(id, 10));
 
   const [quantity, setQuantity] = useState(1);
@@ -112,8 +114,19 @@ export default function ProductPage() {
                 ADD TO CART
               </button>
 
-              <button className={styles.wishlistBtn} aria-label={`Add ${product.name} to wishlist`}>
-                ♡ Add to Wishlist
+              <button
+                className={`${styles.wishlistBtn} ${isInWishlist(product.id) ? styles.wishlistBtnActive : ''}`}
+                aria-label={isInWishlist(product.id) ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+                aria-pressed={isInWishlist(product.id)}
+                onClick={() => {
+                  if (isInWishlist(product.id)) {
+                    removeFromWishlist(product.id);
+                  } else {
+                    addToWishlist(product);
+                  }
+                }}
+              >
+                {isInWishlist(product.id) ? '♥ Added to Wishlist' : '♡ Add to Wishlist'}
               </button>
             </div>
 

@@ -236,6 +236,11 @@
   opacity: 0.75;
 }
 
+.wishlistBtnActive {
+  color: #e8437a;
+  font-weight: 600;
+}
+
 /* Details section */
 .detailsSection {
   border-top: 1px solid #e8eaed;

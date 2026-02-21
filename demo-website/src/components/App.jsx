@@ -2,9 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { CartProvider } from '../context/CartContext';
+import { WishlistProvider } from '../context/WishlistContext';
 import Header from './Header';
 import Footer from './Footer';
 import CartModal from './CartModal';
+import WishlistModal from './WishlistModal';
 import HomePage from '../pages/HomePage';
 import NewPage from '../pages/NewPage';
 import ProductPage from '../pages/ProductPage';
@@ -30,6 +32,7 @@ function AppInner() {
       </main>
       <Footer />
       {!hideCart && <CartModal />}
+      <WishlistModal />
     </div>
   );
 }
@@ -38,7 +41,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
-        <AppInner />
+        <WishlistProvider>
+          <AppInner />
+        </WishlistProvider>
       </CartProvider>
     </BrowserRouter>
   );
