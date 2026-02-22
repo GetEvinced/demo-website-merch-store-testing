@@ -16,15 +16,6 @@ export default function Footer() {
             <li><a href="#faqs">FAQs</a></li>
           </ul>
         </div>
-        <div className="footer-bottom">
-          <p>
-            Operated by: <a href="https://robertsonmarketing.com/" target="_blank" rel="noopener noreferrer">Robertson Marketing</a>. All Rights Reserved. © 2026
-          </p>
-          <div className="footer-legal">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Use</a>
-          </div>
-        </div>
       </div>
     </footer>
   );
