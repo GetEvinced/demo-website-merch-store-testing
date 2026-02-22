@@ -12,8 +12,7 @@ export default function Footer() {
             <li><a href="#sustainability">Sustainability</a></li>
           </ul>
           <ul className="footer-list">
-            <li><a href="mailto:googlesupport@robertsonmarketing.com">Email Us</a></li>
-            <li><a href="#faqs">FAQs</a></li>
+<li><a href="#faqs">FAQs</a></li>
           </ul>
         </div>
       </div>
