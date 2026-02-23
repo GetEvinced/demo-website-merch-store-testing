@@ -45,12 +45,13 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
       </div>
 
       {/* Price Filter */}
+      {/* A11Y-GEN2 no-esc-close: no Escape key handler — keyboard users cannot collapse the Price disclosure with Escape */}
       <div className="filter-group">
+        {/* A11Y-GEN2 no-aria-expanded: aria-expanded removed — screen readers cannot tell whether the Price section is open or closed */}
+        {/* A11Y-GEN2 no-aria-controls: aria-controls removed — no programmatic link from the Price toggle button to its controlled panel */}
         <button
           className="filter-group-header"
           onClick={() => setPriceOpen((o) => !o)}
-          aria-expanded={priceOpen}
-          aria-controls="filter-price"
           aria-describedby="filter-section-title"
         >
           {/* A11Y-AXE duplicate-id-aria: id="filter-section-title" is repeated on the Size filter span below */}
@@ -65,7 +66,8 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {priceOpen && (
-          <ul id="filter-price" className="filter-options" role="list" aria-label="Filter by price">
+          <ul className="filter-options" role="list" aria-label="Filter by price">
+            {/* A11Y-GEN2 no-aria-owns: id removed from Price panel — the toggle button has no aria-controls/aria-owns association to this panel */}
             {PRICE_RANGES.map((range) => {
               const count = priceCount(range);
               const checked = selectedPrices.some((r) => r.label === range.label);
@@ -91,12 +93,13 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
       </div>
 
       {/* Size Filter */}
+      {/* A11Y-GEN2 no-esc-close: no Escape key handler — keyboard users cannot collapse the Size disclosure with Escape */}
       <div className="filter-group">
+        {/* A11Y-GEN2 no-aria-expanded: aria-expanded removed — screen readers cannot tell whether the Size section is open or closed */}
+        {/* A11Y-GEN2 no-aria-controls: aria-controls removed — no programmatic link from the Size toggle button to its controlled panel */}
         <button
           className="filter-group-header"
           onClick={() => setSizeOpen((o) => !o)}
-          aria-expanded={sizeOpen}
-          aria-controls="filter-size"
           aria-describedby="filter-section-title"
         >
           {/* A11Y-AXE duplicate-id-aria: id="filter-section-title" duplicates the same ID used on the Price filter span above */}
@@ -111,7 +114,8 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {sizeOpen && (
-          <ul id="filter-size" className="filter-options" role="list" aria-label="Filter by size">
+          <ul className="filter-options" role="list" aria-label="Filter by size">
+            {/* A11Y-GEN2 no-aria-owns: id removed from Size panel — the toggle button has no aria-controls/aria-owns association to this panel */}
             {SIZES.map((size) => {
               const count = sizeCount(size);
               const checked = selectedSizes.includes(size);
@@ -137,12 +141,13 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
       </div>
 
       {/* Brand Filter */}
+      {/* A11Y-GEN2 no-esc-close: no Escape key handler — keyboard users cannot collapse the Brand disclosure with Escape */}
       <div className="filter-group">
+        {/* A11Y-GEN2 no-aria-expanded: aria-expanded removed — screen readers cannot tell whether the Brand section is open or closed */}
+        {/* A11Y-GEN2 no-aria-controls: aria-controls removed — no programmatic link from the Brand toggle button to its controlled panel */}
         <button
           className="filter-group-header"
           onClick={() => setBrandOpen((o) => !o)}
-          aria-expanded={brandOpen}
-          aria-controls="filter-brand"
         >
           <span>Brand</span>
           <svg
@@ -155,7 +160,8 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {brandOpen && (
-          <ul id="filter-brand" className="filter-options" role="list" aria-label="Filter by brand">
+          <ul className="filter-options" role="list" aria-label="Filter by brand">
+            {/* A11Y-GEN2 no-aria-owns: id removed from Brand panel — the toggle button has no aria-controls/aria-owns association to this panel */}
             {allBrands.map((brand) => {
               const count = brandCount(brand);
               const checked = selectedBrands.includes(brand);

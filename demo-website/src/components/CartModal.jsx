@@ -6,7 +6,6 @@ import styles from './CartModal.module.css';
 export default function CartModal() {
   const { items, isOpen, closeCart, removeFromCart, updateQuantity, totalPrice } = useCart();
   const modalRef = useRef(null);
-  const closeBtnRef = useRef(null);
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -14,17 +13,8 @@ export default function CartModal() {
     navigate('/checkout');
   };
 
-  // Close on Escape key
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleKey = (e) => {
-      if (e.key === 'Escape') closeCart();
-    };
-    document.addEventListener('keydown', handleKey);
-    // Focus the close button when modal opens
-    closeBtnRef.current?.focus();
-    return () => document.removeEventListener('keydown', handleKey);
-  }, [isOpen, closeCart]);
+  // A11Y-GEN2 no-esc-close: Escape key handler removed — keyboard users cannot dismiss the cart modal with Escape
+  // A11Y-GEN2 no-focus-trap: Focus is not moved into the modal when it opens and focus is not trapped inside — keyboard users can tab freely outside the modal while it is open
 
   // Prevent body scroll when open
   useEffect(() => {
@@ -42,16 +32,15 @@ export default function CartModal() {
       <div
         className={`${styles.backdrop} ${isOpen ? styles.backdropVisible : ''}`}
         onClick={closeCart}
-        aria-hidden="true"
       />
 
       {/* Drawer */}
+      {/* A11Y-GEN2 no-aria-role: role="dialog" removed — assistive technologies cannot identify this as a dialog */}
+      {/* A11Y-GEN2 no-aria-modal: aria-modal removed — screen readers are not informed that content outside the modal is inert */}
+      {/* A11Y-GEN2 no-aria-label: aria-label removed from drawer — the modal has no accessible name */}
       <div
         ref={modalRef}
         className={`${styles.drawer} ${isOpen ? styles.drawerOpen : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Shopping cart"
       >
         {/* Header */}
         <div className={styles.drawerHeader}>
@@ -63,7 +52,6 @@ export default function CartModal() {
           </h2>
           {/* A11Y-GEN1 accessible-name: close button has no accessible name — aria-label removed, icon-only with aria-hidden SVG */}
           <button
-            ref={closeBtnRef}
             className={styles.closeBtn}
             onClick={closeCart}
           >
@@ -86,7 +74,7 @@ export default function CartModal() {
               <p>Your cart is empty</p>
             </div>
           ) : (
-            <ul className={styles.cartList} aria-label="Cart items">
+            <ul className={styles.cartList}>{/* A11Y-GEN2 no-aria-label: aria-label removed from cart items list */}
               {items.map((item) => (
                 <li key={item.id} className={styles.cartItem}>
                   <div className={styles.cartItemImage}>
@@ -95,24 +83,23 @@ export default function CartModal() {
                   <div className={styles.cartItemInfo}>
                     <p className={styles.cartItemName}>{item.name}</p>
                     <p className={styles.cartItemPrice}>${item.price.toFixed(2)}</p>
+                    {/* A11Y-GEN2 no-aria-label: aria-label removed from quantity buttons and quantity value span */}
                     <div className={styles.cartItemQty}>
                       <button
                         className={styles.qtyBtn}
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        aria-label={`Decrease quantity of ${item.name}`}
                       >−</button>
-                      <span className={styles.qtyValue} aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                      <span className={styles.qtyValue}>{item.quantity}</span>
                       <button
                         className={styles.qtyBtn}
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        aria-label={`Increase quantity of ${item.name}`}
                       >+</button>
                     </div>
                   </div>
+                  {/* A11Y-GEN2 no-aria-label: aria-label removed from remove item button */}
                   <button
                     className={styles.removeBtn}
                     onClick={() => removeFromCart(item.id)}
-                    aria-label={`Remove ${item.name} from cart`}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <line x1="18" y1="6" x2="6" y2="18" />

@@ -129,12 +129,14 @@ export default function NewPage() {
                   </button>
                 )}
               </div>
-              <div className="sort-dropdown" role="group" aria-label="Sort products">
+              {/* A11Y-GEN2 no-group-role: role="group" and aria-label removed from sort wrapper — widget has no group semantics or accessible label */}
+              {/* A11Y-GEN2 no-aria-controls: aria-controls removed from sort trigger — screen readers cannot navigate from the button to the options list */}
+              <div className="sort-dropdown">
+                {/* A11Y-GEN2 no-aria-expanded: aria-expanded removed from sort trigger — screen readers cannot tell whether the options list is open or closed */}
+                {/* A11Y-GEN2 no-aria-haspopup: aria-haspopup removed from sort trigger — screen readers are not informed that this button opens a popup */}
                 <button
                   className="sort-btn"
                   onClick={() => setSortOpen((o) => !o)}
-                  aria-haspopup="listbox"
-                  aria-expanded={sortOpen}
                 >
                   Sort by {currentSortLabel}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -142,16 +144,15 @@ export default function NewPage() {
                   </svg>
                 </button>
                 {sortOpen && (
-                  <ul className="sort-options" role="listbox" aria-label="Sort options">
+                  <ul className="sort-options">
+                    {/* A11Y-GEN2 no-listbox-role: role="listbox" and aria-label removed from options list — screen readers cannot identify this as a listbox widget */}
+                    {/* A11Y-GEN2 no-option-role: role="option" and aria-selected removed from each option — screen readers cannot identify items as selectable options */}
+                    {/* A11Y-GEN2 no-keyboard-accessible: tabIndex and onKeyDown removed from option items — options are not keyboard accessible */}
                     {SORT_OPTIONS.map((opt) => (
                       <li
                         key={opt.value}
-                        role="option"
-                        aria-selected={sort === opt.value}
                         className={`sort-option ${sort === opt.value ? 'active' : ''}`}
                         onClick={() => { setSort(opt.value); setSortOpen(false); }}
-                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setSort(opt.value); setSortOpen(false); } }}
-                        tabIndex={0}
                       >
                         {opt.label}
                       </li>
