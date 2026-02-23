@@ -39,6 +39,7 @@ export default function CartModal() {
       {/* A11Y-GEN2 no-aria-modal: aria-modal removed — screen readers are not informed that content outside the modal is inert */}
       {/* A11Y-GEN2 no-aria-label: aria-label removed from drawer — the modal has no accessible name */}
       <div
+        id="cart-modal"
         ref={modalRef}
         className={`${styles.drawer} ${isOpen ? styles.drawerOpen : ''}`}
       >
