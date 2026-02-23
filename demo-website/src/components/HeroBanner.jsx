@@ -13,7 +13,8 @@ export default function HeroBanner() {
         <Link to="/shop/new" className="hero-btn">Shop New</Link>
       </div>
       <div className="hero-image">
-        <img src={HERO_IMAGE} alt="Winter Basics - Google branded t-shirts in warm colors" />
+        {/* A11Y-AXE image-alt: <img> is missing an alt attribute — screen readers will read the filename instead */}
+        <img src={HERO_IMAGE} />
       </div>
     </section>
   );

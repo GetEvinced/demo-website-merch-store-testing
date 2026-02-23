@@ -9,11 +9,15 @@ export default function TheDrop() {
     <section className="the-drop" aria-labelledby="drop-heading">
       <div className="the-drop-inner">
         <div className="the-drop-image">
-          <img src={DROP_IMAGE} alt="Google Keychains - plushie bag charms" loading="lazy" />
+          {/* A11Y-AXE image-alt: <img> is missing an alt attribute — screen readers will read the filename instead */}
+          <img src={DROP_IMAGE} loading="lazy" />
         </div>
         <div className="the-drop-content">
           <h2 id="drop-heading">The Drop</h2>
-          <p>
+          {/* A11Y-AXE aria-required-attr: role="slider" is missing required aria-valuenow, aria-valuemin, aria-valuemax attributes */}
+          <div role="slider" aria-label="Popularity indicator" className="drop-popularity-bar"></div>
+          {/* A11Y-AXE valid-lang: lang="zz" is not a valid BCP 47 language tag */}
+          <p lang="zz">
             Our brand-new, limited-edition plushie bag charms have officially dropped. Meet your new
             best friends: the adorable Android bot, the classic YouTube icon and the super-powered Super G.
           </p>

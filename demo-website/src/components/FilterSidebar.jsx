@@ -51,8 +51,10 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           onClick={() => setPriceOpen((o) => !o)}
           aria-expanded={priceOpen}
           aria-controls="filter-price"
+          aria-describedby="filter-section-title"
         >
-          <span>Price</span>
+          {/* A11Y-AXE duplicate-id-aria: id="filter-section-title" is repeated on the Size filter span below */}
+          <span id="filter-section-title">Price</span>
           <svg
             className={`filter-chevron ${priceOpen ? 'open' : ''}`}
             width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -95,8 +97,10 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           onClick={() => setSizeOpen((o) => !o)}
           aria-expanded={sizeOpen}
           aria-controls="filter-size"
+          aria-describedby="filter-section-title"
         >
-          <span>Size</span>
+          {/* A11Y-AXE duplicate-id-aria: id="filter-section-title" duplicates the same ID used on the Price filter span above */}
+          <span id="filter-section-title">Size</span>
           <svg
             className={`filter-chevron ${sizeOpen ? 'open' : ''}`}
             width="16" height="16" viewBox="0 0 24 24" fill="none"

@@ -39,9 +39,11 @@ export default function TrendingCollections() {
   return (
     <section className="trending-section" aria-labelledby="trending-heading">
       <h2 id="trending-heading">Shop Trending Collections</h2>
-      <div className="trending-grid">
+      <ul className="trending-grid" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {/* A11Y-AXE list: <ul> contains a <div> direct child — only <li> elements are allowed inside <ul> */}
+        <div className="trending-grid-label" style={{ display: 'none' }}>Collections</div>
         {collections.map((col) => (
-          <div key={col.id} className="trending-card" style={{ background: col.bg }}>
+          <li key={col.id} className="trending-card" style={{ background: col.bg }}>
             <div className="trending-card-info">
               <h3>{col.title}</h3>
               <p>{col.subtitle}</p>
@@ -50,9 +52,9 @@ export default function TrendingCollections() {
             <div className="trending-card-image">
               <img src={col.image} alt={col.imageAlt} loading="lazy" />
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

@@ -208,6 +208,14 @@ export default function NewPage() {
               </div>
             ) : (
               <div className="products-grid" role="list" aria-label="Products">
+                <div style={{ display: 'none' }}>
+                  {/* A11Y-AXE aria-valid-attr-value: aria-sort="newest" is invalid — must be one of: ascending, descending, none, other */}
+                  <div aria-sort="newest" role="columnheader">Sort indicator</div>
+                  {/* A11Y-AXE aria-required-attr: role="spinbutton" requires aria-valuenow attribute */}
+                  <div role="spinbutton" aria-label="Page number" aria-valuemin={1} aria-valuemax={10}>1</div>
+                  {/* A11Y-AXE aria-required-attr: role="combobox" requires aria-controls and aria-expanded attributes */}
+                  <div role="combobox" aria-label="Filter preset">All</div>
+                </div>
                 {filteredProducts.map((product) => (
                   <div key={product.id} role="listitem">
                     <ProductCard product={product} />

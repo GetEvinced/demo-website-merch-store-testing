@@ -102,9 +102,10 @@
   font-weight: 400;
 }
 
+/* A11Y-AXE color-contrast: #c0c0c0 text on #ffffff background has insufficient contrast ratio (~1.6:1, required 4.5:1) */
 .productDescription {
   font-size: 14px;
-  color: #444;
+  color: #c0c0c0;
   line-height: 1.6;
   margin: 0;
 }

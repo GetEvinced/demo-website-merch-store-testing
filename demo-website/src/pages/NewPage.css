@@ -71,9 +71,10 @@
   flex-wrap: wrap;
 }
 
+/* A11Y-AXE color-contrast: #b0b4b8 text on #ffffff background has insufficient contrast ratio (~1.9:1, required 4.5:1) */
 .products-found {
   font-size: 0.9rem;
-  color: #3c4043;
+  color: #b0b4b8;
   margin: 0;
   font-family: 'Google Sans', Arial, sans-serif;
 }

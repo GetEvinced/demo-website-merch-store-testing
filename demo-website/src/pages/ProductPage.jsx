@@ -136,7 +136,16 @@ export default function ProductPage() {
                 <p className={styles.detailsHeading}>
                   <strong>Details:</strong>
                 </p>
-                <ul className={styles.detailsList}>
+                {/* A11Y-AXE aria-valid-attr-value: aria-relevant="changes" is invalid — must be space-separated tokens from: additions, removals, text, all */}
+                <ul
+                  className={styles.detailsList}
+                  aria-relevant="changes"
+                  aria-live="polite"
+                >
+                  <li style={{ display: 'none' }}>
+                    {/* A11Y-AXE aria-required-attr: role="meter" requires aria-valuenow, aria-valuemin, and aria-valuemax attributes */}
+                    <span role="meter" aria-label="Stock level"></span>
+                  </li>
                   {product.details.map((detail, i) => (
                     <li key={i} className={styles.detailsItem}>{detail}</li>
                   ))}

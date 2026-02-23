@@ -93,7 +93,8 @@
   line-height: 1.4;
 }
 
+/* A11Y-AXE color-contrast: #c8c8c8 text on #ffffff background has insufficient contrast ratio (~1.4:1, required 4.5:1) */
 .filter-count {
-  color: #5a5a5a;
+  color: #c8c8c8;
   font-size: 0.8rem;
 }
