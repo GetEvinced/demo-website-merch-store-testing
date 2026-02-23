@@ -19,7 +19,7 @@
 
 .breadcrumbLink {
   color: #1a73e8;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .breadcrumbLink:hover {
@@ -224,7 +224,7 @@
   width: 100%;
   padding: 12px;
   background: transparent;
-  color: #1a73e8;
+  color: #1558b0;
   border: none;
   font-size: 14px;
   cursor: pointer;
@@ -233,11 +233,11 @@
 }
 
 .wishlistBtn:hover {
-  opacity: 0.75;
+  text-decoration: underline;
 }
 
 .wishlistBtnActive {
-  color: #e8437a;
+  color: #c0185a;
   font-weight: 600;
 }
 
