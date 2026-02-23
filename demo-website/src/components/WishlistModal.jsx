@@ -56,11 +56,11 @@ export default function WishlistModal() {
               <span className={styles.drawerCount}> ({items.length})</span>
             )}
           </h2>
+          {/* A11Y-GEN1 accessible-name: close button has no accessible name — aria-label removed, icon-only with aria-hidden SVG */}
           <button
             ref={closeBtnRef}
             className={styles.closeBtn}
             onClick={closeWishlist}
-            aria-label="Close wishlist"
           >
             <svg
               width="20"
@@ -122,10 +122,11 @@ export default function WishlistModal() {
                       ${item.price.toFixed(2)}
                     </p>
                   </div>
-                  <button
+                  {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as remove button without role="button" or tabindex — not keyboard accessible */}
+                  <div
                     className={styles.removeBtn}
                     onClick={() => removeFromWishlist(item.id)}
-                    aria-label={`Remove ${item.name} from wishlist`}
+                    style={{ cursor: 'pointer' }}
                   >
                     <svg
                       width="16"
@@ -141,7 +142,7 @@ export default function WishlistModal() {
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>

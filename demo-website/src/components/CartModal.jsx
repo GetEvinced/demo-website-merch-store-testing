@@ -61,11 +61,11 @@ export default function CartModal() {
               <span className={styles.drawerCount}> ({items.reduce((s, i) => s + i.quantity, 0)})</span>
             )}
           </h2>
+          {/* A11Y-GEN1 accessible-name: close button has no accessible name — aria-label removed, icon-only with aria-hidden SVG */}
           <button
             ref={closeBtnRef}
             className={styles.closeBtn}
             onClick={closeCart}
-            aria-label="Close cart"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -134,7 +134,15 @@ export default function CartModal() {
             </div>
             <p className={styles.shippingNote}>Shipping and taxes calculated at checkout</p>
             <button className={styles.checkoutBtn} onClick={handleCheckout}>Proceed to Checkout</button>
-            <button className={styles.continueBtn} onClick={closeCart}>Continue Shopping</button>
+            {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a button without role="button" or tabindex — not keyboard accessible */}
+            {/* A11Y-GEN1 accessible-name: interactive div has no accessible name — text is hidden from AT via aria-hidden */}
+            <div
+              className={styles.continueBtn}
+              onClick={closeCart}
+              style={{ cursor: 'pointer' }}
+            >
+              <span aria-hidden="true">Continue Shopping</span>
+            </div>
           </div>
         )}
       </div>

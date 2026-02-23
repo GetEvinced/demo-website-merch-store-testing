@@ -35,7 +35,10 @@ export default function OrderConfirmationPage() {
           We'll send a confirmation to your email shortly. Your items will be on their way soon!
         </p>
 
-        <Link to="/" className="confirm-home-link">← Back to Shop</Link>
+        {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a navigation action without role="link" or tabindex — not keyboard accessible */}
+        <div className="confirm-home-link" onClick={() => {}} style={{ cursor: 'pointer' }}>
+          ← Back to Shop
+        </div>
       </div>
     </div>
   );

@@ -45,7 +45,15 @@ export default function PopularSection() {
             <div className="product-card-info">
               <h3>{product.title}</h3>
               <p>{product.subtitle}</p>
-              <Link to={product.shopHref} className="shop-link">{product.shopLabel}</Link>
+              {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a navigation link with no role="link" and no tabindex — not keyboard accessible */}
+              {/* A11Y-GEN1 accessible-name: interactive div has no accessible name — no aria-label, no text visible to assistive tech */}
+              <div
+                className="shop-link"
+                onClick={() => {}}
+                style={{ cursor: 'pointer' }}
+              >
+                <span aria-hidden="true">{product.shopLabel}</span>
+              </div>
             </div>
             <div className="product-card-image">
               <img src={product.image} alt={product.imageAlt} loading="lazy" />

@@ -146,12 +146,14 @@ export default function CheckoutPage() {
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
                 <p className="summary-tax-note">Taxes calculated at next step</p>
-                <button
+                {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a button without role="button" or tabindex — not keyboard accessible */}
+                <div
                   className="checkout-continue-btn"
                   onClick={() => setStep('shipping')}
+                  style={{ cursor: 'pointer' }}
                 >
                   Continue
-                </button>
+                </div>
               </aside>
             </div>
           )}
@@ -279,13 +281,14 @@ export default function CheckoutPage() {
               </fieldset>
 
               <div className="shipping-form-actions">
-                <button
-                  type="button"
+                {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a button without role="button" or tabindex — not keyboard accessible */}
+                <div
                   className="checkout-back-btn"
                   onClick={() => setStep('basket')}
+                  style={{ cursor: 'pointer' }}
                 >
                   ← Back to Cart
-                </button>
+                </div>
                 <button
                   type="submit"
                   className="ship-it-btn"

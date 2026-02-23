@@ -120,3 +120,64 @@ Issues detected by axe-core rules, intentionally introduced for demo/testing pur
 | 3 | Products Page | `src/pages/NewPage.jsx` | `<div role="spinbutton">` | `spinbutton` | `aria-valuenow` |
 | 4 | Products Page | `src/pages/NewPage.jsx` | `<div role="combobox">` | `combobox` | `aria-controls`, `aria-expanded` |
 | 5 | Product Detail | `src/pages/ProductPage.jsx` | `<span role="meter">` | `meter` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax` |
+
+---
+
+## GEN1
+
+Issues detected by Evinced engine rules, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN1` comment on the relevant line.
+
+---
+
+### interactable-role + keyboard-accessible (15 issues)
+
+> **Rule:** Semantics of interactable elements must be conveyed by their tag or assigned role; all UI functionality must be accessible by keyboard  
+> **Impact:** Critical / Serious  
+> **WCAG:** 1.3.1 (A), 2.1.1 (A), 4.1.2 (A)  
+> **References:**  
+> - https://knowledge.evinced.com/system-validations/interactable-role  
+> - https://knowledge.evinced.com/system-validations/keyboard-accessible
+
+Each issue below is a `<div>` (or similar non-semantic element) used as an interactive control without a proper `role` attribute and without `tabindex`, making it invisible to screen readers as an interactive element and inaccessible to keyboard users.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn wishlist-btn">` | `div` used as a wishlist-open button — no `role="button"`, no `tabindex` |
+| 2 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Search) | `div` used as a search button — no `role="button"`, no `tabindex` |
+| 3 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Login) | `div` used as a login button — no `role="button"`, no `tabindex` |
+| 4 | All pages (Header) | `src/components/Header.jsx` | `<div class="flag-group">` | `div` used as a region-selector toggle — no `role="button"`, no `tabindex` |
+| 5 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (Sustainability) | `div` used as a navigation item — no `role="link"`, no `tabindex` |
+| 6 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (FAQs) | `div` used as a navigation item — no `role="link"`, no `tabindex` |
+| 7 | Products Page | `src/components/ProductCard.jsx` | `<div class="product-card-quick-add">` | `div` used as a quick-add button — no `role="button"`, no `tabindex` |
+| 8 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Drinkware) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
+| 9 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Fun and Games) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
+| 10 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Stationery) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
+| 11 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<div class="continueBtn">` | `div` used as a continue-shopping button — no `role="button"`, no `tabindex` |
+| 12 | All pages (Wishlist Drawer) | `src/components/WishlistModal.jsx` | `<div class="removeBtn">` | `div` used as a remove-from-wishlist button — no `role="button"`, no `tabindex` |
+| 13 | Checkout | `src/pages/CheckoutPage.jsx` | `<div class="checkout-continue-btn">` | `div` used as a proceed button — no `role="button"`, no `tabindex` |
+| 14 | Checkout | `src/pages/CheckoutPage.jsx` | `<div class="checkout-back-btn">` | `div` used as a back-to-cart button — no `role="button"`, no `tabindex` |
+| 15 | Order Confirmation | `src/pages/OrderConfirmationPage.jsx` | `<div class="confirm-home-link">` | `div` used as a back-to-shop navigation action — no `role="link"`, no `tabindex` |
+
+---
+
+### accessible-name (10 issues)
+
+> **Rule:** All interactable elements must have an accessible name  
+> **Impact:** Critical  
+> **WCAG:** 1.3.1 (A), 2.4.6 (AA), 4.1.2 (A)  
+> **Reference:** https://knowledge.evinced.com/system-validations/accessible-name
+
+Each issue below is an interactive element whose accessible name has been removed (either `aria-label` was stripped or the visible text was hidden from assistive technologies via `aria-hidden="true"`), leaving screen readers and voice control with no hook to identify or announce the control.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Search) | Icon-only control — SVG is `aria-hidden`, visible text is `aria-hidden`; no accessible name |
+| 2 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Login) | Icon-only control — SVG is `aria-hidden`, visible text is `aria-hidden`; no accessible name |
+| 3 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (FAQs) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
+| 4 | Products Page | `src/components/ProductCard.jsx` | `<Link class="product-card-image-link">` | `aria-label` removed from image link — link has no accessible name beyond the child `<img>` alt, which is insufficient for a standalone link |
+| 5 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Drinkware) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
+| 6 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Fun and Games) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
+| 7 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Stationery) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
+| 8 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<button class="closeBtn">` | Icon-only button — `aria-label` removed, SVG is `aria-hidden`; no accessible name |
+| 9 | All pages (Wishlist Drawer) | `src/components/WishlistModal.jsx` | `<button class="closeBtn">` | Icon-only button — `aria-label` removed, SVG is `aria-hidden`; no accessible name |
+| 10 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<div class="continueBtn">` | Interactive div — visible text is `aria-hidden`; no `aria-label` — no accessible name |
