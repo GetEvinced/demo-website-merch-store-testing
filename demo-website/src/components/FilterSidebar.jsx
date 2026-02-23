@@ -63,7 +63,7 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {priceOpen && (
-          <ul id="filter-price" className="filter-options" role="group" aria-label="Filter by price">
+          <ul id="filter-price" className="filter-options" role="list" aria-label="Filter by price">
             {PRICE_RANGES.map((range) => {
               const count = priceCount(range);
               const checked = selectedPrices.some((r) => r.label === range.label);
@@ -107,7 +107,7 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {sizeOpen && (
-          <ul id="filter-size" className="filter-options" role="group" aria-label="Filter by size">
+          <ul id="filter-size" className="filter-options" role="list" aria-label="Filter by size">
             {SIZES.map((size) => {
               const count = sizeCount(size);
               const checked = selectedSizes.includes(size);
@@ -151,7 +151,7 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {brandOpen && (
-          <ul id="filter-brand" className="filter-options" role="group" aria-label="Filter by brand">
+          <ul id="filter-brand" className="filter-options" role="list" aria-label="Filter by brand">
             {allBrands.map((brand) => {
               const count = brandCount(brand);
               const checked = selectedBrands.includes(brand);
