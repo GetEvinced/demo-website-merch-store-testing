@@ -56,14 +56,14 @@
   {
     "id": 4,
     "sku": "GGOEGCBL258999",
-    "name": "Google Bike Bandana",
-    "description": "A sleek Google Bike-themed bandana in deep navy. Wear it around your neck, head, or wrist for an on-trend Google look. Features a subtle Google Bike pattern throughout.",
+    "name": "Bike Bandana",
+    "description": "A sleek bike-themed bandana in deep navy. Wear it around your neck, head, or wrist for an on-trend look. Features a subtle bike pattern throughout.",
     "price": 14.00,
     "available": 210,
     "sizes": ["SM", "MD", "LG", "XL"],
     "details": [
       "100% cotton construction",
-      "Google Bike pattern in deep navy",
+      "Bike pattern in deep navy",
       "Versatile styling options",
       "Machine washable"
     ],
@@ -75,13 +75,13 @@
     "id": 5,
     "sku": "GGOEGXXX2582",
     "name": "Doogler Reversible Red Bandana",
-    "description": "Two looks in one! This reversible Doogler bandana features a bold red Google-branded side and a fun Doogler pattern on the other. Perfect for dogs and their humans.",
+    "description": "Two looks in one! This reversible Doogler bandana features a bold red branded side and a fun Doogler pattern on the other. Perfect for dogs and their humans.",
     "price": 15.00,
     "available": 175,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "Reversible design — two bandanas in one",
-      "One side features Google branding, other side has Doogler print",
+      "One side features a bold print, other side has Doogler pattern",
       "100% cotton",
       "Great for pets and people alike"
     ],
@@ -166,8 +166,8 @@
   {
     "id": 10,
     "sku": "GGOEGDNL258099",
-    "name": "Google Inkwell Straw Tumbler",
-    "description": "Stay hydrated in style with the Google Inkwell Straw Tumbler. Features double-wall insulation, a reusable straw, and the iconic Google logo. Keeps drinks cold for 24 hours.",
+    "name": "Inkwell Straw Tumbler",
+    "description": "Stay hydrated in style with the Inkwell Straw Tumbler. Features double-wall insulation, a reusable straw, and a sleek logo. Keeps drinks cold for 24 hours.",
     "price": 19.00,
     "available": 156,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
@@ -186,14 +186,14 @@
   {
     "id": 11,
     "sku": "GGOEGBBL258699",
-    "name": "Google Bike Eco Canvas Duffel",
-    "description": "A spacious eco-friendly canvas duffel bag featuring the Google Bike design. Made from sustainable materials — great for the gym, travel, or daily adventures.",
+    "name": "Bike Eco Canvas Duffel",
+    "description": "A spacious eco-friendly canvas duffel bag featuring the Bike design. Made from sustainable materials — great for the gym, travel, or daily adventures.",
     "price": 50.00,
     "available": 72,
     "sizes": ["MD", "LG", "XL"],
     "details": [
       "Made from 100% recycled canvas",
-      "Google Bike graphic on exterior",
+      "Bike graphic on exterior",
       "Adjustable shoulder strap",
       "Interior zip pocket",
       "Approximately 20\" x 11\" x 10\"",
@@ -206,14 +206,14 @@
   {
     "id": 12,
     "sku": "GGOEGXXX2480",
-    "name": "Google Driftwood 1/4 Zip",
-    "description": "Layer up in comfort with the Google Driftwood 1/4 Zip. Crafted from a soft fleece blend with a subtle Google logo embroidery on the chest. Perfect for cool days.",
+    "name": "Driftwood 1/4 Zip",
+    "description": "Layer up in comfort with the Driftwood 1/4 Zip. Crafted from a soft fleece blend with a subtle embroidered logo on the chest. Perfect for cool days.",
     "price": 69.00,
     "available": 98,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "80% cotton, 20% polyester fleece blend",
-      "Embroidered Google logo on chest",
+      "Embroidered logo on chest",
       "1/4 zip with chin guard",
       "Ribbed cuffs and hem",
       "Machine washable"
@@ -225,14 +225,14 @@
   {
     "id": 13,
     "sku": "GGOEGXXX2481",
-    "name": "Google Driftwood Women's 1/4 Zip",
-    "description": "A women's-cut version of the beloved Driftwood 1/4 Zip. Cozy fleece fabric with a tailored fit and Google logo embroidery. Stay warm and stylish.",
+    "name": "Driftwood Women's 1/4 Zip",
+    "description": "A women's-cut version of the beloved Driftwood 1/4 Zip. Cozy fleece fabric with a tailored fit and embroidered logo detail. Stay warm and stylish.",
     "price": 69.00,
     "available": 84,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "80% cotton, 20% polyester fleece blend",
-      "Embroidered Google logo on chest",
+      "Embroidered logo on chest",
       "Women's tailored fit",
       "1/4 zip with chin guard",
       "Ribbed cuffs and hem",
@@ -245,14 +245,14 @@
   {
     "id": 14,
     "sku": "GGOEGXXX2560",
-    "name": "Google Kyoto Tee",
-    "description": "Inspired by the beauty of Kyoto, this unisex tee features a unique Google-branded graphic print. Soft cotton, relaxed fit — perfect for everyday wear.",
+    "name": "Kyoto Tee",
+    "description": "Inspired by the beauty of Kyoto, this unisex tee features a unique graphic print. Soft cotton, relaxed fit — perfect for everyday wear.",
     "price": 32.00,
     "available": 241,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "100% ring-spun cotton",
-      "Kyoto-inspired Google graphic print",
+      "Kyoto-inspired graphic print",
       "Relaxed unisex fit",
       "Screen printed artwork",
       "Machine washable"
@@ -264,14 +264,14 @@
   {
     "id": 15,
     "sku": "GGOEGXXX2561",
-    "name": "Google Kyoto Women's Tee",
-    "description": "A women's-fit version of the Kyoto Tee with a beautiful Kyoto-inspired Google graphic. Lightweight cotton with a flattering silhouette for everyday style.",
+    "name": "Kyoto Women's Tee",
+    "description": "A women's-fit version of the Kyoto Tee with a beautiful Kyoto-inspired graphic. Lightweight cotton with a flattering silhouette for everyday style.",
     "price": 34.00,
     "available": 189,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "100% ring-spun cotton",
-      "Kyoto-inspired Google graphic print",
+      "Kyoto-inspired graphic print",
       "Women's fitted silhouette",
       "Screen printed artwork",
       "Machine washable"
@@ -283,15 +283,15 @@
   {
     "id": 16,
     "sku": "GGOEGXXX2562",
-    "name": "Google Kyoto Sweatshirt",
-    "description": "Stay cozy with the Google Kyoto Sweatshirt. Features a premium fleece interior, ribbed cuffs, and the iconic Kyoto-inspired Google graphic on the chest.",
+    "name": "Kyoto Sweatshirt",
+    "description": "Stay cozy with the Kyoto Sweatshirt. Features a premium fleece interior, ribbed cuffs, and the iconic Kyoto-inspired graphic on the chest.",
     "price": 69.00,
     "available": 113,
     "sizes": ["XS", "SM", "MD", "LG", "XL"],
     "details": [
       "80% cotton, 20% polyester",
       "Soft fleece interior",
-      "Kyoto-inspired Google graphic on chest",
+      "Kyoto-inspired graphic on chest",
       "Ribbed cuffs and hem",
       "Classic crewneck fit",
       "Machine washable"

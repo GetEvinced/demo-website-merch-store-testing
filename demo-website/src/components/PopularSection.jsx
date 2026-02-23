@@ -38,7 +38,7 @@ const products = [
 export default function PopularSection() {
   return (
     <section className="popular-section" aria-labelledby="popular-heading">
-      <h2 id="popular-heading">Popular on the Google Merch Shop</h2>
+      <h2 id="popular-heading">Popular on the Merch Shop</h2>
       <div className="popular-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card" style={{ background: product.bg }}>
