@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './HeroBanner.css';
 
-const HERO_IMAGE = 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/New_Tees.png?tr=w-1000';
+const HERO_IMAGE = '/images/home/New_Tees.png';
 
 export default function HeroBanner() {
   return (

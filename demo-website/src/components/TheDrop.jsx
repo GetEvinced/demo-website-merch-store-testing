@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './TheDrop.css';
 
-const DROP_IMAGE = 'https://ik.imagekit.io/RM/store/20160512512/assets/images/Home%20Page/2bags_charms1.png?tr=w-600';
+const DROP_IMAGE = '/images/home/2bags_charms1.png';
 
 export default function TheDrop() {
   return (

@@ -80,8 +80,8 @@ export default function Header() {
               <span>Login</span>
             </button>
             <div className="flag-group" aria-label="Region selector">
-              <img src="https://ik.imagekit.io/RM/icons/united-states-of-america.png?updatedAt=1688736331973" alt="United States Flag" width="24" height="24" />
-              <img src="https://ik.imagekit.io/RM/icons/canada.png?updatedAt=1691195998100" alt="Canada Flag" width="24" height="24" />
+              <img src="/images/icons/united-states-of-america.png" alt="United States Flag" width="24" height="24" />
+              <img src="/images/icons/canada.png" alt="Canada Flag" width="24" height="24" />
             </div>
           </div>
         </div>
