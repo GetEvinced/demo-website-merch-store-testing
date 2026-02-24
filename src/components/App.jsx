@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { CartProvider } from '../context/CartContext';
@@ -13,12 +13,21 @@ import ProductPage from '../pages/ProductPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import OrderConfirmationPage from '../pages/OrderConfirmationPage';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function AppInner() {
   const location = useLocation();
   const hideCart = ['/checkout', '/order-confirmation'].includes(location.pathname);
 
   return (
     <div className="app">
+      <ScrollToTop />
       <a href="#main-content" className="skip-link">Skip Navigation Links</a>
       <Header />
       <main id="main-content">
