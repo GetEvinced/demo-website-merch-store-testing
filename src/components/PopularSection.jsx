@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './PopularSection.css';
 
 const products = [
@@ -36,6 +36,8 @@ const products = [
 ];
 
 export default function PopularSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="popular-section" aria-labelledby="popular-heading">
       <h2 id="popular-heading">Popular on the Merch Shop</h2>
@@ -49,7 +51,7 @@ export default function PopularSection() {
               {/* A11Y-GEN1 accessible-name: interactive div has no accessible name — no aria-label, no text visible to assistive tech */}
               <div
                 className="shop-link"
-                onClick={() => {}}
+                onClick={() => navigate(product.shopHref)}
                 style={{ cursor: 'pointer' }}
               >
                 <span aria-hidden="true">{product.shopLabel}</span>
