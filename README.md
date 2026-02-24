@@ -106,6 +106,25 @@ Displays a success message, the generated order ID, and the customer's first nam
 
 ---
 
+## A11y Issues
+
+AXE, GEN1, and GEN2 accessibility issues were added to this website by common distribution numbers.
+
+**PlaywrightJS SDK** and **EvincedUT** were integrated to find these issues and generate reports.
+Issues detais Can be found in A11Y_ISSUES_.md readme file.
+
+To run tests:
+
+```bash
+# Run unit tests (EvincedUT)
+npm run test:ut
+
+# Run E2E tests (Playwright + Evinced JS SDK)
+npm run test:e2e
+```
+
+---
+
 ## Running Locally
 
 ```bash
