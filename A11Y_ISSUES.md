@@ -190,6 +190,131 @@ Issues detected by Evinced engine rules, intentionally introduced for demo/testi
 
 ---
 
+### navigation-forbidden-roles (1 issue)
+
+> **Rule:** Navigation patterns must not use `role="menu"` or `role="menubar"` on their submenu containers — these roles imply application-level widget semantics and are forbidden inside a navigation landmark  
+> **Impact:** Serious  
+> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/navigation#forbidden-roles
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | Submenu `<ul>` elements (Apparel, Lifestyle, Stationery, Collections, Shop by Brand) | `role="menu"` applied to submenu `<ul>` containers inside the main `<nav>` — the `menu` role is forbidden in a navigation landmark; assistive technologies will treat the nav as an application widget instead of a navigation region |
+
+---
+
+### navigation-unexpected-interactives (1 issue)
+
+> **Rule:** Interactive elements inside a navigation landmark must carry a role of `link`, `button`, or `group`; other roles (e.g. `menuitem`) are unexpected and break the navigation pattern  
+> **Impact:** Serious  
+> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/navigation#unexpected-interactives
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | Submenu `<a>` elements (30 links across all submenus) | `role="menuitem"` applied to `<a>` elements inside the nav submenus — `menuitem` is not a permitted role for interactive elements within a navigation landmark; screen readers cannot correctly identify or announce these links as navigation links |
+
+---
+
+### sort-combobox-no-role (1 issue)
+
+> **Rule:** Custom combobox/select widgets must expose `role="combobox"` so assistive technologies identify and announce the control correctly  
+> **Impact:** Critical  
+> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/combobox#role
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | `role="combobox"` not set — assistive technologies cannot identify the sort trigger as a combobox widget |
+
+---
+
+### sort-combobox-no-accessible-name (1 issue)
+
+> **Rule:** All interactable elements must have an accessible name  
+> **Impact:** Critical  
+> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/combobox#accessibility-label
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | No accessible name (`aria-label` removed) — screen readers cannot announce the purpose of the sort combobox |
+
+---
+
+### sort-combobox-no-aria-expanded (1 issue)
+
+> **Rule:** Combobox triggers must expose `aria-expanded` so assistive technologies can announce whether the options list is open or closed  
+> **Impact:** Serious  
+> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/combobox#combobox-sanity
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | `aria-expanded` removed — screen readers cannot determine whether the sort options list is currently open or closed; the combobox state is undetectable |
+
+---
+
+### filter-checkbox-no-role (3 issues)
+
+> **Rule:** Custom checkbox widgets must expose `role="checkbox"` so assistive technologies identify and announce the control correctly  
+> **Impact:** Critical  
+> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/checkbox#role
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
+| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
+| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
+
+---
+
+### filter-checkbox-no-focus-sequence (3 issues)
+
+> **Rule:** All interactive elements must be reachable via keyboard tab navigation  
+> **Impact:** Critical  
+> **WCAG:** 2.1.1 (A) — Keyboard  
+> **Reference:** https://knowledge.evinced.com/components/checkbox#focus-sequence
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
+| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
+| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
+
+---
+
+### filter-checkbox-no-accessible-name (3 issues)
+
+> **Rule:** All interactable elements must have an accessible name  
+> **Impact:** Critical  
+> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/checkbox#accessible-name
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
+| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
+| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
+
+---
+
+### filter-checkbox-no-aria-checked (3 issues)
+
+> **Rule:** Elements with `role="checkbox"` must expose `aria-checked` to convey their checked/unchecked state to assistive technologies  
+> **Impact:** Critical  
+> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+> **Reference:** https://knowledge.evinced.com/components/checkbox#aria-checked
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Price filter checkbox is checked or unchecked |
+| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Size filter checkbox is checked or unchecked |
+| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Brand filter checkbox is checked or unchecked |
+
+---
+
 ### no-dialog-role (1 issue)
 
 > **Rule:** Modal dialogs must expose `role="dialog"` (or `role="alertdialog"`) so assistive technologies announce and treat them as dialogs  
@@ -431,7 +556,7 @@ Issues detected by Evinced engine rules, intentionally introduced for demo/testi
 
 ## GEN3
 
-Issues related to content order and focus sequence, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN3-SR-ORDER` or `A11Y-GEN3-KEYBOARD-ORDER` comment on the relevant line.
+Issues related to content order and focus sequence, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN3` comment on the relevant line.
 
 ---
 
