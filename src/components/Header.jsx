@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -36,18 +36,86 @@ const EvincedLogo = () => (
 
 const navItems = [
   { label: 'New', href: '/shop/new' },
-  { label: 'Apparel', href: '#apparel' },
-  { label: 'Lifestyle', href: '#lifestyle' },
-  { label: 'Stationery', href: '#stationery' },
-  { label: 'Collections', href: '#collections' },
-  { label: 'Shop by Brand', href: '#shop-by-brand' },
-  { label: 'Sale', href: '#sale', className: 'sale' },
+  {
+    label: 'Apparel',
+    href: '/shop/new',
+    submenu: [
+      { label: "Men's / Unisex", href: '/shop/new' },
+      { label: "Women's", href: '/shop/new' },
+      { label: 'Kids', href: '/shop/new' },
+      { label: 'Hats', href: '/shop/new' },
+      { label: 'Accessories', href: '/shop/new' },
+      { label: 'Socks', href: '/shop/new' },
+    ],
+  },
+  {
+    label: 'Lifestyle',
+    href: '/shop/new',
+    submenu: [
+      { label: 'Bags', href: '/shop/new' },
+      { label: 'Drinkware', href: '/shop/new' },
+      { label: 'Eco-Friendly', href: '/shop/new' },
+      { label: 'Fun and Games', href: '/shop/new' },
+      { label: 'Everything Else', href: '/shop/new' },
+    ],
+  },
+  {
+    label: 'Stationery',
+    href: '/shop/new',
+    submenu: [
+      { label: 'Notebooks', href: '/shop/new' },
+      { label: 'Stickers', href: '/shop/new' },
+      { label: 'Writing', href: '/shop/new' },
+      { label: 'Greeting Cards', href: '/shop/new' },
+    ],
+  },
+  {
+    label: 'Collections',
+    href: '/shop/new',
+    submenu: [
+      { label: 'Super G', href: '/shop/new' },
+      { label: 'Google Bike', href: '/shop/new' },
+      { label: 'Chrome Dino', href: '/shop/new' },
+      { label: 'For Everyone', href: '/shop/new' },
+      { label: 'Emoji', href: '/shop/new' },
+      { label: 'Kid Approved', href: '/shop/new' },
+      { label: 'Doogler/Mewgler', href: '/shop/new' },
+      { label: 'Pride', href: '/shop/new' },
+      { label: 'Campus Collection', href: '/shop/new' },
+    ],
+  },
+  {
+    label: 'Shop by Brand',
+    href: '/shop/new',
+    submenu: [
+      { label: 'Android', href: '/shop/new' },
+      { label: 'Gemini', href: '/shop/new' },
+      { label: 'Google', href: '/shop/new' },
+      { label: 'Google Cloud', href: '/shop/new' },
+      { label: 'Google Maps', href: '/shop/new' },
+      { label: 'YouTube', href: '/shop/new' },
+    ],
+  },
+  { label: 'Sale', href: '/shop/new', className: 'sale' },
 ];
 
 export default function Header() {
   const { totalCount, openCart } = useCart();
   const { totalCount: wishlistCount, openWishlist } = useWishlist();
   const location = useLocation();
+  const [openMenu, setOpenMenu] = useState(null);
+  const navRef = useRef(null);
+
+  // Close menu when clicking outside the nav
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setOpenMenu(null);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="header">
@@ -92,23 +160,36 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <nav className="header-nav" aria-label="Main navigation">
+        <nav className="header-nav" aria-label="Main navigation" ref={navRef}>
           <ul>
             {navItems.map((item) => {
-              const isRouterLink = item.href.startsWith('/');
-              const isActive = isRouterLink && location.pathname === item.href;
+              const isActive = location.pathname === item.href && !item.submenu && !item.className;
+              const isOpen = openMenu === item.label;
               return (
-                <li key={item.label}>
-                  {isRouterLink ? (
-                    <Link
-                      to={item.href}
-                      className={[item.className || '', isActive ? 'active' : ''].join(' ').trim()}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <a href={item.href} className={item.className || ''}>{item.label}</a>
+                <li
+                  key={item.label}
+                  className={[item.submenu ? 'has-submenu' : '', isOpen ? 'submenu-open' : ''].join(' ').trim()}
+                  onMouseEnter={() => item.submenu && setOpenMenu(item.label)}
+                  onMouseLeave={() => item.submenu && setOpenMenu(null)}
+                >
+                  <Link
+                    to={item.href}
+                    className={[item.className || '', isActive ? 'active' : ''].join(' ').trim()}
+                    aria-current={isActive ? 'page' : undefined}
+                    aria-haspopup={item.submenu ? 'true' : undefined}
+                    aria-expanded={item.submenu ? isOpen : undefined}
+                    onClick={() => setOpenMenu(null)}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.submenu && (
+                    <ul className="submenu" role="menu">
+                      {item.submenu.map((sub) => (
+                        <li key={sub.label} role="none">
+                          <Link to={sub.href} role="menuitem" onClick={() => setOpenMenu(null)}>{sub.label}</Link>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </li>
               );
