@@ -13,7 +13,8 @@ export default function TheDrop() {
           <img src={DROP_IMAGE} loading="lazy" />
         </div>
         <div className="the-drop-content">
-          <h2 id="drop-heading">The Drop</h2>
+          {/* A11Y-GEN3 heading-order: h4 used as section heading (should be h2) — skips heading levels, breaking document outline */}
+          <h4 id="drop-heading">The Drop</h4>
           {/* A11Y-AXE aria-required-attr: role="slider" is missing required aria-valuenow, aria-valuemin, aria-valuemax attributes */}
           <div role="slider" aria-label="Popularity indicator" className="drop-popularity-bar"></div>
           {/* A11Y-AXE valid-lang: lang="zz" is not a valid BCP 47 language tag */}

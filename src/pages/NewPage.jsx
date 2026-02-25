@@ -98,7 +98,8 @@ export default function NewPage() {
       <div className="new-page-inner">
         {/* Page heading + breadcrumb */}
         <div className="new-page-heading">
-          <h1>{pageTitle}</h1>
+          {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+          <h3>{pageTitle}</h3>
           <nav aria-label="Breadcrumb" className="breadcrumb">
             <Link to="/">Home</Link>
             <span aria-hidden="true"> | </span>

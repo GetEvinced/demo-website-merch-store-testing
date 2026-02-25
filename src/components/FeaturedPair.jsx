@@ -42,7 +42,8 @@ export default function FeaturedPair() {
             {/* A11Y-AXE duplicate-id-aria: both cards render the same id="featured-card-label" causing duplicate IDs in the DOM */}
             <p className="featured-eyebrow" id="featured-card-label">{item.eyebrow}</p>
             {/* A11Y-AXE aria-valid-attr-value: aria-expanded must be "true" or "false", not "yes" */}
-            <h3 aria-expanded="yes">{item.title}</h3>
+            {/* A11Y-GEN3 heading-order: h1 used as card heading (should be h3) — jumps up in level, breaking document outline */}
+            <h1 aria-expanded="yes">{item.title}</h1>
             {/* A11Y-AXE aria-required-attr: role="checkbox" requires aria-checked attribute */}
             <span role="checkbox" aria-label={item.shopLabel} tabIndex={0} style={{ display: 'none' }}></span>
             <Link to={item.shopHref} className="shop-link-outline">{item.shopLabel}</Link>

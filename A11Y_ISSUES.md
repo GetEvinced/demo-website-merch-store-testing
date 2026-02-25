@@ -45,7 +45,7 @@ Issues detected by axe-core rules, intentionally introduced for demo/testing pur
 
 | # | Page | File | Element | Invalid Attribute | Invalid Value | Valid Values |
 |---|------|------|---------|------------------|--------------|-------------|
-| 1 | Homepage | `src/components/FeaturedPair.jsx` | `<h3 aria-expanded="yes">` | `aria-expanded` | `"yes"` | `"true"` or `"false"` |
+| 1 | Homepage | `src/components/FeaturedPair.jsx` | `<h1 aria-expanded="yes">` | `aria-expanded` | `"yes"` | `"true"` or `"false"` |
 | 2 | Products Page | `src/pages/NewPage.jsx` | `<div aria-sort="newest" role="columnheader">` | `aria-sort` | `"newest"` | `"ascending"`, `"descending"`, `"none"`, `"other"` |
 | 3 | Product Detail | `src/pages/ProductPage.jsx` | `<ul aria-relevant="changes">` | `aria-relevant` | `"changes"` | Space-separated tokens from: `additions`, `removals`, `text`, `all` |
 
@@ -571,6 +571,33 @@ The DOM order of elements does not match the visual order. CSS (`flex-direction:
 | # | Page | File | Element | Issue |
 |---|------|------|---------|-------|
 | 1 | Homepage | `src/components/FeaturedPair.jsx` | `.featured-card` (both cards) | `<div class="featured-card-image">` is placed before `<div class="featured-card-info">` in the DOM. `flex-direction: column-reverse` in `FeaturedPair.css` restores the correct visual order (text on top, image on bottom), but screen readers announce the image alt text before the eyebrow, heading, and CTA link — the reverse of the meaningful sequence |
+
+---
+
+### heading-order — Wrong Heading Levels (14 issues)
+
+> **Rule:** Heading levels must convey a logical document structure — levels should not be skipped or used out of order  
+> **Impact:** Moderate  
+> **WCAG:** 1.3.1 (A) — Info and Relationships  
+
+Heading elements have been deliberately set to wrong levels to break the document outline. CSS class-based styles preserve the visual appearance, but the semantic heading hierarchy is incorrect — screen readers and assistive technologies rely on heading levels to understand page structure and enable navigation.
+
+| # | Page | File | Element | Wrong Level | Correct Level | Issue |
+|---|------|------|---------|-------------|---------------|-------|
+| 1 | Homepage | `src/components/HeroBanner.jsx` | "Winter Basics" | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
+| 2 | Homepage | `src/components/FeaturedPair.jsx` | Item titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
+| 3 | Homepage | `src/components/PopularSection.jsx` | "Popular on the Merch Shop" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
+| 4 | Homepage | `src/components/PopularSection.jsx` | Product card titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
+| 5 | Homepage | `src/components/TrendingCollections.jsx` | "Shop Trending Collections" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
+| 6 | Homepage | `src/components/TrendingCollections.jsx` | Collection card titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
+| 7 | Homepage | `src/components/TheDrop.jsx` | "The Drop" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
+| 8 | Products Page | `src/pages/NewPage.jsx` | Page title | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
+| 9 | Product Detail | `src/pages/ProductPage.jsx` | Product name | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
+| 10 | Checkout | `src/pages/CheckoutPage.jsx` | "Shopping Cart" / "Shipping & Payment" | `<h3>` | `<h1>` | Page-level headings use h3, skipping h1 |
+| 11 | Checkout | `src/pages/CheckoutPage.jsx` | "Order Summary" (×2) | `<h5>` | `<h2>` | Section headings use h5, skipping multiple levels |
+| 12 | Order Confirmation | `src/pages/OrderConfirmationPage.jsx` | "Thank you!" | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
+| 13 | All pages (Cart drawer) | `src/components/CartModal.jsx` | "Shopping Cart" drawer title | `<h5>` | `<h2>` | Drawer heading uses h5, skipping multiple levels |
+| 14 | All pages (Wishlist drawer) | `src/components/WishlistModal.jsx` | "Wishlist" drawer title | `<h5>` | `<h2>` | Drawer heading uses h5, skipping multiple levels |
 
 ---
 

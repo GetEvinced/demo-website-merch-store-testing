@@ -50,12 +50,13 @@ export default function WishlistModal() {
       >
         {/* Header */}
         <div className={styles.drawerHeader}>
-          <h2 className={styles.drawerTitle}>
+          {/* A11Y-GEN3 heading-order: h5 used as drawer heading (should be h2) — skips heading levels, breaking document outline */}
+          <h5 className={styles.drawerTitle}>
             Wishlist
             {items.length > 0 && (
               <span className={styles.drawerCount}> ({items.length})</span>
             )}
-          </h2>
+          </h5>
           {/* A11Y-GEN1 accessible-name: close button has no accessible name — aria-label removed, icon-only with aria-hidden SVG */}
           <button
             ref={closeBtnRef}

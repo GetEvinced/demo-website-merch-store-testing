@@ -38,14 +38,16 @@ const collections = [
 export default function TrendingCollections() {
   return (
     <section className="trending-section" aria-labelledby="trending-heading">
-      <h2 id="trending-heading">Shop Trending Collections</h2>
+      {/* A11Y-GEN3 heading-order: h4 used as section heading (should be h2) — skips heading levels, breaking document outline */}
+      <h4 id="trending-heading">Shop Trending Collections</h4>
       <ul className="trending-grid" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {/* A11Y-AXE list: <ul> contains a <div> direct child — only <li> elements are allowed inside <ul> */}
         <div className="trending-grid-label" style={{ display: 'none' }}>Collections</div>
         {collections.map((col) => (
           <li key={col.id} className="trending-card" style={{ background: col.bg }}>
             <div className="trending-card-info">
-              <h3>{col.title}</h3>
+              {/* A11Y-GEN3 heading-order: h1 used as card heading (should be h3) — jumps up from h4 section heading, breaking document outline */}
+              <h1>{col.title}</h1>
               <p>{col.subtitle}</p>
               <Link to={col.shopHref} className="shop-link-sm">{col.shopLabel}</Link>
             </div>

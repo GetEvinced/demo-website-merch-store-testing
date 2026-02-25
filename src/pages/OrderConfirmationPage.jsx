@@ -23,7 +23,8 @@ export default function OrderConfirmationPage() {
           </svg>
         </div>
 
-        <h1 className="confirm-heading">Thank you{firstName ? `, ${firstName}` : ''}!</h1>
+        {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+        <h3 className="confirm-heading">Thank you{firstName ? `, ${firstName}` : ''}!</h3>
         <p className="confirm-subheading">Your order has been placed successfully.</p>
 
         <div className="confirm-order-id-box">

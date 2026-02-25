@@ -40,12 +40,14 @@ export default function PopularSection() {
 
   return (
     <section className="popular-section" aria-labelledby="popular-heading">
-      <h2 id="popular-heading">Popular on the Merch Shop</h2>
+      {/* A11Y-GEN3 heading-order: h4 used as section heading (should be h2) — skips heading levels, breaking document outline */}
+      <h4 id="popular-heading">Popular on the Merch Shop</h4>
       <div className="popular-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card" style={{ background: product.bg }}>
             <div className="product-card-info">
-              <h3>{product.title}</h3>
+              {/* A11Y-GEN3 heading-order: h1 used as card heading (should be h3) — jumps up from h4 section heading, breaking document outline */}
+              <h1>{product.title}</h1>
               <p>{product.subtitle}</p>
               {/* A11Y-GEN1 interactable-role + keyboard-accessible: div used as a navigation link with no role="link" and no tabindex — not keyboard accessible */}
               {/* A11Y-GEN1 accessible-name: interactive div has no accessible name — no aria-label, no text visible to assistive tech */}

@@ -8,7 +8,8 @@ export default function HeroBanner() {
   return (
     <section className="hero-banner" aria-label="Featured promotion">
       <div className="hero-content">
-        <h1>Winter Basics</h1>
+        {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+        <h3>Winter Basics</h3>
         <p>Warm hues for cooler days</p>
         <Link to="/shop/new" className="hero-btn">Shop New</Link>
       </div>

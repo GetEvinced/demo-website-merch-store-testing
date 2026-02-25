@@ -16,7 +16,8 @@ export default function ProductPage() {
   if (!product) {
     return (
       <div className={styles.notFound}>
-        <h1>Product not found</h1>
+        {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+        <h3>Product not found</h3>
         <Link to="/shop/new">← Back to New</Link>
       </div>
     );
@@ -58,7 +59,8 @@ export default function ProductPage() {
           <div className={styles.productInfo}>
             {/* Name & Price */}
             <div className={styles.productHeader}>
-              <h1 className={styles.productName}>{product.name}</h1>
+              {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+              <h3 className={styles.productName}>{product.name}</h3>
               <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
               <p className={styles.productSku}>
                 <span className={styles.skuLabel}>SKU : </span>

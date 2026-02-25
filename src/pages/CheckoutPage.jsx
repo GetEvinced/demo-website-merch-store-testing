@@ -70,7 +70,8 @@ export default function CheckoutPage() {
 
       {step === 'basket' && (
         <div className="checkout-basket">
-          <h1 className="checkout-title">Shopping Cart</h1>
+          {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+          <h3 className="checkout-title">Shopping Cart</h3>
 
           {items.length === 0 ? (
             <div className="checkout-empty">
@@ -132,7 +133,8 @@ export default function CheckoutPage() {
 
               {/* Order summary */}
               <aside className="checkout-summary" aria-label="Order summary">
-                <h2 className="summary-title">Order Summary</h2>
+                {/* A11Y-GEN3 heading-order: h5 used as section heading (should be h2) — skips heading levels, breaking document outline */}
+                <h5 className="summary-title">Order Summary</h5>
                 <div className="summary-row">
                   <span>Items ({totalCount})</span>
                   <span>${totalPrice.toFixed(2)}</span>
@@ -162,7 +164,8 @@ export default function CheckoutPage() {
 
       {step === 'shipping' && (
         <div className="checkout-shipping">
-          <h1 className="checkout-title">Shipping &amp; Payment</h1>
+          {/* A11Y-GEN3 heading-order: h3 used as page-level heading (should be h1) — skips heading levels, breaking document outline */}
+          <h3 className="checkout-title">Shipping &amp; Payment</h3>
           <div className="checkout-layout">
             {/* Form */}
             <form
@@ -300,7 +303,8 @@ export default function CheckoutPage() {
 
             {/* Mini order summary */}
             <aside className="checkout-summary" aria-label="Order summary">
-              <h2 className="summary-title">Order Summary</h2>
+              {/* A11Y-GEN3 heading-order: h5 used as section heading (should be h2) — skips heading levels, breaking document outline */}
+              <h5 className="summary-title">Order Summary</h5>
               {items.map((item) => (
                 <div key={item.id} className="summary-mini-item">
                   <div className="summary-mini-img">

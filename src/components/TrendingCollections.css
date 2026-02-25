@@ -4,7 +4,7 @@
   padding: 48px 24px 32px;
 }
 
-.trending-section h2 {
+.trending-section h4 {
   text-align: center;
   font-size: 1.7rem;
   font-weight: 600;
@@ -36,7 +36,7 @@
   padding-bottom: 12px;
 }
 
-.trending-card-info h3 {
+.trending-card-info h1 {
   font-size: 1.05rem;
   font-weight: 700;
   color: #202124;
