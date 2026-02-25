@@ -116,10 +116,10 @@ export default function CheckoutPage() {
                       <div className="checkout-item-subtotal">
                         ${(item.price * item.quantity).toFixed(2)}
                       </div>
+                      {/* A11Y-GEN3 non-meaningful-label: aria-label "Delete" gives no context about which item is being removed */}
                       <button
                         className="checkout-item-remove"
                         onClick={() => removeFromCart(item.id)}
-                        {/* A11Y-GEN3 non-meaningful-label: aria-label "Delete" gives no context about which item is being removed */}
                         aria-label="Delete"
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

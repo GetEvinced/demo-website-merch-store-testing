@@ -103,11 +103,11 @@ export default function WishlistModal() {
             <ul className={styles.wishlistList} aria-label="Wishlist items">
               {items.map((item) => (
                 <li key={item.id} className={styles.wishlistItem}>
+                  {/* A11Y-GEN3 non-meaningful-label: aria-label "Click here" is non-descriptive — screen readers cannot tell where the link navigates or what product it represents */}
                   <Link
                     to={`/product/${item.id}`}
                     className={styles.wishlistItemImage}
                     onClick={closeWishlist}
-                    {/* A11Y-GEN3 non-meaningful-label: aria-label "Click here" is non-descriptive — screen readers cannot tell where the link navigates or what product it represents */}
                     aria-label="Click here"
                   >
                     <img src={item.image} alt={item.name} />
