@@ -74,13 +74,30 @@
   color: #1a73e8;
 }
 
-.filter-option input[type="checkbox"] {
+.custom-checkbox {
   width: 16px;
   height: 16px;
-  cursor: pointer;
-  accent-color: #1a73e8;
+  border: 2px solid #5f6368;
+  border-radius: 3px;
+  background: #fff;
   flex-shrink: 0;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.custom-checkbox--checked {
+  background: #1a73e8;
+  border-color: #1a73e8;
+}
+
+.custom-checkbox-checkmark {
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translateY(-1px);
 }
 
 .filter-option-label {

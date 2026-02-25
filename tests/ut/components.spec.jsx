@@ -224,7 +224,7 @@ describe('Evinced Unit Tester – component accessibility', () => {
     render(<FilterSidebarHarness />);
 
     const results = await EvincedUT.analyzeCheckbox({
-      selector: 'ul[aria-label="Filter by price"] li:first-child input[type="checkbox"]',
+      selector: '.filter-group:nth-child(2) .filter-options .filter-option:first-child .custom-checkbox',
     });
 
     expect(results).toHaveNoFailures();
@@ -241,7 +241,7 @@ describe('Evinced Unit Tester – component accessibility', () => {
     render(<FilterSidebarHarness />);
 
     const results = await EvincedUT.analyzeCheckbox({
-      selector: 'ul[aria-label="Filter by size"] li:first-child input[type="checkbox"]',
+      selector: '.filter-group:nth-child(3) .filter-options .filter-option:first-child .custom-checkbox',
     });
 
     expect(results).toHaveNoFailures();
@@ -258,7 +258,7 @@ describe('Evinced Unit Tester – component accessibility', () => {
     render(<FilterSidebarHarness />);
 
     const results = await EvincedUT.analyzeCheckbox({
-      selector: 'ul[aria-label="Filter by brand"] li:first-child input[type="checkbox"]',
+      selector: '.filter-group:nth-child(4) .filter-options .filter-option:first-child .custom-checkbox',
     });
 
     expect(results).toHaveNoFailures();

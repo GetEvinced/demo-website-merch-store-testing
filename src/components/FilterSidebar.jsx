@@ -66,29 +66,23 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {priceOpen && (
-          <ul className="filter-options" role="list" aria-label="Filter by price">
-            {/* A11Y-GEN2 no-aria-owns: id removed from Price panel — the toggle button has no aria-controls/aria-owns association to this panel */}
+          <div className="filter-options">
             {PRICE_RANGES.map((range) => {
               const count = priceCount(range);
               const checked = selectedPrices.some((r) => r.label === range.label);
               return (
-                <li key={range.label}>
-                  <label className="filter-option">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => onPriceChange(range)}
-                      aria-label={`Price ${range.label} (${count} products)`}
-                    />
-                    <span className="filter-option-label">
-                      {range.label}
-                      <span className="filter-count">({count})</span>
-                    </span>
-                  </label>
-                </li>
+                <div key={range.label} className="filter-option" onClick={() => onPriceChange(range)}>
+                  <div className={`custom-checkbox${checked ? ' custom-checkbox--checked' : ''}`}>
+                    {checked && <div className="custom-checkbox-checkmark" />}
+                  </div>
+                  <span className="filter-option-label">
+                    {range.label}
+                    <span className="filter-count">({count})</span>
+                  </span>
+                </div>
               );
             })}
-          </ul>
+          </div>
         )}
       </div>
 
@@ -114,29 +108,23 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {sizeOpen && (
-          <ul className="filter-options" role="list" aria-label="Filter by size">
-            {/* A11Y-GEN2 no-aria-owns: id removed from Size panel — the toggle button has no aria-controls/aria-owns association to this panel */}
+          <div className="filter-options">
             {SIZES.map((size) => {
               const count = sizeCount(size);
               const checked = selectedSizes.includes(size);
               return (
-                <li key={size}>
-                  <label className="filter-option">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => onSizeChange(size)}
-                      aria-label={`Size ${size} (${count} products)`}
-                    />
-                    <span className="filter-option-label">
-                      {size}
-                      <span className="filter-count">({count})</span>
-                    </span>
-                  </label>
-                </li>
+                <div key={size} className="filter-option" onClick={() => onSizeChange(size)}>
+                  <div className={`custom-checkbox${checked ? ' custom-checkbox--checked' : ''}`}>
+                    {checked && <div className="custom-checkbox-checkmark" />}
+                  </div>
+                  <span className="filter-option-label">
+                    {size}
+                    <span className="filter-count">({count})</span>
+                  </span>
+                </div>
               );
             })}
-          </ul>
+          </div>
         )}
       </div>
 
@@ -160,29 +148,23 @@ export default function FilterSidebar({ products, selectedPrices, selectedSizes,
           </svg>
         </button>
         {brandOpen && (
-          <ul className="filter-options" role="list" aria-label="Filter by brand">
-            {/* A11Y-GEN2 no-aria-owns: id removed from Brand panel — the toggle button has no aria-controls/aria-owns association to this panel */}
+          <div className="filter-options">
             {allBrands.map((brand) => {
               const count = brandCount(brand);
               const checked = selectedBrands.includes(brand);
               return (
-                <li key={brand}>
-                  <label className="filter-option">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => onBrandChange(brand)}
-                      aria-label={`Brand ${brand} (${count} products)`}
-                    />
-                    <span className="filter-option-label">
-                      {brand}
-                      <span className="filter-count">({count})</span>
-                    </span>
-                  </label>
-                </li>
+                <div key={brand} className="filter-option" onClick={() => onBrandChange(brand)}>
+                  <div className={`custom-checkbox${checked ? ' custom-checkbox--checked' : ''}`}>
+                    {checked && <div className="custom-checkbox-checkmark" />}
+                  </div>
+                  <span className="filter-option-label">
+                    {brand}
+                    <span className="filter-count">({count})</span>
+                  </span>
+                </div>
               );
             })}
-          </ul>
+          </div>
         )}
       </div>
     </aside>
