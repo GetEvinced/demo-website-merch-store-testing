@@ -30,6 +30,14 @@ export default function FeaturedPair() {
     <section className="featured-pair" aria-label="Featured categories">
       {items.map((item) => (
         <div key={item.id} className="featured-card" style={{ background: item.bg }}>
+          {/* A11Y-GEN3 sr-order: image is placed first in the DOM so screen readers announce
+              the image before the heading and text. CSS flex-direction:column-reverse makes it
+              look correct visually (text on top, image on bottom) but the meaningful sequence
+              is broken for assistive technology — violates WCAG 1.3.2 Meaningful Sequence. */}
+          <div className="featured-card-image">
+            {/* A11Y-AXE duplicate-id-aria: both cards render the same id="featured-card-img" causing duplicate IDs in the DOM */}
+            <img src={item.image} alt={item.imageAlt} loading="lazy" id="featured-card-img" />
+          </div>
           <div className="featured-card-info">
             {/* A11Y-AXE duplicate-id-aria: both cards render the same id="featured-card-label" causing duplicate IDs in the DOM */}
             <p className="featured-eyebrow" id="featured-card-label">{item.eyebrow}</p>
@@ -38,10 +46,6 @@ export default function FeaturedPair() {
             {/* A11Y-AXE aria-required-attr: role="checkbox" requires aria-checked attribute */}
             <span role="checkbox" aria-label={item.shopLabel} tabIndex={0} style={{ display: 'none' }}></span>
             <Link to={item.shopHref} className="shop-link-outline">{item.shopLabel}</Link>
-          </div>
-          <div className="featured-card-image">
-            {/* A11Y-AXE duplicate-id-aria: both cards render the same id="featured-card-img" causing duplicate IDs in the DOM */}
-            <img src={item.image} alt={item.imageAlt} loading="lazy" id="featured-card-img" />
           </div>
         </div>
       ))}

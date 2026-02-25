@@ -11,7 +11,10 @@
   border-radius: 12px;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  /* A11Y-GEN1 reading-order: column-reverse visually restores text-on-top / image-on-bottom
+     layout, but the DOM order is image first — screen readers follow DOM order, not visual order,
+     so the meaningful sequence is broken (WCAG 1.3.2). */
+  flex-direction: column-reverse;
   padding: 28px 24px 0;
   min-height: 380px;
   transition: box-shadow 0.2s;
@@ -62,6 +65,11 @@
 }
 
 .featured-card-image {
+  /* margin-top removed — column-reverse means this div is now visually at the bottom */
+}
+
+.featured-card-info {
+  /* margin-top: auto pushes the text block to the visual top in a column-reverse flex container */
   margin-top: auto;
 }
 

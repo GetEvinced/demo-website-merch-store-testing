@@ -426,3 +426,37 @@ Issues detected by Evinced engine rules, intentionally introduced for demo/testi
 | 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Price section with the Escape key |
 | 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Size section with the Escape key |
 | 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Brand section with the Escape key |
+
+---
+
+## GEN3
+
+Issues related to content order and focus sequence, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN3-SR-ORDER` or `A11Y-GEN3-KEYBOARD-ORDER` comment on the relevant line.
+
+---
+
+### sr-order — Screen Reader Reading Order (1 issue)
+
+> **Rule:** Content that has a meaningful sequence must preserve that sequence in the DOM so screen readers announce it in the correct logical order  
+> **Impact:** Serious  
+> **WCAG:** 1.3.2 (A) — Meaningful Sequence  
+
+The DOM order of elements does not match the visual order. CSS (`flex-direction: column-reverse`) is used to make the layout appear correct visually, but screen readers follow DOM order — causing them to announce content in a sequence that does not match the visual reading flow.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Homepage | `src/components/FeaturedPair.jsx` | `.featured-card` (both cards) | `<div class="featured-card-image">` is placed before `<div class="featured-card-info">` in the DOM. `flex-direction: column-reverse` in `FeaturedPair.css` restores the correct visual order (text on top, image on bottom), but screen readers announce the image alt text before the eyebrow, heading, and CTA link — the reverse of the meaningful sequence |
+
+---
+
+### keyboard-order — Keyboard Focus Order (1 issue)
+
+> **Rule:** If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability  
+> **Impact:** Serious  
+> **WCAG:** 2.4.3 (A) — Focus Order  
+
+Explicit `tabIndex` values are used to force keyboard tab order into the reverse of the visual left-to-right sequence. Sighted users read the navigation as **New → Apparel → Lifestyle → Stationery → Collections → Shop by Brand → Sale**, but keyboard users tab through it as **Sale → Shop by Brand → Collections → Stationery → Lifestyle → Apparel → New**.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | Main navigation `<nav>` links | `tabIndex` values are set in descending order (`navItems.length - index`) on each nav `<Link>`, reversing the tab sequence relative to the visual left-to-right order — keyboard focus order does not match the visual/logical reading order |

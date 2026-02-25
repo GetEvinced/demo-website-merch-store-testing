@@ -165,8 +165,9 @@ export default function Header() {
             {navItems.map((item, index) => {
               const isActive = location.pathname === item.href && !item.submenu && !item.className;
               const isOpen = openMenu === item.label;
-              // A11Y-AXE focus-order: tabIndex set in reverse visual order so keyboard tab sequence
-              // is the opposite of the visual left-to-right order (focus-order issue)
+              // A11Y-GEN3 keyboard-order: tabIndex set in reverse visual order so keyboard tab
+              // sequence is the opposite of the visual left-to-right order — violates WCAG 2.4.3
+              // Focus Order. Visual order: New → … → Sale. Tab order: Sale → … → New.
               const reverseTabIndex = navItems.length - index;
               return (
                 <li
