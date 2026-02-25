@@ -110,7 +110,8 @@ export default function ProductPage() {
 
               <button
                 className={styles.addToCartBtn}
-                aria-label={`Add ${product.name} to cart`}
+                {/* A11Y-GEN3 non-meaningful-label: aria-label "Add to cart" gives no context about which product is being added */}
+                aria-label="Add to cart"
                 onClick={() => addToCart(product, quantity)}
               >
                 ADD TO CART
@@ -118,7 +119,8 @@ export default function ProductPage() {
 
               <button
                 className={`${styles.wishlistBtn} ${isInWishlist(product.id) ? styles.wishlistBtnActive : ''}`}
-                aria-label={isInWishlist(product.id) ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+                {/* A11Y-GEN3 non-meaningful-label: aria-label "Wishlist action" gives no context about the product or the current state (add vs remove) */}
+                aria-label="Wishlist action"
                 aria-pressed={isInWishlist(product.id)}
                 onClick={() => {
                   if (isInWishlist(product.id)) {

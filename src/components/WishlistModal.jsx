@@ -107,7 +107,8 @@ export default function WishlistModal() {
                     to={`/product/${item.id}`}
                     className={styles.wishlistItemImage}
                     onClick={closeWishlist}
-                    aria-label={`View ${item.name}`}
+                    {/* A11Y-GEN3 non-meaningful-label: aria-label "Click here" is non-descriptive — screen readers cannot tell where the link navigates or what product it represents */}
+                    aria-label="Click here"
                   >
                     <img src={item.image} alt={item.name} />
                   </Link>

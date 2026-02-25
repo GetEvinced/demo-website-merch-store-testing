@@ -601,6 +601,27 @@ Heading elements have been deliberately set to wrong levels to break the documen
 
 ---
 
+### non-meaningful-label — Non-Descriptive Accessible Labels (9 issues)
+
+> **Rule:** Accessible names must be meaningful and uniquely identify the purpose of an element — generic, vague, or context-free labels fail to convey intent to screen reader users  
+> **Impact:** Serious  
+> **WCAG:** 2.4.6 (AA) — Headings and Labels; 2.4.9 (AAA) — Link Purpose (Link Only); 4.1.2 (A) — Name, Role, Value  
+
+`aria-label` values have been replaced with generic, context-free strings. Visually the UI is unchanged, but screen reader users hear labels like "Minus", "Plus", "Click here", or "Product item" with no way to determine which product, which item, or what action is involved.
+
+| # | Page | File | Element | Bad Label | Meaningful Label It Replaced | Issue |
+|---|------|------|---------|-----------|------------------------------|-------|
+| 1 | Products Page | `src/components/ProductCard.jsx` | `<article>` product card | `"Product item"` | Product name (e.g. `"Google Super G Trucker Hat"`) | Every product card announces identically — screen readers cannot distinguish between products in the grid |
+| 2 | Product Detail | `src/pages/ProductPage.jsx` | "ADD TO CART" `<button>` | `"Add to cart"` | `"Add [product name] to cart"` | No product name — when multiple pages are open or announced out of context, the button purpose is ambiguous |
+| 3 | Product Detail | `src/pages/ProductPage.jsx` | Wishlist `<button>` | `"Wishlist action"` | `"Add [product name] to wishlist"` / `"Remove [product name] from wishlist"` | Neither the product nor the current state (add vs. remove) is conveyed |
+| 4 | Checkout | `src/pages/CheckoutPage.jsx` | Decrease quantity `<button>` (per cart item) | `"Minus"` | `"Decrease quantity of [item name]"` | No item context — screen readers cannot tell which item's quantity is being changed |
+| 5 | Checkout | `src/pages/CheckoutPage.jsx` | Quantity `<span>` (per cart item) | `"Number"` | `"Quantity: [n]"` | Raw number with no semantic context — screen readers cannot convey what the number represents |
+| 6 | Checkout | `src/pages/CheckoutPage.jsx` | Increase quantity `<button>` (per cart item) | `"Plus"` | `"Increase quantity of [item name]"` | No item context — screen readers cannot tell which item's quantity is being changed |
+| 7 | Checkout | `src/pages/CheckoutPage.jsx` | Remove item `<button>` (per cart item) | `"Delete"` | `"Remove [item name] from cart"` | No item context — screen readers cannot tell which item is being removed |
+| 8 | All pages (Wishlist drawer) | `src/components/WishlistModal.jsx` | Product image `<a>` link (per wishlist item) | `"Click here"` | `"View [item name]"` | Non-descriptive link text — screen readers announce "Click here" with no indication of destination or product |
+
+---
+
 ### keyboard-order — Keyboard Focus Order (1 issue)
 
 > **Rule:** If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability  

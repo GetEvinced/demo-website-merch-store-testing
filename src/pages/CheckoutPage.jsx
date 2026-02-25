@@ -97,16 +97,19 @@ export default function CheckoutPage() {
                         <p className="checkout-item-name">{item.name}</p>
                         <p className="checkout-item-price">${item.price.toFixed(2)}</p>
                         <div className="checkout-item-qty">
+                          {/* A11Y-GEN3 non-meaningful-label: aria-label "Minus" gives no context about which item or action */}
                           <button
                             className="qty-btn"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            aria-label={`Decrease quantity of ${item.name}`}
+                            aria-label="Minus"
                           >−</button>
-                          <span className="qty-val" aria-label={`Quantity: ${item.quantity}`}>{item.quantity}</span>
+                          {/* A11Y-GEN3 non-meaningful-label: aria-label "Number" gives no context about what the number represents or which item it belongs to */}
+                          <span className="qty-val" aria-label="Number">{item.quantity}</span>
+                          {/* A11Y-GEN3 non-meaningful-label: aria-label "Plus" gives no context about which item or action */}
                           <button
                             className="qty-btn"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            aria-label={`Increase quantity of ${item.name}`}
+                            aria-label="Plus"
                           >+</button>
                         </div>
                       </div>
@@ -116,7 +119,8 @@ export default function CheckoutPage() {
                       <button
                         className="checkout-item-remove"
                         onClick={() => removeFromCart(item.id)}
-                        aria-label={`Remove ${item.name} from cart`}
+                        {/* A11Y-GEN3 non-meaningful-label: aria-label "Delete" gives no context about which item is being removed */}
+                        aria-label="Delete"
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <line x1="18" y1="6" x2="6" y2="18" />
