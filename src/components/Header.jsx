@@ -174,6 +174,7 @@ export default function Header() {
                 >
                   <Link
                     to={item.href}
+                    state={{ pageTitle: item.label }}
                     className={[item.className || '', isActive ? 'active' : ''].join(' ').trim()}
                     aria-current={isActive ? 'page' : undefined}
                     aria-haspopup={item.submenu ? 'true' : undefined}
@@ -186,7 +187,14 @@ export default function Header() {
                     <ul className="submenu" role="menu">
                       {item.submenu.map((sub) => (
                         <li key={sub.label} role="none">
-                          <Link to={sub.href} role="menuitem" onClick={() => setOpenMenu(null)}>{sub.label}</Link>
+                          <Link
+                            to={sub.href}
+                            state={{ pageTitle: sub.label }}
+                            role="menuitem"
+                            onClick={() => setOpenMenu(null)}
+                          >
+                            {sub.label}
+                          </Link>
                         </li>
                       ))}
                     </ul>

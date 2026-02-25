@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products.json';
@@ -14,6 +14,9 @@ const SORT_OPTIONS = [
 ];
 
 export default function NewPage() {
+  const { state } = useLocation();
+  const pageTitle = state?.pageTitle || 'New';
+
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -95,11 +98,11 @@ export default function NewPage() {
       <div className="new-page-inner">
         {/* Page heading + breadcrumb */}
         <div className="new-page-heading">
-          <h1>New</h1>
+          <h1>{pageTitle}</h1>
           <nav aria-label="Breadcrumb" className="breadcrumb">
             <Link to="/">Home</Link>
             <span aria-hidden="true"> | </span>
-            <span aria-current="page">New</span>
+            <span aria-current="page">{pageTitle}</span>
           </nav>
         </div>
 
