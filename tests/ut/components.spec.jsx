@@ -17,6 +17,8 @@ import { render, screen, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { CartProvider, useCart } from '../../src/context/CartContext';
 import CartModal from '../../src/components/CartModal';
+import Header from '../../src/components/Header';
+import { WishlistProvider } from '../../src/context/WishlistContext';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -146,6 +148,38 @@ describe('Evinced Unit Tester – component accessibility', () => {
       // Target the sort trigger button — EvincedUT will walk up/down to find
       // the full combobox widget (trigger + listbox)
       selector: '.sort-btn',
+    });
+
+    expect(results).toHaveNoFailures();
+  }, 30_000);
+
+  /**
+   * Test 3: Site Navigation (Header)
+   *
+   * The Header component renders a <nav aria-label="Main navigation"> with
+   * top-level links and dropdown submenus (Apparel, Lifestyle, Stationery,
+   * Collections, Shop by Brand, Sale).
+   *
+   * analyzeSiteNavigation checks that the navigation landmark has the correct
+   * ARIA roles, accessible names, keyboard interaction patterns, and that any
+   * popup submenus are properly announced to assistive technologies.
+   *
+   * Docs: https://developer.evinced.com/sdks-for-web-apps/unit-tester/main/#analyzesitenavigation
+   */
+  test('Header – analyzeSiteNavigation', async () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <CartProvider>
+          <WishlistProvider>
+            <Header />
+          </WishlistProvider>
+        </CartProvider>
+      </MemoryRouter>
+    );
+
+    // Target the <nav aria-label="Main navigation"> element rendered by Header
+    const results = await EvincedUT.analyzeSiteNavigation({
+      selector: 'nav[aria-label="Main navigation"]',
     });
 
     expect(results).toHaveNoFailures();
