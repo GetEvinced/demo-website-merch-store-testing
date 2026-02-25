@@ -19,6 +19,7 @@ import { CartProvider, useCart } from '../../src/context/CartContext';
 import CartModal from '../../src/components/CartModal';
 import Header from '../../src/components/Header';
 import { WishlistProvider } from '../../src/context/WishlistContext';
+import FilterSidebar from '../../src/components/FilterSidebar';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -106,6 +107,62 @@ function SortCombobox() {
   );
 }
 
+/**
+ * Minimal product list — one product per filter category so that every
+ * checkbox group (Price, Size, Brand) renders at least one checkbox.
+ *
+ * Price bucket covered: $1–$19.99 (price: 16)
+ * Size covered: XS
+ * Brand covered: Google
+ */
+const SAMPLE_PRODUCTS = [
+  {
+    id: 1,
+    name: 'Sample Product',
+    price: 16,
+    brand: 'Google',
+    sizes: ['XS'],
+  },
+];
+
+/**
+ * Self-contained harness that renders FilterSidebar with all three filter
+ * sections open and one checkbox visible in each group.
+ */
+function FilterSidebarHarness() {
+  const [selectedPrices, setSelectedPrices] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+
+  return (
+    <FilterSidebar
+      products={SAMPLE_PRODUCTS}
+      selectedPrices={selectedPrices}
+      selectedSizes={selectedSizes}
+      selectedBrands={selectedBrands}
+      onPriceChange={(range) =>
+        setSelectedPrices((prev) =>
+          prev.some((r) => r.label === range.label)
+            ? prev.filter((r) => r.label !== range.label)
+            : [...prev, range]
+        )
+      }
+      onSizeChange={(size) =>
+        setSelectedSizes((prev) =>
+          prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+        )
+      }
+      onBrandChange={(brand) =>
+        setSelectedBrands((prev) =>
+          prev.includes(brand)
+            ? prev.filter((b) => b !== brand)
+            : [...prev, brand]
+        )
+      }
+    />
+  );
+}
+
 // ─── Tests ───────────────────────────────────────────────────────────────────
 
 describe('Evinced Unit Tester – component accessibility', () => {
@@ -154,7 +211,61 @@ describe('Evinced Unit Tester – component accessibility', () => {
   }, 30_000);
 
   /**
-   * Test 3: Site Navigation (Header)
+   * Test 3: Filter Sidebar – Price checkbox
+   *
+   * The Price filter group renders a list of checkboxes, one per price range.
+   * analyzeCheckbox verifies that each checkbox has a proper accessible name,
+   * correct role, visible focus indicator, and is correctly associated with
+   * its label element.
+   *
+   * Docs: https://developer.evinced.com/sdks-for-web-apps/unit-tester
+   */
+  test('FilterSidebar – analyzeCheckbox (Price)', async () => {
+    render(<FilterSidebarHarness />);
+
+    const results = await EvincedUT.analyzeCheckbox({
+      selector: 'ul[aria-label="Filter by price"] li:first-child input[type="checkbox"]',
+    });
+
+    expect(results).toHaveNoFailures();
+  }, 30_000);
+
+  /**
+   * Test 4: Filter Sidebar – Size checkbox
+   *
+   * The Size filter group renders a checkbox per available size (XS, SM, …).
+   * analyzeCheckbox checks accessible name, role, and label association for
+   * each size checkbox.
+   */
+  test('FilterSidebar – analyzeCheckbox (Size)', async () => {
+    render(<FilterSidebarHarness />);
+
+    const results = await EvincedUT.analyzeCheckbox({
+      selector: 'ul[aria-label="Filter by size"] li:first-child input[type="checkbox"]',
+    });
+
+    expect(results).toHaveNoFailures();
+  }, 30_000);
+
+  /**
+   * Test 5: Filter Sidebar – Brand checkbox
+   *
+   * The Brand filter group renders a checkbox per unique brand derived from
+   * the products list. analyzeCheckbox checks accessible name, role, and
+   * label association for each brand checkbox.
+   */
+  test('FilterSidebar – analyzeCheckbox (Brand)', async () => {
+    render(<FilterSidebarHarness />);
+
+    const results = await EvincedUT.analyzeCheckbox({
+      selector: 'ul[aria-label="Filter by brand"] li:first-child input[type="checkbox"]',
+    });
+
+    expect(results).toHaveNoFailures();
+  }, 30_000);
+
+  /**
+   * Test 6 (was 3): Site Navigation (Header)
    *
    * The Header component renders a <nav aria-label="Main navigation"> with
    * top-level links and dropdown submenus (Apparel, Lifestyle, Stationery,
