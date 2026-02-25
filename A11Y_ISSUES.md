@@ -560,6 +560,20 @@ Issues related to content order and focus sequence, intentionally introduced for
 
 ---
 
+### reflow — Content Clipped at 300% Zoom (1 issue)
+
+> **Rule:** Content must not require two-dimensional scrolling at 320 CSS pixels viewport width (equivalent to 400% zoom on a 1280px-wide screen); zooming must not cause content to be clipped or hidden  
+> **Impact:** Serious  
+> **WCAG:** 1.4.10 (AA) — Reflow  
+
+`overflow-x: hidden` is applied to the `<body>` element, which suppresses horizontal scrolling entirely. When the page is zoomed to 300% (or viewed on a narrow viewport), the navigation bar and other fixed-width content exceed the visible area but cannot be scrolled to — they are silently clipped and cut off. Users who rely on zoom (low-vision users) lose access to the main navigation links without any indication that content is missing.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages | `src/components/App.css` | `body` | `overflow-x: hidden` prevents horizontal scrolling — at 300% zoom the navigation menu and header content are clipped and inaccessible; users cannot scroll to reach the cut-off content |
+
+---
+
 ### sr-order — Screen Reader Reading Order (1 issue)
 
 > **Rule:** Content that has a meaningful sequence must preserve that sequence in the DOM so screen readers announce it in the correct logical order  

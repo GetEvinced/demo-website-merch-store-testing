@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+/* A11Y-GEN3 reflow: overflow-x: hidden prevents horizontal scrolling, which causes
+   the navigation menu and other fixed-width content to be clipped and cut off when
+   the page is zoomed to 300% — violates WCAG 1.4.10 (AA) Reflow */
 body {
   margin: 0;
   padding: 0;
@@ -9,6 +12,7 @@ body {
   font-family: 'Google Sans', Arial, sans-serif;
   color: #202124;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .app {
