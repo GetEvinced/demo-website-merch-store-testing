@@ -162,9 +162,12 @@ export default function Header() {
         </div>
         <nav className="header-nav" aria-label="Main navigation" ref={navRef}>
           <ul>
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const isActive = location.pathname === item.href && !item.submenu && !item.className;
               const isOpen = openMenu === item.label;
+              // A11Y-AXE focus-order: tabIndex set in reverse visual order so keyboard tab sequence
+              // is the opposite of the visual left-to-right order (focus-order issue)
+              const reverseTabIndex = navItems.length - index;
               return (
                 <li
                   key={item.label}
@@ -180,6 +183,7 @@ export default function Header() {
                     aria-haspopup={item.submenu ? 'true' : undefined}
                     aria-expanded={item.submenu ? isOpen : undefined}
                     onClick={() => setOpenMenu(null)}
+                    tabIndex={reverseTabIndex}
                   >
                     {item.label}
                   </Link>
