@@ -1,4 +1,5 @@
 tests/playwright-report/
+tests/e2e/playwright-report/
 tests/e2e/test-results/
 .cache
 node_modules
