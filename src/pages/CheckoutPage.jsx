@@ -197,7 +197,8 @@ export default function CheckoutPage() {
                       aria-invalid={errors.firstName ? 'true' : undefined}
                     />
                     {errors.firstName && (
-                      <span id="firstName-error" className="form-error" role="alert">First Name is required</span>
+                      /* A11Y-UNDETECTABLE live-region: role="alert" removed — error message appears in the DOM but no live region announcement is made; screen reader users receive no feedback that the field is invalid */
+                      <span id="firstName-error" className="form-error">First Name is required</span>
                     )}
                   </div>
                   <div className="form-group">
@@ -215,7 +216,8 @@ export default function CheckoutPage() {
                       aria-invalid={errors.lastName ? 'true' : undefined}
                     />
                     {errors.lastName && (
-                      <span id="lastName-error" className="form-error" role="alert">Last Name is required</span>
+                      /* A11Y-UNDETECTABLE live-region: role="alert" removed — error message appears in the DOM but no live region announcement is made */
+                      <span id="lastName-error" className="form-error">Last Name is required</span>
                     )}
                   </div>
                 </div>
@@ -235,7 +237,8 @@ export default function CheckoutPage() {
                     aria-invalid={errors.address ? 'true' : undefined}
                   />
                   {errors.address && (
-                    <span id="address-error" className="form-error" role="alert">Address is required</span>
+                    /* A11Y-UNDETECTABLE live-region: role="alert" removed — error message appears in the DOM but no live region announcement is made */
+                    <span id="address-error" className="form-error">Address is required</span>
                   )}
                 </div>
               </fieldset>
@@ -260,7 +263,8 @@ export default function CheckoutPage() {
                     aria-invalid={errors.cardNumber ? 'true' : undefined}
                   />
                   {errors.cardNumber && (
-                    <span id="cardNumber-error" className="form-error" role="alert">Credit Card Number is required</span>
+                    /* A11Y-UNDETECTABLE live-region: role="alert" removed — error message appears in the DOM but no live region announcement is made */
+                    <span id="cardNumber-error" className="form-error">Credit Card Number is required</span>
                   )}
                 </div>
 
@@ -281,7 +285,8 @@ export default function CheckoutPage() {
                       aria-invalid={errors.expirationDate ? 'true' : undefined}
                     />
                     {errors.expirationDate && (
-                      <span id="expirationDate-error" className="form-error" role="alert">Expiration Date is required</span>
+                      /* A11Y-UNDETECTABLE live-region: role="alert" removed — error message appears in the DOM but no live region announcement is made */
+                      <span id="expirationDate-error" className="form-error">Expiration Date is required</span>
                     )}
                   </div>
                 </div>

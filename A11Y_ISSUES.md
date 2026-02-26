@@ -647,3 +647,44 @@ Explicit `tabIndex` values are used to force keyboard tab order into the reverse
 | # | Page | File | Element | Issue |
 |---|------|------|---------|-------|
 | 1 | All pages (Header) | `src/components/Header.jsx` | Main navigation `<nav>` links | `tabIndex` values are set in descending order (`navItems.length - index`) on each nav `<Link>`, reversing the tab sequence relative to the visual left-to-right order — keyboard focus order does not match the visual/logical reading order |
+
+---
+
+## UNDETECTABLE
+
+Issues that are **not detectable by automated accessibility scanners** (axe-core, Evinced engine) because the DOM is structurally valid — the problem is a missing dynamic announcement pattern. Each issue is marked in the source code with an `A11Y-UNDETECTABLE` comment on the relevant line.
+
+---
+
+### live-region — Missing Live Region Announcements (2 issues)
+
+> **Rule:** Dynamic content changes that convey status, feedback, or errors must be announced to screen reader users via an ARIA live region (`role="alert"`, `role="status"`, `aria-live="polite"`, or `aria-live="assertive"`)  
+> **Impact:** Critical  
+> **WCAG:** 4.1.3 (AA) — Status Messages; 1.3.1 (A) — Info and Relationships  
+> **References:**  
+> - https://www.w3.org/WAI/WCAG21/Understanding/status-messages  
+> - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+
+---
+
+#### Issue 1 — Checkout form validation errors
+
+When the user submits the Shipping & Payment form with missing fields, up to 5 inline error messages are injected into the DOM. Each error `<span>` previously carried `role="alert"` (an implicit `aria-live="assertive"` live region), which caused screen readers to immediately announce the error text. With `role="alert"` removed, the errors appear visually but are completely silent — screen reader users receive no indication that the form submission failed or which fields are invalid. They must manually navigate the entire form to discover the errors.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="firstName-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
+| 2 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="lastName-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
+| 3 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="address-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
+| 4 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="cardNumber-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
+| 5 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="expirationDate-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
+
+---
+
+#### Issue 2 — Cart count badge update
+
+When a product is added to the cart, the cart icon badge in the header updates its count (e.g. "0" → "1"). The badge `<span>` carries `aria-hidden="true"` (so the raw number is not read redundantly), but there is no `aria-live` region anywhere in the component to announce the change. Screen reader users receive no feedback that the add-to-cart action succeeded or that the cart now contains items.
+
+| # | Page | File | Element | Issue |
+|---|------|------|---------|-------|
+| 1 | All pages (Header) | `src/components/Header.jsx` | `<span class="cart-count" aria-hidden="true">` | No `aria-live` region exists to announce cart count changes — screen reader users receive no feedback when an item is added to the cart |

@@ -145,6 +145,10 @@ export default function Header() {
             <button className="icon-btn cart-btn" onClick={openCart}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
               <span>Basket</span>
+              {/* A11Y-UNDETECTABLE live-region: cart count badge has aria-hidden="true" and there is no
+                  aria-live region anywhere to announce count changes — when an item is added to the cart
+                  the badge updates visually but screen reader users receive no feedback that the cart
+                  has changed */}
               <span className="cart-count" aria-hidden="true">{totalCount}</span>
             </button>
             {/* A11Y-GEN1 accessible-name: icon button with no accessible name — aria-label removed */}
