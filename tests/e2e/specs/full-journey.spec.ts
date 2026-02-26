@@ -55,11 +55,13 @@ test.describe('Demo website – full purchase journey', () => {
     await firstProductLink.click();
     await page.waitForURL('**/product/**', { timeout: 10_000 });
     // Wait for the product name heading to confirm the page rendered
-    await page.waitForSelector('h1', { timeout: 10_000 });
+    // Note: ProductPage uses <h3> for the product name (intentional a11y issue in this demo)
+    await page.waitForSelector('h3', { timeout: 10_000 });
 
     // ── 5. Click "ADD TO CART" ─────────────────────────────────────────────────
-    // ProductPage renders: <button aria-label="Add {name} to cart">ADD TO CART</button>
-    await page.getByRole('button', { name: /add .+ to cart/i }).click();
+    // ProductPage renders: <button aria-label="Add to cart">ADD TO CART</button>
+    // Note: aria-label is the generic "Add to cart" (intentional a11y issue in this demo)
+    await page.getByRole('button', { name: 'Add to cart' }).click();
 
     // ── 6. Click "Proceed to Checkout" inside the cart modal ───────────────────
     // CartModal uses CSS Modules (hashed class names) so we wait directly for the
@@ -90,7 +92,8 @@ test.describe('Demo website – full purchase journey', () => {
 
     // Wait for the order confirmation page to load
     await page.waitForURL('**/order-confirmation', { timeout: 10_000 });
-    await page.waitForSelector('.order-confirmation, h1', { timeout: 10_000 });
+    // Note: page uses .confirm-page wrapper and <h3> heading (intentional a11y issues in this demo)
+    await page.waitForSelector('.confirm-page', { timeout: 10_000 });
 
     // ── 9. Stop Evinced monitoring and collect issues ──────────────────────────
     const issues = await evinced.evStop();
