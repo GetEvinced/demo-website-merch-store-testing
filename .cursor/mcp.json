@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-        "EVINCED_MCP_SERVER": {
+        "EVINCED_MCP_SERVER_JFROG": {
       "command": "npx",
       "args": ["-y", "@evinced/mcp-server-web@1.0.28", "--headless"],
       "env": {
