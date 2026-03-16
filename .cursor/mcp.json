@@ -1,0 +1,17 @@
+{
+    "mcpServers": {
+        "EVINCED_MCP_SERVER_PROD": {
+      "command": "node",
+      "args": [
+        "/Users/gilrolnik/Documents/evinced-mcp-server/mcp-server-web/dist/cli.js",
+        "--extension",
+        "--config",
+        "/Users/gilrolnik/Documents/demos-website/evinced.jsonc"
+      ],
+      "env": {
+        "EVINCED_SERVICE_ID": "922eff48-df42-cd03-0d83-8f1b7efc2f5a",
+        "EVINCED_API_KEY": "dLLkcxp0gVIh90XlCsmLQs3Zo6Pp4Oz7"
+      }
+    }
+}
+}
