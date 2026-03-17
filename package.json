@@ -13,7 +13,6 @@
     "test:ut:watch": "jest --config jest.config.js --watch"
   },
   "dependencies": {
-    "@evinced/js-playwright-sdk": "^2.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.13.0"
@@ -22,7 +21,7 @@
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.23.0",
     "@babel/preset-react": "^7.22.15",
-    "@evinced/unit-tester": "latest",
+    "@evinced/js-playwright-sdk": "^2.44.0",
     "@playwright/test": "^1.44.1",
     "@testing-library/dom": ">=9.3.4",
     "@testing-library/react": "latest",
