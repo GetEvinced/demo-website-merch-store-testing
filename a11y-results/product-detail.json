@@ -1,0 +1,2555 @@
+[
+  {
+    "id": "c6c327c0-5d19-4d78-b5cd-eab1f9b21b99",
+    "index": "I2",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "a4d5fe19",
+    "canonicalSignature": "a4d5fe19",
+    "elements": [
+      {
+        "id": "16767f39-626f-4691-812c-fb21973864eb",
+        "index": "S1",
+        "selector": ".wishlist-btn",
+        "domSnippet": "<div class=\"icon-btn wishlist-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg><span>Wishlist</span></div>",
+        "componentId": "b3e24a95",
+        "boundingBox": {
+          "width": 50.453125,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 986.8125,
+          "top": 12,
+          "left": 986.8125,
+          "bottom": 55,
+          "right": 1037.265625,
+          "x": 986.8125,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "b3e24a95",
+          "tag": "div",
+          "classNames": "icon-btn wishlist-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989712,
+    "lastSeenTime": 1773831989712,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "c0c4f9fc-4fce-4de2-8157-3d5b87b730f5",
+    "index": "I3",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "b2cdddda",
+    "canonicalSignature": "b2cdddda",
+    "elements": [
+      {
+        "id": "16767f39-626f-4691-812c-fb21973864eb",
+        "index": "S1",
+        "selector": ".wishlist-btn",
+        "domSnippet": "<div class=\"icon-btn wishlist-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg><span>Wishlist</span></div>",
+        "componentId": "b3e24a95",
+        "boundingBox": {
+          "width": 50.453125,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 986.8125,
+          "top": 12,
+          "left": 986.8125,
+          "bottom": 55,
+          "right": 1037.265625,
+          "x": 986.8125,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "b3e24a95",
+          "tag": "div",
+          "classNames": "icon-btn wishlist-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989720,
+    "lastSeenTime": 1773831989720,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "5cf0558c-bfe5-4737-9c6b-2b144a257f89",
+    "index": "I5",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "7692ca61",
+    "canonicalSignature": "7692ca61",
+    "elements": [
+      {
+        "id": "5dd7cb34-12a9-4da2-86ad-d7e5f552d77e",
+        "index": "S4",
+        "selector": ".icon-btn:nth-child(2)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 47.6875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1041.265625,
+          "top": 12,
+          "left": 1041.265625,
+          "bottom": 55,
+          "right": 1088.953125,
+          "x": 1041.265625,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989712,
+    "lastSeenTime": 1773831989712,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "ced50723-2aeb-4822-9280-1c9badfd58ce",
+    "index": "I6",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NO_DESCRIPTIVE_TEXT",
+      "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+      "name": "Accessible name"
+    },
+    "validation": {},
+    "signature": "10d3b862",
+    "canonicalSignature": "10d3b862",
+    "elements": [
+      {
+        "id": "5dd7cb34-12a9-4da2-86ad-d7e5f552d77e",
+        "index": "S4",
+        "selector": ".icon-btn:nth-child(2)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 47.6875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1041.265625,
+          "top": 12,
+          "left": 1041.265625,
+          "bottom": 55,
+          "right": 1088.953125,
+          "x": 1041.265625,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989719,
+    "lastSeenTime": 1773831989719,
+    "additionalInformation": {},
+    "summary": "Elements that can be interacted with, such as buttons, links, and input fields, must have an accessible name. The name should indicate which information or action is required, and/or what will happen if they interact with it.",
+    "description": "**Cause:** \nThe element does not have an accessible name to inform the screen reader of its purpose and function.\n**Effect:** \nAssistive technologies use the accessible name to label, announce and trigger the element's action. If there's no valid accessible name, assistive technologies won't be able to understand the element correctly. \n**Suggested Solutions:**\nDepending on the type of element, either add a descriptive text to the body of the tag or add the appropriate attributes to the tag. ",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "source": "EV-CORE"
+  },
+  {
+    "id": "e17604ae-66c5-4b1c-9ca8-c7eb0b10e58b",
+    "index": "I7",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "97db4a24",
+    "canonicalSignature": "97db4a24",
+    "elements": [
+      {
+        "id": "5dd7cb34-12a9-4da2-86ad-d7e5f552d77e",
+        "index": "S4",
+        "selector": ".icon-btn:nth-child(2)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 47.6875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1041.265625,
+          "top": 12,
+          "left": 1041.265625,
+          "bottom": 55,
+          "right": 1088.953125,
+          "x": 1041.265625,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989720,
+    "lastSeenTime": 1773831989720,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "5701bb96-74ac-47cc-b2c5-196b5d4d01de",
+    "index": "I9",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "5283872b",
+    "canonicalSignature": "5283872b",
+    "elements": [
+      {
+        "id": "2b7f4c0a-8804-49c5-ade9-2f358965dafa",
+        "index": "S8",
+        "selector": ".icon-btn:nth-child(4)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 40.46875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1143.53125,
+          "top": 12,
+          "left": 1143.53125,
+          "bottom": 55,
+          "right": 1184,
+          "x": 1143.53125,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989712,
+    "lastSeenTime": 1773831989712,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "ba4b5186-f630-4542-a173-10d3f36b2251",
+    "index": "I10",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NO_DESCRIPTIVE_TEXT",
+      "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+      "name": "Accessible name"
+    },
+    "validation": {},
+    "signature": "04cf2850",
+    "canonicalSignature": "04cf2850",
+    "elements": [
+      {
+        "id": "2b7f4c0a-8804-49c5-ade9-2f358965dafa",
+        "index": "S8",
+        "selector": ".icon-btn:nth-child(4)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 40.46875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1143.53125,
+          "top": 12,
+          "left": 1143.53125,
+          "bottom": 55,
+          "right": 1184,
+          "x": 1143.53125,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989719,
+    "lastSeenTime": 1773831989719,
+    "additionalInformation": {},
+    "summary": "Elements that can be interacted with, such as buttons, links, and input fields, must have an accessible name. The name should indicate which information or action is required, and/or what will happen if they interact with it.",
+    "description": "**Cause:** \nThe element does not have an accessible name to inform the screen reader of its purpose and function.\n**Effect:** \nAssistive technologies use the accessible name to label, announce and trigger the element's action. If there's no valid accessible name, assistive technologies won't be able to understand the element correctly. \n**Suggested Solutions:**\nDepending on the type of element, either add a descriptive text to the body of the tag or add the appropriate attributes to the tag. ",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "source": "EV-CORE"
+  },
+  {
+    "id": "599f9d48-605b-4e6a-8003-7656b690519f",
+    "index": "I11",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "b3cc6bae",
+    "canonicalSignature": "b3cc6bae",
+    "elements": [
+      {
+        "id": "2b7f4c0a-8804-49c5-ade9-2f358965dafa",
+        "index": "S8",
+        "selector": ".icon-btn:nth-child(4)",
+        "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+        "componentId": "46161aed",
+        "boundingBox": {
+          "width": 40.46875,
+          "height": 43,
+          "viewportTop": 12,
+          "viewportLeft": 1143.53125,
+          "top": 12,
+          "left": 1143.53125,
+          "bottom": 55,
+          "right": 1184,
+          "x": 1143.53125,
+          "y": 12
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "46161aed",
+          "tag": "div",
+          "classNames": "icon-btn"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989721,
+    "lastSeenTime": 1773831989721,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "1a915b65-c578-4771-881e-5084d0620b84",
+    "index": "I13",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "3ed11dbb",
+    "canonicalSignature": "3ed11dbb",
+    "elements": [
+      {
+        "id": "9e1123f6-88d0-4eb2-a8de-28f9aaf5ee38",
+        "index": "S12",
+        "selector": ".flag-group",
+        "domSnippet": "<div class=\"flag-group\" style=\"cursor: pointer;\"><img src=\"/images/icons/united-states-of-america.png\" alt=\"United States Flag\" width=\"24\" height=\"24\"><img src=\"/images/icons/canada.png\" alt=\"Canada Flag\" width=\"24\" height=\"24\"></div>",
+        "componentId": "b206ed8f",
+        "boundingBox": {
+          "width": 68,
+          "height": 32,
+          "viewportTop": 17.5,
+          "viewportLeft": 1188,
+          "top": 17.5,
+          "left": 1188,
+          "bottom": 49.5,
+          "right": 1256,
+          "x": 1188,
+          "y": 17.5
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "b206ed8f",
+          "tag": "div",
+          "classNames": "flag-group"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989713,
+    "lastSeenTime": 1773831989713,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "80401076-863a-47e6-b8c0-042a5d819b55",
+    "index": "I14",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "134c777c",
+    "canonicalSignature": "134c777c",
+    "elements": [
+      {
+        "id": "9e1123f6-88d0-4eb2-a8de-28f9aaf5ee38",
+        "index": "S12",
+        "selector": ".flag-group",
+        "domSnippet": "<div class=\"flag-group\" style=\"cursor: pointer;\"><img src=\"/images/icons/united-states-of-america.png\" alt=\"United States Flag\" width=\"24\" height=\"24\"><img src=\"/images/icons/canada.png\" alt=\"Canada Flag\" width=\"24\" height=\"24\"></div>",
+        "componentId": "b206ed8f",
+        "boundingBox": {
+          "width": 68,
+          "height": 32,
+          "viewportTop": 17.5,
+          "viewportLeft": 1188,
+          "top": 17.5,
+          "left": 1188,
+          "bottom": 49.5,
+          "right": 1256,
+          "x": 1188,
+          "y": 17.5
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "b206ed8f",
+          "tag": "div",
+          "classNames": "flag-group"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989721,
+    "lastSeenTime": 1773831989721,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "809be414-165e-4d91-a57a-451a82cd7699",
+    "index": "I16",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "c6db40de",
+    "canonicalSignature": "c6db40de",
+    "elements": [
+      {
+        "id": "f5a76617-d509-41e3-9ebc-38aa622d24d8",
+        "index": "S15",
+        "selector": "li:nth-child(3) > .footer-nav-item",
+        "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\">Sustainability</div>",
+        "componentId": "bc238c28",
+        "boundingBox": {
+          "width": 138.765625,
+          "height": 18,
+          "viewportTop": 953.921875,
+          "viewportLeft": 24,
+          "top": 953.921875,
+          "left": 24,
+          "bottom": 971.921875,
+          "right": 162.765625,
+          "x": 24,
+          "y": 953.921875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "bc238c28",
+          "tag": "div",
+          "classNames": "footer-nav-item"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989718,
+    "lastSeenTime": 1773831989718,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "5c28bada-a3fe-4dad-a236-c0734ff5d6bb",
+    "index": "I17",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "0a97193b",
+    "canonicalSignature": "0a97193b",
+    "elements": [
+      {
+        "id": "f5a76617-d509-41e3-9ebc-38aa622d24d8",
+        "index": "S15",
+        "selector": "li:nth-child(3) > .footer-nav-item",
+        "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\">Sustainability</div>",
+        "componentId": "bc238c28",
+        "boundingBox": {
+          "width": 138.765625,
+          "height": 18,
+          "viewportTop": 953.921875,
+          "viewportLeft": 24,
+          "top": 953.921875,
+          "left": 24,
+          "bottom": 971.921875,
+          "right": 162.765625,
+          "x": 24,
+          "y": 953.921875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "bc238c28",
+          "tag": "div",
+          "classNames": "footer-nav-item"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989721,
+    "lastSeenTime": 1773831989721,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "024adf0c-19eb-45c9-897c-d5e7046aa118",
+    "index": "I19",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "WRONG_SEMANTIC_ROLE",
+      "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+      "name": "Interactable role"
+    },
+    "validation": {},
+    "signature": "9c3c2b73",
+    "canonicalSignature": "9c3c2b73",
+    "elements": [
+      {
+        "id": "d1cb9f20-bef2-43c8-b720-549c198e1be8",
+        "index": "S18",
+        "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+        "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+        "componentId": "fa342891",
+        "boundingBox": {
+          "width": 40.015625,
+          "height": 18,
+          "viewportTop": 897.921875,
+          "viewportLeft": 226.765625,
+          "top": 897.921875,
+          "left": 226.765625,
+          "bottom": 915.921875,
+          "right": 266.78125,
+          "x": 226.765625,
+          "y": 897.921875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "fa342891",
+          "tag": "div",
+          "classNames": "footer-nav-item"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989718,
+    "lastSeenTime": 1773831989718,
+    "additionalInformation": {},
+    "summary": "Interactive elements, such as buttons, links, and inputs, must convey that they can be interacted with by using the proper semantics.",
+    "description": "**Cause:** \nScreen readers are unable to identify that the element is interactive due to missing or incorrect semantics.\n**Effect:** \nScreen reader users may not find the content or may not realize that the the content is interactive.\n**Suggested Solutions:**\nUse native HTML interactive elements such as <*button*>, <*a*>, <*select*>, <*input*>. Alternatively, add the appropriate ARIA role that corresponds to the content purpose.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "1194.21(d)",
+          "successCriteria": "1194.21(d)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Name, Role, Value",
+          "successCriteria": "9.4.1.2",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "bdea3bcf-27dc-41dc-9378-646a4864c18b",
+    "index": "I20",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NO_DESCRIPTIVE_TEXT",
+      "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+      "name": "Accessible name"
+    },
+    "validation": {},
+    "signature": "951f83fa",
+    "canonicalSignature": "951f83fa",
+    "elements": [
+      {
+        "id": "d1cb9f20-bef2-43c8-b720-549c198e1be8",
+        "index": "S18",
+        "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+        "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+        "componentId": "fa342891",
+        "boundingBox": {
+          "width": 40.015625,
+          "height": 18,
+          "viewportTop": 897.921875,
+          "viewportLeft": 226.765625,
+          "top": 897.921875,
+          "left": 226.765625,
+          "bottom": 915.921875,
+          "right": 266.78125,
+          "x": 226.765625,
+          "y": 897.921875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "fa342891",
+          "tag": "div",
+          "classNames": "footer-nav-item"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989720,
+    "lastSeenTime": 1773831989720,
+    "additionalInformation": {},
+    "summary": "Elements that can be interacted with, such as buttons, links, and input fields, must have an accessible name. The name should indicate which information or action is required, and/or what will happen if they interact with it.",
+    "description": "**Cause:** \nThe element does not have an accessible name to inform the screen reader of its purpose and function.\n**Effect:** \nAssistive technologies use the accessible name to label, announce and trigger the element's action. If there's no valid accessible name, assistive technologies won't be able to understand the element correctly. \n**Suggested Solutions:**\nDepending on the type of element, either add a descriptive text to the body of the tag or add the appropriate attributes to the tag. ",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "source": "EV-CORE"
+  },
+  {
+    "id": "92161709-a678-4d36-b602-b434c2baa134",
+    "index": "I21",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "NOT_FOCUSABLE",
+      "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+      "name": "Keyboard accessible"
+    },
+    "validation": {},
+    "signature": "c74b35bc",
+    "canonicalSignature": "c74b35bc",
+    "elements": [
+      {
+        "id": "d1cb9f20-bef2-43c8-b720-549c198e1be8",
+        "index": "S18",
+        "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+        "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+        "componentId": "fa342891",
+        "boundingBox": {
+          "width": 40.015625,
+          "height": 18,
+          "viewportTop": 897.921875,
+          "viewportLeft": 226.765625,
+          "top": 897.921875,
+          "left": 226.765625,
+          "bottom": 915.921875,
+          "right": 266.78125,
+          "x": 226.765625,
+          "y": 897.921875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "fa342891",
+          "tag": "div",
+          "classNames": "footer-nav-item"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989721,
+    "lastSeenTime": 1773831989721,
+    "additionalInformation": {},
+    "summary": "Keyboard users must be able to navigate to all the interactive elements on the page.",
+    "description": "**Cause:** \nThe element is missing the right tags or has incorrect tags. \n**Effect:** \nThe element is excluded from the keyboard tab sequence and is therefore inaccessible to keyboard users. \n**Suggested Solutions:**\nUse one of these approaches: \n* Approach 1 (recommended): Add a tag that shows the element's purpose. Interactive elements don't need anything extra because they are focusable by nature. \n* Approach 2: Add a `tabindex` attribute with the value of `0` to the element.",
+    "screenshotId": "34c5ec1e-f715-4e50-8df0-98769ff0ca05",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-2.1.1",
+        "description": "2.1.1 Keyboard  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "regulations": {
+      "Section_508": [
+        {
+          "type": "primary",
+          "name": "",
+          "successCriteria": "1194.21(a)",
+          "url": ""
+        }
+      ],
+      "EN_301_549": [
+        {
+          "type": "primary",
+          "name": "Keyboard",
+          "successCriteria": "9.2.1.1",
+          "url": ""
+        }
+      ]
+    },
+    "source": "EV-CORE"
+  },
+  {
+    "id": "211a88f0-b726-45bd-ac35-090276eaf93b",
+    "index": "I23",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "AXE-ARIA-VALID-ATTR-VALUE",
+      "newId": "329246ca-bbc7-42d4-a990-5c41c93b01e5",
+      "name": "Aria-valid-attr-value"
+    },
+    "validation": {},
+    "signature": "17df1a41",
+    "canonicalSignature": "17df1a41",
+    "elements": [
+      {
+        "id": "6c8ef512-1847-4bd2-83e3-f29e668d5efd",
+        "index": "S22",
+        "selector": "ul[aria-relevant=\"changes\"]",
+        "domSnippet": "<ul class=\"PZdSKB1ULfufQL0NRQ7a\" aria-relevant=\"changes\" aria-live=\"polite\"><li style=\"display: none;\"><span role=\"meter\" aria-label=\"Stock level\"></span></li><li class=\"D0ZKNq6sDQMKv4LhTQxD\">Accessories only, Chrome Dino sold separately</li><li class=\"D0ZKNq6sDQMKv4LhTQxD\">Accessory pack includes: Hat, camera and secret map</li><li class=\"D0ZKNq6sDQMKv4LhTQxD\">Small parts, not intended for children under 14</li><li class=\"D0ZKNq6sDQMKv4LhTQxD\">This is not a toy</li></ul>",
+        "componentId": "617f75a0",
+        "boundingBox": {
+          "width": 584,
+          "height": 113.5625,
+          "viewportTop": 655.359375,
+          "viewportLeft": 632,
+          "top": 655.359375,
+          "left": 632,
+          "bottom": 768.921875,
+          "right": 1216,
+          "x": 632,
+          "y": 655.359375
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "617f75a0",
+          "tag": "ul",
+          "classNames": "PZdSKB1ULfufQL0NRQ7a"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989807,
+    "lastSeenTime": 1773831989807,
+    "additionalInformation": {
+      "axeVersion": "4.11.0",
+      "axeIncomplete": false,
+      "axeBestPractice": false,
+      "axeDescription": "ARIA attributes must conform to valid values",
+      "axeTestDescription": "Ensure all ARIA attributes have valid values",
+      "axeSuggestedSolutions": {
+        "summary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-relevant=\"changes\"",
+        "all": [
+          "Invalid ARIA attribute value: aria-relevant=\"changes\""
+        ],
+        "any": [],
+        "none": []
+      },
+      "axeTags": [
+        "cat.aria",
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "axeData": {
+        "id": "aria-valid-attr-value",
+        "impact": "critical",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag412",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-7.1.1"
+        ],
+        "description": "Ensure all ARIA attributes have valid values",
+        "help": "ARIA attributes must conform to valid values",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": [
+                  "aria-relevant=\"changes\""
+                ],
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Invalid ARIA attribute value: aria-relevant=\"changes\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<ul class=\"PZdSKB1ULfufQL0NRQ7a\" aria-relevant=\"changes\" aria-live=\"polite\">",
+            "target": [
+              ".PZdSKB1ULfufQL0NRQ7a"
+            ],
+            "failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-relevant=\"changes\""
+          }
+        ]
+      },
+      "axeType": "aria-valid-attr-value",
+      "axeSeverity": "critical",
+      "isEvincedRecommended": true
+    },
+    "summary": "ARIA attributes must conform to valid values",
+    "description": "**Description:**\n\tEnsure all ARIA attributes have valid values\n\t**Failure Summary:**\n\tFix all of the following:\n  Invalid ARIA attribute value: aria-relevant=\"changes\"",
+    "screenshotId": "94375dee-cd12-49e4-83f1-8992f0ddba66",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "axe-cat.aria"
+      },
+      {
+        "id": "axe-EN-301-549"
+      },
+      {
+        "id": "axe-EN-9.4.1.2"
+      },
+      {
+        "id": "axe-RGAA-7.1.1"
+      },
+      {
+        "id": "axe-RGAAv4"
+      },
+      {
+        "id": "axe-wcag2a"
+      },
+      {
+        "id": "axe-wcag412"
+      },
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/aria-valid-attr-value",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "isEvincedRecommended": true,
+    "source": "AXE"
+  },
+  {
+    "id": "40a2664e-94d1-4c32-909d-5071565bd7d6",
+    "index": "I25",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "AXE-BUTTON-NAME",
+      "newId": "77adc33e-4acc-4661-99f1-2458f8eca67f",
+      "name": "Button-name"
+    },
+    "validation": {},
+    "signature": "baa4c9aa",
+    "canonicalSignature": "baa4c9aa",
+    "elements": [
+      {
+        "id": "1e7cc8ce-610d-4cf4-ba52-9cad15dd27fb",
+        "index": "S24",
+        "selector": "#cart-modal > div:nth-child(1) > button",
+        "domSnippet": "<button class=\"JjN6AKz7a2PRH2gFKW3v\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
+        "componentId": "06f39006",
+        "boundingBox": {
+          "width": 36,
+          "height": 36,
+          "viewportTop": 20,
+          "viewportLeft": 1640,
+          "top": 20,
+          "left": 1640,
+          "bottom": 56,
+          "right": 1676,
+          "x": 1640,
+          "y": 20
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "06f39006",
+          "tag": "button",
+          "classNames": "JjN6AKz7a2PRH2gFKW3v"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989807,
+    "lastSeenTime": 1773831989807,
+    "additionalInformation": {
+      "axeVersion": "4.11.0",
+      "axeIncomplete": false,
+      "axeBestPractice": false,
+      "axeDescription": "Buttons must have discernible text",
+      "axeTestDescription": "Ensure buttons have discernible text",
+      "axeSuggestedSolutions": {
+        "summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+        "all": [],
+        "any": [
+          "Element does not have inner text that is visible to screen readers",
+          "aria-label attribute does not exist or is empty",
+          "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+          "Element has no title attribute",
+          "Element does not have an implicit (wrapped) <label>",
+          "Element does not have an explicit <label>",
+          "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        ],
+        "none": []
+      },
+      "axeTags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "axeData": {
+        "id": "button-name",
+        "impact": "critical",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag412",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT6.a",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-11.9.1"
+        ],
+        "description": "Ensure buttons have discernible text",
+        "help": "Buttons must have discernible text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "button-has-visible-text",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have inner text that is visible to screen readers"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "implicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an implicit (wrapped) <label>"
+              },
+              {
+                "id": "explicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an explicit <label>"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<button class=\"JjN6AKz7a2PRH2gFKW3v\">",
+            "target": [
+              ".JjN6AKz7a2PRH2gFKW3v"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      "axeType": "button-name",
+      "axeSeverity": "critical",
+      "isEvincedRecommended": true
+    },
+    "summary": "Buttons must have discernible text",
+    "description": "**Suggested Solutions:** Fix at least one (1) of the following\n* Element does not have inner text that is visible to screen readers,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"\n",
+    "screenshotId": "94375dee-cd12-49e4-83f1-8992f0ddba66",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/button-name",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "isEvincedRecommended": true,
+    "source": "AXE"
+  },
+  {
+    "id": "407fa1dd-30a7-458d-9def-51472c52bb22",
+    "index": "I27",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "AXE-BUTTON-NAME",
+      "newId": "77adc33e-4acc-4661-99f1-2458f8eca67f",
+      "name": "Button-name"
+    },
+    "validation": {},
+    "signature": "542d1f75",
+    "canonicalSignature": "542d1f75",
+    "elements": [
+      {
+        "id": "54db8690-087a-4f4a-a91c-245e165144ce",
+        "index": "S26",
+        "selector": "div[role=\"dialog\"] > div:nth-child(1) > button",
+        "domSnippet": "<button class=\"WEtKZofboSdJ1n7KLpwd\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
+        "componentId": "d1ab1098",
+        "boundingBox": {
+          "width": 36,
+          "height": 36,
+          "viewportTop": 20,
+          "viewportLeft": 1640,
+          "top": 20,
+          "left": 1640,
+          "bottom": 56,
+          "right": 1676,
+          "x": 1640,
+          "y": 20
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "d1ab1098",
+          "tag": "button",
+          "classNames": "WEtKZofboSdJ1n7KLpwd"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989807,
+    "lastSeenTime": 1773831989807,
+    "additionalInformation": {
+      "axeVersion": "4.11.0",
+      "axeIncomplete": false,
+      "axeBestPractice": false,
+      "axeDescription": "Buttons must have discernible text",
+      "axeTestDescription": "Ensure buttons have discernible text",
+      "axeSuggestedSolutions": {
+        "summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+        "all": [],
+        "any": [
+          "Element does not have inner text that is visible to screen readers",
+          "aria-label attribute does not exist or is empty",
+          "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+          "Element has no title attribute",
+          "Element does not have an implicit (wrapped) <label>",
+          "Element does not have an explicit <label>",
+          "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        ],
+        "none": []
+      },
+      "axeTags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "axeData": {
+        "id": "button-name",
+        "impact": "critical",
+        "tags": [
+          "cat.name-role-value",
+          "wcag2a",
+          "wcag412",
+          "section508",
+          "section508.22.a",
+          "TTv5",
+          "TT6.a",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-11.9.1"
+        ],
+        "description": "Ensure buttons have discernible text",
+        "help": "Buttons must have discernible text",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "button-has-visible-text",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have inner text that is visible to screen readers"
+              },
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute does not exist or is empty"
+              },
+              {
+                "id": "aria-labelledby",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+              },
+              {
+                "id": "non-empty-title",
+                "data": {
+                  "messageKey": "noAttr"
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element has no title attribute"
+              },
+              {
+                "id": "implicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an implicit (wrapped) <label>"
+              },
+              {
+                "id": "explicit-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element does not have an explicit <label>"
+              },
+              {
+                "id": "presentational-role",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "critical",
+            "html": "<button class=\"WEtKZofboSdJ1n7KLpwd\">",
+            "target": [
+              ".WEtKZofboSdJ1n7KLpwd"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      "axeType": "button-name",
+      "axeSeverity": "critical",
+      "isEvincedRecommended": true
+    },
+    "summary": "Buttons must have discernible text",
+    "description": "**Suggested Solutions:** Fix at least one (1) of the following\n* Element does not have inner text that is visible to screen readers,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"\n",
+    "screenshotId": "94375dee-cd12-49e4-83f1-8992f0ddba66",
+    "severity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "originalSeverity": {
+      "id": "CRITICAL",
+      "name": "Critical",
+      "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+    },
+    "tags": [
+      {
+        "id": "WCAG-4.1.2",
+        "description": "4.1.2 Name, Role, Value  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/button-name",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "isEvincedRecommended": true,
+    "source": "AXE"
+  },
+  {
+    "id": "265da043-12ad-4ebd-8111-70ec4fcb911c",
+    "index": "I30",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "AXE-COLOR-CONTRAST",
+      "newId": "41fbf576-e94e-4a71-ac4d-63f328e3a982",
+      "name": "Color-contrast"
+    },
+    "validation": {},
+    "signature": "f5187b13",
+    "canonicalSignature": "f5187b13",
+    "elements": [
+      {
+        "id": "d6b8ad13-bb3f-4fd4-bc1f-d10edf2665ac",
+        "index": "S28",
+        "selector": "p:nth-child(4)",
+        "domSnippet": "<p class=\"tE3CCfWiGRrHgQcKaAUa\">Meet the ultimate adventure enthusiast! Chrome Dino is determined to see the world. Wearing a cap and trusty camera, this T-rex is trying to find a special spot on this map. Do you know where they're headed?</p>",
+        "componentId": "ed673d0c",
+        "boundingBox": {
+          "width": 584,
+          "height": 67.171875,
+          "viewportTop": 273.1875,
+          "viewportLeft": 632,
+          "top": 273.1875,
+          "left": 632,
+          "bottom": 340.359375,
+          "right": 1216,
+          "x": 632,
+          "y": 273.1875
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "ed673d0c",
+          "tag": "p",
+          "classNames": "tE3CCfWiGRrHgQcKaAUa"
+        },
+        "signature": {}
+      },
+      {
+        "id": "48d43eba-a04b-4724-a3ef-e71ca502d9ad",
+        "index": "S29",
+        "selector": "#main-content > div",
+        "domSnippet": "<!--NOTE: snippet was trimmed due to its size--><div class=\"O9aRUHz1DGWFzbjH9p5r\"><div class=\"IJ2NPKH0yZ4cclz_nCgM\"><nav aria-label=\"Breadcrumb\" class=\"slF3csfYFio10mMl89hL\"><a class=\"JjE6qLu3axJQupNc4gYw\" href=\"/\" data-discover=\"true\">Home</a><span class=\"JSmVpYZ1wb49D71MPGBx\" aria-hidden=\"true\"> | </span><span aria-current=\"page\">Chrome Dino Maps Tourist Accessory Pack</span></nav><div class=\"UQXyRQfMNqyjS4e4eM1o\"><div class=\"ElMO0BhhsBcLpU3mmMQQ\"><div class=\"F4rxoxxHb7TwNDgl6YU0\"><img src=\"/images/products/GGOEGFBA241499.jpg\" alt=\"Chrome Dino Maps Tourist Accessory Pack\" class=\"miaBFtTRbil_VGrRuONh\"></div></div><div class=\"mqByndUA8IVAIc6F38DP\"><div class=\"Du_WclS_HV0hPX2wokBi\"><h3 class=\"EH5QwLPz3WPQprlfwy8B\">Chrome Dino Maps Tourist Accessory Pack</h3><p class=\"Ow6WURymA0iYOjwzmbTl\">$16.00</p><p class=\"CU6FmhzR7frteAvEwTPM\"><span class=\"LrRtQVv3ESkGC0xupuzA\">SKU : </span><span class=\"ssQnoIQoOTv8XJCtJ8e3\">GGOEGFBA241499</span></p><p class=\"tE3CCfWiGRrHgQcKaAUa\">Meet the ultimate adventure enthusiast! Chrome Dino is determined to see the world. Wearing",
+        "componentId": "52f5dece",
+        "boundingBox": {
+          "width": 1280,
+          "height": 716.921875,
+          "viewportTop": 100,
+          "viewportLeft": 0,
+          "top": 100,
+          "left": 0,
+          "bottom": 816.921875,
+          "right": 1280,
+          "x": 0,
+          "y": 100
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "52f5dece",
+          "tag": "div",
+          "classNames": "O9aRUHz1DGWFzbjH9p5r"
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989808,
+    "lastSeenTime": 1773831989808,
+    "additionalInformation": {
+      "axeVersion": "4.11.0",
+      "axeIncomplete": false,
+      "axeBestPractice": false,
+      "axeDescription": "Elements must meet minimum color contrast ratio thresholds",
+      "axeTestDescription": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "axeSuggestedSolutions": {
+        "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.81 (foreground color: #c0c0c0, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "all": [],
+        "any": [
+          "Element has insufficient color contrast of 1.81 (foreground color: #c0c0c0, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        ],
+        "none": []
+      },
+      "axeTags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "axeData": {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#c0c0c0",
+                  "bgColor": "#ffffff",
+                  "contrastRatio": 1.81,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"O9aRUHz1DGWFzbjH9p5r\">",
+                    "target": [
+                      ".O9aRUHz1DGWFzbjH9p5r"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 1.81 (foreground color: #c0c0c0, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<p class=\"tE3CCfWiGRrHgQcKaAUa\">Meet the ultimate adventure enthusiast! Chrome Dino is determined to see the world. Wearing a cap and trusty camera, this T-rex is trying to find a special spot on this map. Do you know where they're headed?</p>",
+            "target": [
+              ".tE3CCfWiGRrHgQcKaAUa"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.81 (foreground color: #c0c0c0, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      "axeType": "color-contrast",
+      "axeSeverity": "serious",
+      "isEvincedRecommended": true
+    },
+    "summary": "Elements must meet minimum color contrast ratio thresholds",
+    "description": "**Description:**\n\tEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* Element has insufficient color contrast of 1.81 (foreground color: #c0c0c0, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    "screenshotId": "94375dee-cd12-49e4-83f1-8992f0ddba66",
+    "severity": {
+      "id": "SERIOUS",
+      "name": "Serious",
+      "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+    },
+    "originalSeverity": {
+      "id": "SERIOUS",
+      "name": "Serious",
+      "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+    },
+    "tags": [
+      {
+        "id": "axe-ACT"
+      },
+      {
+        "id": "axe-cat.color"
+      },
+      {
+        "id": "axe-EN-301-549"
+      },
+      {
+        "id": "axe-EN-9.1.4.3"
+      },
+      {
+        "id": "axe-RGAA-3.2.1"
+      },
+      {
+        "id": "axe-RGAAv4"
+      },
+      {
+        "id": "axe-TT13.c"
+      },
+      {
+        "id": "axe-TTv5"
+      },
+      {
+        "id": "axe-wcag143"
+      },
+      {
+        "id": "axe-wcag2aa"
+      },
+      {
+        "id": "WCAG-1.4.3",
+        "description": "1.4.3 Contrast (Minimum)  (Level AA)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+      },
+      {
+        "id": "WCAG-AA"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/color-contrast",
+    "wcagLevels": [
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "isEvincedRecommended": true,
+    "source": "AXE"
+  },
+  {
+    "id": "a3b86ae2-140e-4181-9810-651c2e8966f7",
+    "index": "I32",
+    "hidden": false,
+    "skipIssue": false,
+    "type": {
+      "id": "AXE-HTML-HAS-LANG",
+      "newId": "1f738d21-46c2-465c-80de-0d6bae4d3b61",
+      "name": "Html-has-lang"
+    },
+    "validation": {},
+    "signature": "bf2af1d3",
+    "canonicalSignature": "bf2af1d3",
+    "elements": [
+      {
+        "id": "98afdd1f-d80c-4aa2-81d3-b3c2364c07ca",
+        "index": "S31",
+        "selector": "html",
+        "domSnippet": "<!--NOTE: snippet was trimmed due to its size--><html style=\"scroll-behavior: unset;\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Demo Website</title><style>*, *::before, *::after {\n  box-sizing: border-box;\n}\n\n/* A11Y-GEN3 reflow: overflow-x: hidden prevents horizontal scrolling, which causes\n   the navigation menu and other fixed-width content to be clipped and cut off when\n   the page is zoomed to 300% — violates WCAG 1.4.10 (AA) Reflow */\nbody {\n  margin: 0;\n  padding: 0;\n  background: #fff;\n  font-family: 'Google Sans', Arial, sans-serif;\n  color: #202124;\n  -webkit-font-smoothing: antialiased;\n  overflow-x: hidden;\n}\n\n.app {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n}\n\nmain {\n  flex: 1;\n}\n\n.skip-link {\n  position: absolute;\n  top: -40px;\n  left: 0;\n  background: #1a73e8;\n  color: #fff;\n  padding: 8px 16px;\n  z-index: 9999;\n  font-size: 14px;\n  text-decoration: none;\n  border-radius: 0 0 4px 0;\n  transition: top 0.2s;\n}\n\n.skip-link:focus {\n  top: 0;\n}\n\na {\n  color: inherit",
+        "componentId": "f5e98fb3",
+        "boundingBox": {
+          "width": 1280,
+          "height": 1019.921875,
+          "viewportTop": 0,
+          "viewportLeft": 0,
+          "top": 0,
+          "left": 0,
+          "bottom": 1019.921875,
+          "right": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "pageUrl": "http://localhost:3000/product/1",
+        "pageTitle": "Demo Website",
+        "canonicalUrl": null,
+        "componentDesc": {
+          "id": "f5e98fb3",
+          "tag": "html",
+          "classNames": ""
+        },
+        "signature": {}
+      }
+    ],
+    "firstSeenTime": 1773831989810,
+    "lastSeenTime": 1773831989810,
+    "additionalInformation": {
+      "axeVersion": "4.11.0",
+      "axeIncomplete": false,
+      "axeBestPractice": false,
+      "axeDescription": "<html> element must have a lang attribute",
+      "axeTestDescription": "Ensure every HTML document has a lang attribute",
+      "axeSuggestedSolutions": {
+        "summary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+        "all": [],
+        "any": [
+          "The <html> element does not have a lang attribute"
+        ],
+        "none": []
+      },
+      "axeTags": [
+        "cat.language",
+        "wcag2a",
+        "wcag311",
+        "TTv5",
+        "TT11.a",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.3.1"
+      ],
+      "axeData": {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "tags": [
+          "cat.language",
+          "wcag2a",
+          "wcag311",
+          "TTv5",
+          "TT11.a",
+          "EN-301-549",
+          "EN-9.3.1.1",
+          "ACT",
+          "RGAAv4",
+          "RGAA-8.3.1"
+        ],
+        "description": "Ensure every HTML document has a lang attribute",
+        "help": "<html> element must have a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "has-lang",
+                "data": {
+                  "messageKey": "noLang"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "The <html> element does not have a lang attribute"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<html style=\"scroll-behavior: unset;\">",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+          }
+        ]
+      },
+      "axeType": "html-has-lang",
+      "axeSeverity": "serious",
+      "isEvincedRecommended": true
+    },
+    "summary": "<html> element must have a lang attribute",
+    "description": "**Description:**\n\tEnsure every HTML document has a lang attribute\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* The <html> element does not have a lang attribute",
+    "screenshotId": "94375dee-cd12-49e4-83f1-8992f0ddba66",
+    "severity": {
+      "id": "SERIOUS",
+      "name": "Serious",
+      "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+    },
+    "originalSeverity": {
+      "id": "SERIOUS",
+      "name": "Serious",
+      "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+    },
+    "tags": [
+      {
+        "id": "axe-ACT"
+      },
+      {
+        "id": "axe-cat.language"
+      },
+      {
+        "id": "axe-EN-301-549"
+      },
+      {
+        "id": "axe-EN-9.3.1.1"
+      },
+      {
+        "id": "axe-RGAA-8.3.1"
+      },
+      {
+        "id": "axe-RGAAv4"
+      },
+      {
+        "id": "axe-TT11.a"
+      },
+      {
+        "id": "axe-TTv5"
+      },
+      {
+        "id": "axe-wcag2a"
+      },
+      {
+        "id": "axe-wcag311"
+      },
+      {
+        "id": "WCAG-3.1.1",
+        "description": "3.1.1 Language of Page  (Level A)",
+        "link": "https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html"
+      },
+      {
+        "id": "WCAG-A"
+      },
+      {
+        "id": "WCAG2.0"
+      }
+    ],
+    "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/html-has-lang",
+    "wcagLevels": [
+      "2.0 A",
+      "2.1 A",
+      "2.2 A",
+      "2.0 AA",
+      "2.1 AA",
+      "2.2 AA",
+      "2.0 AAA",
+      "2.1 AAA",
+      "2.2 AAA"
+    ],
+    "version": "1.1",
+    "isNeedsReview": false,
+    "isEvincedRecommended": true,
+    "source": "AXE"
+  }
+]
