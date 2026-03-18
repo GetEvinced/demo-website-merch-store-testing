@@ -1,0 +1,3309 @@
+{
+  "page": "homepage",
+  "url": "http://localhost:3000/",
+  "issueCount": 34,
+  "issues": [
+    {
+      "id": "bdad51ac-f13c-470b-9f5d-c49a8e1f5469",
+      "index": "I1",
+      "hidden": false,
+      "validation": {
+        "id": "b8e4f39f-ca56-419e-8a9d-63192eb5f10a"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "05eac2a5-fc9c-4dd2-97e1-100fed128b5d",
+          "domSnippet": "<div class=\"icon-btn wishlist-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg><span>Wishlist</span></div>",
+          "componentId": "b3e24a95",
+          "index": "S1",
+          "selector": ".wishlist-btn",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 986.8125,
+            "y": 12,
+            "height": 43,
+            "width": 50.453125,
+            "top": 12,
+            "left": 986.8125,
+            "right": 1037.265625,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "66bdc03e",
+      "canonicalSignature": "66bdc03e",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "ad3a459f-817a-432e-9c43-51a17b21e247",
+      "index": "I2",
+      "hidden": false,
+      "validation": {
+        "id": "e058fa6e-a1f4-4bd1-92a3-c13bdc59079b"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "05eac2a5-fc9c-4dd2-97e1-100fed128b5d",
+          "domSnippet": "<div class=\"icon-btn wishlist-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg><span>Wishlist</span></div>",
+          "componentId": "b3e24a95",
+          "index": "S1",
+          "selector": ".wishlist-btn",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 986.8125,
+            "y": 12,
+            "height": 43,
+            "width": 50.453125,
+            "top": 12,
+            "left": 986.8125,
+            "right": 1037.265625,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "6111ba71",
+      "canonicalSignature": "6111ba71",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "9368ee64-d86f-414c-90c0-7a04a12988e6",
+      "index": "I3",
+      "hidden": false,
+      "validation": {
+        "id": "6de7edcc-aec0-4635-9cc7-24038192ceb0"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ec264dc0-de2e-4f1b-b2f2-c81e03b11fc6",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+          "componentId": "46161aed",
+          "index": "S2",
+          "selector": ".icon-btn:nth-child(2)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1041.265625,
+            "y": 12,
+            "height": 43,
+            "width": 47.6875,
+            "top": 12,
+            "left": 1041.265625,
+            "right": 1088.953125,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "5c964630",
+      "canonicalSignature": "5c964630",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "09fb34a6-6fe4-4a85-887d-a9c8a05f3a81",
+      "index": "I4",
+      "hidden": false,
+      "validation": {
+        "id": "de08cc6d-0c80-4c77-8f00-2eea34bdd89e"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ec264dc0-de2e-4f1b-b2f2-c81e03b11fc6",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+          "componentId": "46161aed",
+          "index": "S2",
+          "selector": ".icon-btn:nth-child(2)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1041.265625,
+            "y": 12,
+            "height": 43,
+            "width": 47.6875,
+            "top": 12,
+            "left": 1041.265625,
+            "right": 1088.953125,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "17a3541c",
+      "canonicalSignature": "17a3541c",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "1d791bde-dddf-4eec-b05a-f922708468dd",
+      "index": "I5",
+      "hidden": false,
+      "validation": {
+        "id": "3380d5c5-ed3d-45ac-b4e6-81b2c3ef62ac"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ec264dc0-de2e-4f1b-b2f2-c81e03b11fc6",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span aria-hidden=\"true\">Search</span></div>",
+          "componentId": "46161aed",
+          "index": "S2",
+          "selector": ".icon-btn:nth-child(2)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1041.265625,
+            "y": 12,
+            "height": 43,
+            "width": 47.6875,
+            "top": 12,
+            "left": 1041.265625,
+            "right": 1088.953125,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "11cef7c9",
+      "canonicalSignature": "11cef7c9",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "253c0612-53aa-4f24-a4c3-ac39a4ce35a0",
+      "index": "I6",
+      "hidden": false,
+      "validation": {
+        "id": "3343346d-005e-4e12-ad63-ddc53a3d7485"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "df063320-b37c-4f5b-99f7-7641ad8ebbf7",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+          "componentId": "46161aed",
+          "index": "S3",
+          "selector": ".icon-btn:nth-child(4)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1143.53125,
+            "y": 12,
+            "height": 43,
+            "width": 40.46875,
+            "top": 12,
+            "left": 1143.53125,
+            "right": 1184,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "e89b9fc2",
+      "canonicalSignature": "e89b9fc2",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "f8bfec70-a472-4329-8549-e39a3905628c",
+      "index": "I7",
+      "hidden": false,
+      "validation": {
+        "id": "c8fb233f-0eee-4e19-aa1a-7e260cfaa159"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "df063320-b37c-4f5b-99f7-7641ad8ebbf7",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+          "componentId": "46161aed",
+          "index": "S3",
+          "selector": ".icon-btn:nth-child(4)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1143.53125,
+            "y": 12,
+            "height": 43,
+            "width": 40.46875,
+            "top": 12,
+            "left": 1143.53125,
+            "right": 1184,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "f39410e6",
+      "canonicalSignature": "f39410e6",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "bf9afccd-4e47-4eae-a356-9d8e79d3d0b5",
+      "index": "I8",
+      "hidden": false,
+      "validation": {
+        "id": "bce121c7-70dd-450d-8cd7-0760a25853b5"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "df063320-b37c-4f5b-99f7-7641ad8ebbf7",
+          "domSnippet": "<div class=\"icon-btn\" style=\"cursor: pointer;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg><span aria-hidden=\"true\">Login</span></div>",
+          "componentId": "46161aed",
+          "index": "S3",
+          "selector": ".icon-btn:nth-child(4)",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1143.53125,
+            "y": 12,
+            "height": 43,
+            "width": 40.46875,
+            "top": 12,
+            "left": 1143.53125,
+            "right": 1184,
+            "bottom": 55
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "edbfb493",
+      "canonicalSignature": "edbfb493",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "e48c1150-9752-4877-b831-1086ff0c051f",
+      "index": "I9",
+      "hidden": false,
+      "validation": {
+        "id": "580dbf58-c734-4f17-ab38-c37f657ac936"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "08eef8a1-593a-4515-8e36-ffae13ebbc4f",
+          "domSnippet": "<div class=\"flag-group\" style=\"cursor: pointer;\"><img src=\"/images/icons/united-states-of-america.png\" alt=\"United States Flag\" width=\"24\" height=\"24\"><img src=\"/images/icons/canada.png\" alt=\"Canada Flag\" width=\"24\" height=\"24\"></div>",
+          "componentId": "b206ed8f",
+          "index": "S4",
+          "selector": ".flag-group",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1188,
+            "y": 17.5,
+            "height": 32,
+            "width": 68,
+            "top": 17.5,
+            "left": 1188,
+            "right": 1256,
+            "bottom": 49.5
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "7411dbb8",
+      "canonicalSignature": "7411dbb8",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "d887a258-9ed2-4643-bdac-c11a756a5532",
+      "index": "I10",
+      "hidden": false,
+      "validation": {
+        "id": "ff8f877c-6127-45b4-bbe9-33f03574796b"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "08eef8a1-593a-4515-8e36-ffae13ebbc4f",
+          "domSnippet": "<div class=\"flag-group\" style=\"cursor: pointer;\"><img src=\"/images/icons/united-states-of-america.png\" alt=\"United States Flag\" width=\"24\" height=\"24\"><img src=\"/images/icons/canada.png\" alt=\"Canada Flag\" width=\"24\" height=\"24\"></div>",
+          "componentId": "b206ed8f",
+          "index": "S4",
+          "selector": ".flag-group",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 1188,
+            "y": 17.5,
+            "height": 32,
+            "width": 68,
+            "top": 17.5,
+            "left": 1188,
+            "right": 1256,
+            "bottom": 49.5
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "8326d643",
+      "canonicalSignature": "8326d643",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "d5f2b9fa-12a8-418c-bc0b-4c5536ce8860",
+      "index": "I11",
+      "hidden": false,
+      "validation": {
+        "id": "f093ba5a-411f-461c-b2b3-6abce79fa84f"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "92ccf206-9af3-4876-84c3-5f8138225a64",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Drinkware</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S5",
+          "selector": ".product-card:nth-child(1) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 44,
+            "y": 787,
+            "height": 30,
+            "width": 125.359375,
+            "top": 787,
+            "left": 44,
+            "right": 169.359375,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "74e19d29",
+      "canonicalSignature": "74e19d29",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "46f73f9b-35cf-4dfb-b915-fc442990e392",
+      "index": "I12",
+      "hidden": false,
+      "validation": {
+        "id": "9374c8ef-c51b-497c-b535-88e07dfd8445"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "92ccf206-9af3-4876-84c3-5f8138225a64",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Drinkware</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S5",
+          "selector": ".product-card:nth-child(1) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 44,
+            "y": 787,
+            "height": 30,
+            "width": 125.359375,
+            "top": 787,
+            "left": 44,
+            "right": 169.359375,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "0abd3f7d",
+      "canonicalSignature": "0abd3f7d",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "6c8cf60e-361a-4716-adaa-2bf71c27dcee",
+      "index": "I13",
+      "hidden": false,
+      "validation": {
+        "id": "78f2602d-c772-4c54-a7f1-71c5d5b2beac"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "92ccf206-9af3-4876-84c3-5f8138225a64",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Drinkware</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S5",
+          "selector": ".product-card:nth-child(1) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 44,
+            "y": 787,
+            "height": 30,
+            "width": 125.359375,
+            "top": 787,
+            "left": 44,
+            "right": 169.359375,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "c8a32a24",
+      "canonicalSignature": "c8a32a24",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "eb448a67-8b92-45ea-acd0-161aaa51f577",
+      "index": "I14",
+      "hidden": false,
+      "validation": {
+        "id": "95977538-5d51-4156-bdd7-cce2f0bb6031"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "55e092cc-6f9d-43cd-9231-d2d56ec7d61e",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Fun and Games</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S6",
+          "selector": ".product-card:nth-child(2) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 461.328125,
+            "y": 787,
+            "height": 30,
+            "width": 157.359375,
+            "top": 787,
+            "left": 461.328125,
+            "right": 618.6875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "79d6611a",
+      "canonicalSignature": "79d6611a",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "9ef04ff5-58df-4d34-83ef-2a72121ce080",
+      "index": "I15",
+      "hidden": false,
+      "validation": {
+        "id": "a41188b6-a851-4fb8-af19-d7ec56aaf056"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "55e092cc-6f9d-43cd-9231-d2d56ec7d61e",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Fun and Games</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S6",
+          "selector": ".product-card:nth-child(2) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 461.328125,
+            "y": 787,
+            "height": 30,
+            "width": 157.359375,
+            "top": 787,
+            "left": 461.328125,
+            "right": 618.6875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "c0ba283e",
+      "canonicalSignature": "c0ba283e",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "ec567d37-81f7-405a-9faa-94da26ce3f8e",
+      "index": "I16",
+      "hidden": false,
+      "validation": {
+        "id": "63215e14-cdbc-4e91-96a5-90d1b8e65159"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "55e092cc-6f9d-43cd-9231-d2d56ec7d61e",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Fun and Games</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S6",
+          "selector": ".product-card:nth-child(2) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 461.328125,
+            "y": 787,
+            "height": 30,
+            "width": 157.359375,
+            "top": 787,
+            "left": 461.328125,
+            "right": 618.6875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "d4aa6527",
+      "canonicalSignature": "d4aa6527",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "cc66a1be-7c75-4004-b285-e0f3e3e2915f",
+      "index": "I17",
+      "hidden": false,
+      "validation": {
+        "id": "2973acb6-17f2-40b1-9076-adf7f2b2e59f"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ea5c7466-e088-4be1-8bd2-de3a541d7555",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Stationery</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S7",
+          "selector": ".product-card:nth-child(3) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 878.65625,
+            "y": 787,
+            "height": 30,
+            "width": 126.015625,
+            "top": 787,
+            "left": 878.65625,
+            "right": 1004.671875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "7a429c03",
+      "canonicalSignature": "7a429c03",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "02dfd85d-ec0b-4d31-81a9-e6bc2df70119",
+      "index": "I18",
+      "hidden": false,
+      "validation": {
+        "id": "be03d0bf-1729-4b69-ac76-f857cfbb39a3"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ea5c7466-e088-4be1-8bd2-de3a541d7555",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Stationery</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S7",
+          "selector": ".product-card:nth-child(3) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 878.65625,
+            "y": 787,
+            "height": 30,
+            "width": 126.015625,
+            "top": 787,
+            "left": 878.65625,
+            "right": 1004.671875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "9e287257",
+      "canonicalSignature": "9e287257",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "ae4c1e26-b0a0-422b-9454-0a0d13856928",
+      "index": "I19",
+      "hidden": false,
+      "validation": {
+        "id": "6014adc1-2cb8-449c-acdc-dc4c0cd17fc3"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "ea5c7466-e088-4be1-8bd2-de3a541d7555",
+          "domSnippet": "<div class=\"shop-link\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">Shop Stationery</span></div>",
+          "componentId": "bcc40bab",
+          "index": "S7",
+          "selector": ".product-card:nth-child(3) > .product-card-info > .shop-link",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 878.65625,
+            "y": 787,
+            "height": 30,
+            "width": 126.015625,
+            "top": 787,
+            "left": 878.65625,
+            "right": 1004.671875,
+            "bottom": 817
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "e80f520e",
+      "canonicalSignature": "e80f520e",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "67b1cbdc-3a5f-4e68-94b8-c3ab7a5f4b5d",
+      "index": "I20",
+      "hidden": false,
+      "validation": {
+        "id": "18a75f86-0bf0-491d-9478-977d04af8dce"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "84112040-1123-4ff7-9cc7-22bb10be5051",
+          "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\">Sustainability</div>",
+          "componentId": "bc238c28",
+          "index": "S8",
+          "selector": "li:nth-child(3) > .footer-nav-item",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 24,
+            "y": 2924.09375,
+            "height": 18,
+            "width": 138.765625,
+            "top": 2924.09375,
+            "left": 24,
+            "right": 162.765625,
+            "bottom": 2942.09375
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "6326d3bf",
+      "canonicalSignature": "6326d3bf",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "e6cbcfc0-01ef-44ed-9549-52d0e8382706",
+      "index": "I21",
+      "hidden": false,
+      "validation": {
+        "id": "c6fb6b51-b038-4c9c-922b-59651f3ef328"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "84112040-1123-4ff7-9cc7-22bb10be5051",
+          "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\">Sustainability</div>",
+          "componentId": "bc238c28",
+          "index": "S8",
+          "selector": "li:nth-child(3) > .footer-nav-item",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 24,
+            "y": 2924.09375,
+            "height": 18,
+            "width": 138.765625,
+            "top": 2924.09375,
+            "left": 24,
+            "right": 162.765625,
+            "bottom": 2942.09375
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "26f897b6",
+      "canonicalSignature": "26f897b6",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "b06df962-05d4-4738-9a1a-a6f1229b9aee",
+      "index": "I22",
+      "hidden": false,
+      "validation": {
+        "id": "9654761c-91b5-4f4b-8185-c2384924cbc1"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "d40bbac4-93ef-4a99-a585-5f415ab7f8aa",
+          "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+          "componentId": "fa342891",
+          "index": "S9",
+          "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 226.765625,
+            "y": 2868.09375,
+            "height": 18,
+            "width": 40.015625,
+            "top": 2868.09375,
+            "left": 226.765625,
+            "right": 266.78125,
+            "bottom": 2886.09375
+          }
+        }
+      ],
+      "type": {
+        "id": "WRONG_SEMANTIC_ROLE",
+        "newId": "86649b9b-96e1-4abb-903a-5ec30f0af526",
+        "name": "Interactable Role"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Screen readers do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent screen readers from interpreting an element as interactable.\n**Effect:** Screen reader either does not navigate to the element or navigates to it but does not correctly convey its function to the user.\n**Suggested Solutions:**\n* Change the element's tag to correctly reflect its type, ie: <*button*>, <*a*>, <*select*> or <*input*>\n* Add attributes (ARIA) to indicate the element's type and/or potential functionalities.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/interactable-role",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "e5482088",
+      "canonicalSignature": "e5482088",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "db70e0c6-9b8a-4a83-8626-239922d8cb39",
+      "index": "I23",
+      "hidden": false,
+      "validation": {
+        "id": "4daad5e1-538b-41e9-bb73-d938a3a08993"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "d40bbac4-93ef-4a99-a585-5f415ab7f8aa",
+          "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+          "componentId": "fa342891",
+          "index": "S9",
+          "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 226.765625,
+            "y": 2868.09375,
+            "height": 18,
+            "width": 40.015625,
+            "top": 2868.09375,
+            "left": 226.765625,
+            "right": 266.78125,
+            "bottom": 2886.09375
+          }
+        }
+      ],
+      "type": {
+        "id": "NO_DESCRIPTIVE_TEXT",
+        "newId": "f6af18bf-0a5b-472b-a8da-fe3bb0096f05",
+        "name": "Accessible Name"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "The element is missing a textual attribute that indicates which information or action is being asked of the user and/or the outcome of interacting with it.",
+      "description": "**Cause:** An interactable element requires textual description in order to inform the screen reader of its purpose and function.\n**Effect:** Insufficient information about the element limits its interactability.\n**Suggested Solutions:**\n* Add the appropriate descriptive text to the body of the tag.\n* Add the appropriate attributes to the tag itself.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/accessible-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "db38b064",
+      "canonicalSignature": "db38b064",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "6818cd85-495f-4c28-82e3-2caca9635a2c",
+      "index": "I24",
+      "hidden": false,
+      "validation": {
+        "id": "7fb31760-294e-42ff-8784-be065c393830"
+      },
+      "skipIssue": false,
+      "elements": [
+        {
+          "id": "d40bbac4-93ef-4a99-a585-5f415ab7f8aa",
+          "domSnippet": "<div class=\"footer-nav-item\" style=\"cursor: pointer;\"><span aria-hidden=\"true\">FAQs</span></div>",
+          "componentId": "fa342891",
+          "index": "S9",
+          "selector": ".footer-list:nth-child(2) > li > .footer-nav-item",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "x": 226.765625,
+            "y": 2868.09375,
+            "height": 18,
+            "width": 40.015625,
+            "top": 2868.09375,
+            "left": 226.765625,
+            "right": 266.78125,
+            "bottom": 2886.09375
+          }
+        }
+      ],
+      "type": {
+        "id": "NOT_FOCUSABLE",
+        "newId": "724b3853-33d3-47b9-80bd-2401abcd5ad4",
+        "name": "Keyboard Accessible"
+      },
+      "firstSeenTime": 1773846490075,
+      "lastSeenTime": 1773846490075,
+      "additionalInformation": {},
+      "summary": "Keyboard-only users do not interpret the element as interactable.",
+      "description": "**Cause:** Missing or incorrect semantics prevent the keyboard User-Agent from interpreting an element as interactable.\n**Effect:** Interface interaction is limited for keyboard-only users.\n**Suggested Solutions:**\n* (Recommended) Add an element that better reflects the element's purpose. Interactive elements do not need any additions because they are focusable by nature.\n* Add a *tabindex* attribute with the value of “0” to the element.",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-2.1.1",
+          "description": "2.1.1 Keyboard  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/keyboard-accessible",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "d2969f4b",
+      "canonicalSignature": "d2969f4b",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "2a577675-89c9-4686-b4aa-76d2a5e73f2e",
+      "index": "I25",
+      "hidden": false,
+      "validation": {
+        "id": "6c0ea146-3dfc-4903-990e-4a043a3f23e9"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-ARIA-REQUIRED-ATTR",
+        "newId": "f7cdb4cf-cecb-4a4c-82fe-aff49f0c7257",
+        "name": "Aria-required-attr"
+      },
+      "elements": [
+        {
+          "id": "55efb986-790d-480c-bef2-51661fc30316",
+          "domSnippet": "<div role=\"slider\" aria-label=\"Popularity indicator\" class=\"drop-popularity-bar\"></div>",
+          "componentId": "74e17cae",
+          "index": "S10",
+          "selector": ".drop-popularity-bar",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 2474.609375,
+            "right": 1256,
+            "bottom": 2474.609375,
+            "left": 492,
+            "width": 764,
+            "height": 0,
+            "x": 492,
+            "y": 2474.609375
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "aria-required-attr",
+          "impact": "critical",
+          "tags": [
+            "cat.aria",
+            "wcag2a",
+            "wcag412",
+            "EN-301-549",
+            "EN-9.4.1.2"
+          ],
+          "description": "Ensure elements with ARIA roles have all required ARIA attributes",
+          "help": "Required ARIA attributes must be provided",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "aria-required-attr",
+                  "data": [
+                    "aria-valuenow"
+                  ],
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Required ARIA attribute not present: aria-valuenow"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "critical",
+              "html": "<div role=\"slider\" aria-label=\"Popularity indicator\" class=\"drop-popularity-bar\"></div>",
+              "target": [
+                ".drop-popularity-bar"
+              ],
+              "failureSummary": "Fix any of the following:\n  Required ARIA attribute not present: aria-valuenow"
+            }
+          ]
+        }
+      },
+      "summary": "Required ARIA attributes must be provided",
+      "description": "**Description:**\n\tEnsure elements with ARIA roles have all required ARIA attributes\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* Required ARIA attribute not present: aria-valuenow",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.4.1.2"
+        },
+        {
+          "id": "axe-cat.aria"
+        },
+        {
+          "id": "axe-wcag2a"
+        },
+        {
+          "id": "axe-wcag412"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/aria-required-attr",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "1208d795",
+      "canonicalSignature": "1208d795",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "b34975fb-50d3-4bf5-b5f9-645bebfbcd7c",
+      "index": "I26",
+      "hidden": false,
+      "validation": {
+        "id": "7bc1dca0-5248-4e6a-b9af-6928dab27629"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-ARIA-VALID-ATTR-VALUE",
+        "newId": "329246ca-bbc7-42d4-a990-5c41c93b01e5",
+        "name": "Aria-valid-attr-value"
+      },
+      "elements": [
+        {
+          "id": "59290b28-9016-4994-b998-339b1178f582",
+          "domSnippet": "<h1 aria-expanded=\"yes\">Keep on Truckin'</h1>",
+          "componentId": "00000000",
+          "index": "S11",
+          "selector": ".featured-card:nth-child(1) > .featured-card-info > h1",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 1267.328125,
+            "right": 606,
+            "bottom": 1294.359375,
+            "left": 48,
+            "width": 558,
+            "height": 27.03125,
+            "x": 48,
+            "y": 1267.328125
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "aria-valid-attr-value",
+          "impact": "critical",
+          "tags": [
+            "cat.aria",
+            "wcag2a",
+            "wcag412",
+            "EN-301-549",
+            "EN-9.4.1.2"
+          ],
+          "description": "Ensure all ARIA attributes have valid values",
+          "help": "ARIA attributes must conform to valid values",
+          "nodes": [
+            {
+              "any": [],
+              "all": [
+                {
+                  "id": "aria-valid-attr-value",
+                  "data": [
+                    "aria-expanded=\"yes\""
+                  ],
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Invalid ARIA attribute value: aria-expanded=\"yes\""
+                }
+              ],
+              "none": [],
+              "impact": "critical",
+              "html": "<h1 aria-expanded=\"yes\">Keep on Truckin'</h1>",
+              "target": [
+                ".featured-card:nth-child(1) > .featured-card-info > h1"
+              ],
+              "failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-expanded=\"yes\""
+            }
+          ]
+        }
+      },
+      "summary": "ARIA attributes must conform to valid values",
+      "description": "**Description:**\n\tEnsure all ARIA attributes have valid values\n\t**Failure Summary:**\n\tFix all of the following:\n  Invalid ARIA attribute value: aria-expanded=\"yes\"",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.4.1.2"
+        },
+        {
+          "id": "axe-cat.aria"
+        },
+        {
+          "id": "axe-wcag2a"
+        },
+        {
+          "id": "axe-wcag412"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/aria-valid-attr-value",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "022078b2",
+      "canonicalSignature": "022078b2",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "a0c7fd58-2ba0-41ae-9122-186c82620b35",
+      "index": "I27",
+      "hidden": false,
+      "validation": {
+        "id": "33c10452-abdb-4a99-a068-cba233f05078"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-ARIA-VALID-ATTR-VALUE",
+        "newId": "329246ca-bbc7-42d4-a990-5c41c93b01e5",
+        "name": "Aria-valid-attr-value"
+      },
+      "elements": [
+        {
+          "id": "d8d271ab-9e1a-4ea5-a6cd-316b9790a389",
+          "domSnippet": "<h1 aria-expanded=\"yes\">Limited edition and traveling fast</h1>",
+          "componentId": "00000000",
+          "index": "S12",
+          "selector": ".featured-card:nth-child(2) > .featured-card-info > h1",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 1267.328125,
+            "right": 1232,
+            "bottom": 1294.359375,
+            "left": 674,
+            "width": 558,
+            "height": 27.03125,
+            "x": 674,
+            "y": 1267.328125
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "aria-valid-attr-value",
+          "impact": "critical",
+          "tags": [
+            "cat.aria",
+            "wcag2a",
+            "wcag412",
+            "EN-301-549",
+            "EN-9.4.1.2"
+          ],
+          "description": "Ensure all ARIA attributes have valid values",
+          "help": "ARIA attributes must conform to valid values",
+          "nodes": [
+            {
+              "any": [],
+              "all": [
+                {
+                  "id": "aria-valid-attr-value",
+                  "data": [
+                    "aria-expanded=\"yes\""
+                  ],
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Invalid ARIA attribute value: aria-expanded=\"yes\""
+                }
+              ],
+              "none": [],
+              "impact": "critical",
+              "html": "<h1 aria-expanded=\"yes\">Limited edition and traveling fast</h1>",
+              "target": [
+                ".featured-card:nth-child(2) > .featured-card-info > h1"
+              ],
+              "failureSummary": "Fix all of the following:\n  Invalid ARIA attribute value: aria-expanded=\"yes\""
+            }
+          ]
+        }
+      },
+      "summary": "ARIA attributes must conform to valid values",
+      "description": "**Description:**\n\tEnsure all ARIA attributes have valid values\n\t**Failure Summary:**\n\tFix all of the following:\n  Invalid ARIA attribute value: aria-expanded=\"yes\"",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.4.1.2"
+        },
+        {
+          "id": "axe-cat.aria"
+        },
+        {
+          "id": "axe-wcag2a"
+        },
+        {
+          "id": "axe-wcag412"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/aria-valid-attr-value",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "60737917",
+      "canonicalSignature": "60737917",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "eb6bd164-9778-4f17-8f7d-63cec34fd205",
+      "index": "I28",
+      "hidden": false,
+      "validation": {
+        "id": "8bcca7ec-34a6-4d91-989d-d10a9c10f954"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-BUTTON-NAME",
+        "newId": "77adc33e-4acc-4661-99f1-2458f8eca67f",
+        "name": "Button-name"
+      },
+      "elements": [
+        {
+          "id": "e0025abf-ece6-449d-a242-73de7544cd1e",
+          "domSnippet": "<button class=\"JjN6AKz7a2PRH2gFKW3v\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
+          "componentId": "06f39006",
+          "index": "S13",
+          "selector": "#cart-modal > div:nth-child(1) > button",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 20,
+            "right": 1676,
+            "bottom": 56,
+            "left": 1640,
+            "width": 36,
+            "height": 36,
+            "x": 1640,
+            "y": 20
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {},
+      "summary": "Buttons must have discernible text",
+      "description": "**Suggested Solutions:** Fix at least one (1) of the following\n* Element does not have inner text that is visible to screen readers,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"\n",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/button-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "97c7ee9b",
+      "canonicalSignature": "97c7ee9b",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "f0030bfe-feb8-43e8-a7d3-6ea834dd0c0f",
+      "index": "I29",
+      "hidden": false,
+      "validation": {
+        "id": "ec6ae208-31dc-4e6d-8935-e2ac5d99e506"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-BUTTON-NAME",
+        "newId": "77adc33e-4acc-4661-99f1-2458f8eca67f",
+        "name": "Button-name"
+      },
+      "elements": [
+        {
+          "id": "a7d57757-8aa3-467f-8892-0e347373f97b",
+          "domSnippet": "<button class=\"WEtKZofboSdJ1n7KLpwd\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
+          "componentId": "d1ab1098",
+          "index": "S14",
+          "selector": "div[role=\"dialog\"] > div:nth-child(1) > button",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 20,
+            "right": 1676,
+            "bottom": 56,
+            "left": 1640,
+            "width": 36,
+            "height": 36,
+            "x": 1640,
+            "y": 20
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {},
+      "summary": "Buttons must have discernible text",
+      "description": "**Suggested Solutions:** Fix at least one (1) of the following\n* Element does not have inner text that is visible to screen readers,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"\n",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-4.1.2",
+          "description": "4.1.2 Name, Role, Value  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/button-name",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "d67d4ada",
+      "canonicalSignature": "d67d4ada",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "c3f3971e-b0b1-4382-a876-5facf7eb1a8a",
+      "index": "I30",
+      "hidden": false,
+      "validation": {
+        "id": "b45faae5-3168-45e3-9751-695b7c84ae7c"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-COLOR-CONTRAST",
+        "newId": "41fbf576-e94e-4a71-ac4d-63f328e3a982",
+        "name": "Color-contrast"
+      },
+      "elements": [
+        {
+          "id": "e47e4b46-93cb-4f9e-8f65-35b0f27baa73",
+          "domSnippet": "<p>Warm hues for cooler days</p>",
+          "componentId": "00000000",
+          "index": "S15",
+          "selector": ".hero-content > p",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 335.375,
+            "right": 354.71875,
+            "bottom": 356.375,
+            "left": 80,
+            "width": 274.71875,
+            "height": 21,
+            "x": 80,
+            "y": 335.375
+          }
+        },
+        {
+          "id": "ccb24a71-f106-41f1-847b-dcf2317dbdd3",
+          "domSnippet": "<section class=\"hero-banner\" aria-label=\"Featured promotion\"><div class=\"hero-content\"><h3>Winter Basics</h3><p>Warm hues for cooler days</p><a class=\"hero-btn\" href=\"/shop/new\" data-discover=\"true\">Shop New</a></div><div class=\"hero-image\"><img src=\"/images/home/New_Tees.png\"></div></section>",
+          "componentId": "8e9113d0",
+          "index": "S16",
+          "selector": ".hero-banner",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 100,
+            "right": 1280,
+            "bottom": 600,
+            "left": 0,
+            "width": 1280,
+            "height": 500,
+            "x": 0,
+            "y": 100
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#c8c0b8",
+                    "bgColor": "#e8e0d8",
+                    "contrastRatio": 1.37,
+                    "fontSize": "13.2pt (17.6px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"hero-banner\" aria-label=\"Featured promotion\"><div class=\"hero-content\"><h3>Winter Basics</h3><p>Warm hues for cooler days</p><a class=\"hero-btn\" href=\"/shop/new\" data-discover=\"true\">Shop New</a></div><div class=\"hero-image\"><img src=\"/images/home/New_Tees.png\"></div></section>",
+                      "target": [
+                        ".hero-banner"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 1.37 (foreground color: #c8c0b8, background color: #e8e0d8, font size: 13.2pt (17.6px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<p>Warm hues for cooler days</p>",
+              "target": [
+                ".hero-content > p"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #c8c0b8, background color: #e8e0d8, font size: 13.2pt (17.6px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      },
+      "summary": "Elements must meet minimum color contrast ratio thresholds",
+      "description": "**Description:**\n\tEnsure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* Element has insufficient color contrast of 1.37 (foreground color: #c8c0b8, background color: #e8e0d8, font size: 13.2pt (17.6px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "severity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "originalSeverity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "tags": [
+        {
+          "id": "WCAG-1.4.3",
+          "description": "1.4.3 Contrast (Minimum)  (Level AA)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+        },
+        {
+          "id": "WCAG-AA"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-ACT"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.1.4.3"
+        },
+        {
+          "id": "axe-TT13.c"
+        },
+        {
+          "id": "axe-TTv5"
+        },
+        {
+          "id": "axe-cat.color"
+        },
+        {
+          "id": "axe-wcag143"
+        },
+        {
+          "id": "axe-wcag2aa"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/color-contrast",
+      "wcagLevels": [
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "bdbbf607",
+      "canonicalSignature": "bdbbf607",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "751c6963-ec00-45fb-acdd-776f9f0108a7",
+      "index": "I31",
+      "hidden": false,
+      "validation": {
+        "id": "158f4de8-9ac5-428a-8e5a-04264d3c17c7"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-HTML-HAS-LANG",
+        "newId": "1f738d21-46c2-465c-80de-0d6bae4d3b61",
+        "name": "Html-has-lang"
+      },
+      "elements": [
+        {
+          "id": "70609bac-ba3c-4225-af93-b47c4850a030",
+          "domSnippet": "<!--NOTE: snippet was trimmed due to its size--><!--NOTE: snippet was trimmed due to its size--><html style=\"scroll-behavior: unset;\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Demo Website</title><script defer=\"defer\" src=\"/bundle.js\"></script><style>*, *::before, *::after {\n  box-sizing: border-box;\n}\n\n/* A11Y-GEN3 reflow: overflow-x: hidden prevents horizontal scrolling, which causes\n   the navigation menu and other fixed-width content to be clipped and cut off when\n   the page is zoomed to 300% — violates WCAG 1.4.10 (AA) Reflow */\nbody {\n  margin: 0;\n  padding: 0;\n  background: #fff;\n  font-family: 'Google Sans', Arial, sans-serif;\n  color: #202124;\n  -webkit-font-smoothing: antialiased;\n  overflow-x: hidden;\n}\n\n.app {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n}\n\nmain {\n  flex: 1;\n}\n\n.skip-link {\n  position: absolute;\n  top: -40px;\n  left: 0;\n  background: #1a73e8;\n  color: #fff;\n  padding: 8px 16px;\n  z-index: 9999;\n  font-size: 14px;\n  text-decoration: none;\n  border-ra",
+          "componentId": "d3fa0f3a",
+          "index": "S17",
+          "selector": "html",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 0,
+            "right": 1280,
+            "bottom": 2990.09375,
+            "left": 0,
+            "width": 1280,
+            "height": 2990.09375,
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311",
+            "TTv5",
+            "TT11.a",
+            "EN-301-549",
+            "EN-9.3.1.1",
+            "ACT"
+          ],
+          "description": "Ensure every HTML document has a lang attribute",
+          "help": "<html> element must have a lang attribute",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "has-lang",
+                  "data": {
+                    "messageKey": "noLang"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "The <html> element does not have a lang attribute"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<html style=\"scroll-behavior: unset;\">",
+              "target": [
+                "html"
+              ],
+              "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        }
+      },
+      "summary": "<html> element must have a lang attribute",
+      "description": "**Description:**\n\tEnsure every HTML document has a lang attribute\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* The <html> element does not have a lang attribute",
+      "severity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "originalSeverity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "tags": [
+        {
+          "id": "WCAG-3.1.1",
+          "description": "3.1.1 Language of Page  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-ACT"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.3.1.1"
+        },
+        {
+          "id": "axe-TT11.a"
+        },
+        {
+          "id": "axe-TTv5"
+        },
+        {
+          "id": "axe-cat.language"
+        },
+        {
+          "id": "axe-wcag2a"
+        },
+        {
+          "id": "axe-wcag311"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/html-has-lang",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "b2951842",
+      "canonicalSignature": "b2951842",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "e8b9250d-6b0a-4ff4-912c-d6c93642bb2c",
+      "index": "I32",
+      "hidden": false,
+      "validation": {
+        "id": "bd124ece-adf5-409a-909c-4e8c2070d2a8"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-IMAGE-ALT",
+        "newId": "972b84f6-ff70-471c-a191-7496e33baf80",
+        "name": "Image-alt"
+      },
+      "elements": [
+        {
+          "id": "7aa85d9d-3fd0-42fe-8d9d-901e1c41e5bd",
+          "domSnippet": "<img src=\"/images/home/New_Tees.png\">",
+          "componentId": "00000000",
+          "index": "S18",
+          "selector": "img[src$=\"New_Tees.png\"]",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 140,
+            "right": 1220,
+            "bottom": 560,
+            "left": 800,
+            "width": 420,
+            "height": 420,
+            "x": 800,
+            "y": 140
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "image-alt",
+          "impact": "critical",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag111",
+            "section508",
+            "section508.22.a",
+            "TTv5",
+            "TT7.a",
+            "TT7.b",
+            "EN-301-549",
+            "EN-9.1.1.1",
+            "ACT"
+          ],
+          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+          "help": "Images must have alternative text",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "has-alt",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element does not have an alt attribute"
+                },
+                {
+                  "id": "aria-label",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "aria-label attribute does not exist or is empty"
+                },
+                {
+                  "id": "aria-labelledby",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+                },
+                {
+                  "id": "non-empty-title",
+                  "data": {
+                    "messageKey": "noAttr"
+                  },
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element has no title attribute"
+                },
+                {
+                  "id": "presentational-role",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "critical",
+              "html": "<img src=\"/images/home/New_Tees.png\">",
+              "target": [
+                "img[src$=\"New_Tees.png\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      },
+      "summary": "Images must have alternative text",
+      "description": "**Description:**\n\tEnsure <img> elements have alternative text or a role of none or presentation\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* Element does not have an alt attribute,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-1.1.1",
+          "description": "1.1.1 Non-text Content  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-ACT"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.1.1.1"
+        },
+        {
+          "id": "axe-TT7.a"
+        },
+        {
+          "id": "axe-TT7.b"
+        },
+        {
+          "id": "axe-TTv5"
+        },
+        {
+          "id": "axe-cat.text-alternatives"
+        },
+        {
+          "id": "axe-section508"
+        },
+        {
+          "id": "axe-section508.22.a"
+        },
+        {
+          "id": "axe-wcag111"
+        },
+        {
+          "id": "axe-wcag2a"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/image-alt",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "5b8dc4c0",
+      "canonicalSignature": "5b8dc4c0",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "f6754c93-f2c2-41ca-9fc0-05abcc8e0644",
+      "index": "I33",
+      "hidden": false,
+      "validation": {
+        "id": "beca038e-45ea-482b-b0dc-008ca95dc5ab"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-IMAGE-ALT",
+        "newId": "972b84f6-ff70-471c-a191-7496e33baf80",
+        "name": "Image-alt"
+      },
+      "elements": [
+        {
+          "id": "94943755-73cf-4e6e-96a5-3804220a056c",
+          "domSnippet": "<img src=\"/images/home/2bags_charms1.png\" loading=\"lazy\">",
+          "componentId": "00000000",
+          "index": "S19",
+          "selector": "img[src$=\"2bags_charms1.png\"]",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 2316.703125,
+            "right": 444,
+            "bottom": 2787.09375,
+            "left": 24,
+            "width": 420,
+            "height": 470.390625,
+            "x": 24,
+            "y": 2316.703125
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "image-alt",
+          "impact": "critical",
+          "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag111",
+            "section508",
+            "section508.22.a",
+            "TTv5",
+            "TT7.a",
+            "TT7.b",
+            "EN-301-549",
+            "EN-9.1.1.1",
+            "ACT"
+          ],
+          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+          "help": "Images must have alternative text",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "has-alt",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element does not have an alt attribute"
+                },
+                {
+                  "id": "aria-label",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "aria-label attribute does not exist or is empty"
+                },
+                {
+                  "id": "aria-labelledby",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+                },
+                {
+                  "id": "non-empty-title",
+                  "data": {
+                    "messageKey": "noAttr"
+                  },
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element has no title attribute"
+                },
+                {
+                  "id": "presentational-role",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "critical",
+                  "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "critical",
+              "html": "<img src=\"/images/home/2bags_charms1.png\" loading=\"lazy\">",
+              "target": [
+                "img[src$=\"2bags_charms1.png\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ]
+        }
+      },
+      "summary": "Images must have alternative text",
+      "description": "**Description:**\n\tEnsure <img> elements have alternative text or a role of none or presentation\n\t**Failure Summary:**\n\tFix at least one (1) of the following\n* Element does not have an alt attribute,* aria-label attribute does not exist or is empty,* aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty,* Element has no title attribute,* Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "severity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "originalSeverity": {
+        "id": "CRITICAL",
+        "name": "Critical",
+        "newId": "3c68eb41-9227-481d-8eec-9dc8956b19c4"
+      },
+      "tags": [
+        {
+          "id": "WCAG-1.1.1",
+          "description": "1.1.1 Non-text Content  (Level A)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html"
+        },
+        {
+          "id": "WCAG-A"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-ACT"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.1.1.1"
+        },
+        {
+          "id": "axe-TT7.a"
+        },
+        {
+          "id": "axe-TT7.b"
+        },
+        {
+          "id": "axe-TTv5"
+        },
+        {
+          "id": "axe-cat.text-alternatives"
+        },
+        {
+          "id": "axe-section508"
+        },
+        {
+          "id": "axe-section508.22.a"
+        },
+        {
+          "id": "axe-wcag111"
+        },
+        {
+          "id": "axe-wcag2a"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/image-alt",
+      "wcagLevels": [
+        "2.0 A",
+        "2.1 A",
+        "2.2 A",
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "c15be85d",
+      "canonicalSignature": "c15be85d",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    },
+    {
+      "id": "f70102b0-9ea3-4ddb-94a3-f9a7eef12ab5",
+      "index": "I34",
+      "hidden": false,
+      "validation": {
+        "id": "8a32aa58-9e1b-45d3-9a10-0c395c756ba5"
+      },
+      "skipIssue": false,
+      "type": {
+        "id": "AXE-VALID-LANG",
+        "newId": "2167e8c6-9b7e-4fb6-a445-00dce22b1015",
+        "name": "Valid-lang"
+      },
+      "elements": [
+        {
+          "id": "9d716ba5-e02f-41d6-b70b-3d79805487d5",
+          "domSnippet": "<p lang=\"zz\">Our brand-new, limited-edition plushie bag charms have officially dropped. Meet your new best friends: the adorable Android bot, the classic YouTube icon and the super-powered Super G.</p>",
+          "componentId": "00000000",
+          "index": "S20",
+          "selector": "p[lang=\"zz\"]",
+          "pageUrl": "http://localhost:3000/",
+          "pageTitle": "Demo Website",
+          "boundingBox": {
+            "top": 2474.609375,
+            "right": 1256,
+            "bottom": 2523.234375,
+            "left": 492,
+            "width": 764,
+            "height": 48.625,
+            "x": 492,
+            "y": 2474.609375
+          }
+        }
+      ],
+      "firstSeenTime": 1773846490207,
+      "lastSeenTime": 1773846490207,
+      "additionalInformation": {
+        "axeData": {
+          "id": "valid-lang",
+          "impact": "serious",
+          "tags": [
+            "cat.language",
+            "wcag2aa",
+            "wcag312",
+            "TTv5",
+            "TT11.b",
+            "EN-301-549",
+            "EN-9.3.1.2",
+            "ACT"
+          ],
+          "description": "Ensure lang attributes have valid values",
+          "help": "lang attribute must have a valid value",
+          "nodes": [
+            {
+              "any": [],
+              "all": [],
+              "none": [
+                {
+                  "id": "valid-lang",
+                  "data": [
+                    "lang=\"zz\""
+                  ],
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Value of lang attribute not included in the list of valid languages"
+                }
+              ],
+              "impact": "serious",
+              "html": "<p lang=\"zz\">Our brand-new, limited-edition plushie bag charms have officially dropped. Meet your new best friends: the adorable Android bot, the classic YouTube icon and the super-powered Super G.</p>",
+              "target": [
+                "p[lang=\"zz\"]"
+              ],
+              "failureSummary": "Fix all of the following:\n  Value of lang attribute not included in the list of valid languages"
+            }
+          ]
+        }
+      },
+      "summary": "lang attribute must have a valid value",
+      "description": "**Description:**\n\tEnsure lang attributes have valid values\n\t**Failure Summary:**\n\tFix all of the following\n* Value of lang attribute not included in the list of valid languages",
+      "severity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "originalSeverity": {
+        "id": "SERIOUS",
+        "name": "Serious",
+        "newId": "5bd03118-5883-4f43-8831-1544af3afe7c"
+      },
+      "tags": [
+        {
+          "id": "WCAG-3.1.2",
+          "description": "3.1.2 Language of Parts  (Level AA)",
+          "link": "https://www.w3.org/WAI/WCAG21/Understanding/language-of-parts.html"
+        },
+        {
+          "id": "WCAG-AA"
+        },
+        {
+          "id": "WCAG2.0"
+        },
+        {
+          "id": "axe-ACT"
+        },
+        {
+          "id": "axe-EN-301-549"
+        },
+        {
+          "id": "axe-EN-9.3.1.2"
+        },
+        {
+          "id": "axe-TT11.b"
+        },
+        {
+          "id": "axe-TTv5"
+        },
+        {
+          "id": "axe-cat.language"
+        },
+        {
+          "id": "axe-wcag2aa"
+        },
+        {
+          "id": "axe-wcag312"
+        }
+      ],
+      "knowledgeBaseLink": "https://knowledge.evinced.com/system-validations/valid-lang",
+      "wcagLevels": [
+        "2.0 AA",
+        "2.1 AA",
+        "2.2 AA",
+        "2.0 AAA",
+        "2.1 AAA",
+        "2.2 AAA"
+      ],
+      "signature": "d28cb7ea",
+      "canonicalSignature": "d28cb7ea",
+      "version": "1.1",
+      "isNeedsReview": false,
+      "isEvincedRecommended": true
+    }
+  ]
+}
