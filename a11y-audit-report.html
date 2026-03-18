@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Audit Report — Demo Website</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0; padding: 0;
+      background: #f5f7fa;
+      color: #1b2330;
+      line-height: 1.6;
+    }
+    .page-header {
+      background: linear-gradient(135deg, #1b3050 0%, #2c4a70 100%);
+      color: #fff;
+      padding: 40px 48px;
+    }
+    .page-header h1 { margin: 0 0 8px; font-size: 2rem; font-weight: 700; }
+    .page-header .meta { font-size: 0.9rem; opacity: 0.8; }
+    .badge-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .badge-critical { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+    .badge-serious  { background: #fff7ed; color: #9a3412; border: 1px solid #fdba74; }
+    .badge-moderate { background: #fffbeb; color: #854d0e; border: 1px solid #fcd34d; }
+    .badge-info     { background: #eff6ff; color: #1e40af; border: 1px solid #93c5fd; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    h2 { font-size: 1.4rem; font-weight: 700; color: #1b3050; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 6px; }
+    .toc { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px 24px; margin-bottom: 32px; }
+    .toc h2 { margin-top: 0; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin: 4px 0; }
+    .toc a { color: #1e40af; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .summary-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; margin-bottom: 32px;
+    }
+    .summary-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 20px 24px; text-align: center;
+    }
+    .summary-card .count { font-size: 2.4rem; font-weight: 800; line-height: 1; }
+    .summary-card .label { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+    .count-critical { color: #dc2626; }
+    .count-serious  { color: #ea580c; }
+    .count-moderate { color: #d97706; }
+    .count-total    { color: #1b3050; }
+    .section { margin-bottom: 48px; }
+    .issue-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+      margin-bottom: 20px; overflow: hidden;
+    }
+    .issue-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 16px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; gap: 12px;
+    }
+    .issue-card-header h3 { font-size: 1rem; margin: 0; flex: 1; }
+    .issue-card-body { padding: 16px 20px; }
+    .issue-card-body p { margin: 0 0 10px; }
+    .detail-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .detail-label {
+      font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #64748b; min-width: 90px; padding-top: 1px;
+    }
+    .detail-value { font-size: 0.9rem; flex: 1; }
+    code {
+      background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px;
+      padding: 1px 6px; font-size: 0.85em; font-family: 'Fira Code', 'Consolas', monospace; color: #be185d;
+    }
+    pre {
+      background: #1e293b; color: #e2e8f0; border-radius: 8px;
+      padding: 16px; overflow-x: auto; font-size: 0.85rem;
+      margin: 8px 0; line-height: 1.6;
+    }
+    pre code { background: none; border: none; padding: 0; color: inherit; font-size: inherit; }
+    .wcag-ref { font-size: 0.8rem; color: #64748b; }
+    .fix-block { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin-top: 12px; }
+    .fix-block h4 { margin: 0 0 8px; color: #15803d; font-size: 0.9rem; }
+    .rationale-block { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; margin-top: 12px; }
+    .rationale-block h4 { margin: 0 0 8px; color: #1e40af; font-size: 0.9rem; }
+    .page-tag {
+      display: inline-block; background: #f1f5f9; color: #475569;
+      border: 1px solid #cbd5e1; border-radius: 4px; padding: 2px 8px;
+      font-size: 0.78rem; font-weight: 500; margin: 2px;
+    }
+    .non-critical-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .non-critical-table th {
+      background: #f8fafc; text-align: left; padding: 10px 12px;
+      border: 1px solid #e2e8f0; font-size: 0.8rem; font-weight: 600;
+      color: #64748b; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .non-critical-table td { padding: 10px 12px; border: 1px solid #e2e8f0; vertical-align: top; }
+    .non-critical-table tr:nth-child(even) td { background: #f8fafc; }
+    .severity-serious  { color: #c2410c; font-weight: 600; }
+    .severity-moderate { color: #b45309; font-weight: 600; }
+    .engine-badge {
+      display: inline-block; background: #ede9fe; color: #5b21b6;
+      border-radius: 4px; padding: 1px 7px; font-size: 0.75rem; font-weight: 600; margin-right: 4px;
+    }
+    .engine-axe    { background: #fce7f3; color: #9d174d; }
+    .engine-gen1   { background: #fef3c7; color: #78350f; }
+    .engine-gen2   { background: #dcfce7; color: #14532d; }
+    .engine-gen3   { background: #dbeafe; color: #1e3a8a; }
+    .engine-undetectable { background: #f3e8ff; color: #4c1d95; }
+    .footer { background: #1b3050; color: #94a3b8; text-align: center; padding: 24px; font-size: 0.85rem; margin-top: 48px; }
+    .callout {
+      background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px;
+      padding: 14px 18px; margin-bottom: 24px; font-size: 0.9rem;
+    }
+    .callout strong { color: #854d0e; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Accessibility Audit Report</h1>
+  <div class="meta">
+    Repository: <strong>demo-website</strong> &nbsp;|&nbsp;
+    Audit Tool: <strong>Evinced (GEN1 · GEN2 · GEN3 engines + AXE rules)</strong> &nbsp;|&nbsp;
+    Date: <strong>2026-03-18</strong>
+  </div>
+  <div class="badge-row">
+    <span class="badge badge-critical">&#9632; 53 Critical</span>
+    <span class="badge badge-serious">&#9632; 18 Serious</span>
+    <span class="badge badge-moderate">&#9632; 32 Moderate</span>
+    <span class="badge badge-info">5 Pages Audited</span>
+    <span class="badge badge-info">79 Total Issues</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc" id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#overview">Audit Overview</a></li>
+      <li><a href="#pages">Pages &amp; Entry Points</a></li>
+      <li><a href="#summary">Issue Summary by Severity</a></li>
+      <li><a href="#critical">Critical Issues — Detailed Findings &amp; Recommended Fixes</a></li>
+      <li><a href="#non-critical">Non-Critical Issues (Serious &amp; Moderate)</a></li>
+    </ol>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section" id="overview">
+    <h2>1. Audit Overview</h2>
+    <p>
+      This report presents the results of a full-site automated accessibility audit of the <strong>Demo Website</strong>
+      (a React 18 SPA served on <code>http://localhost:3000</code>).
+      The audit was performed using the <strong>Evinced accessibility engine</strong> (MCP Server: <code>EVINCED_MCP_SERVER_JFROG</code>,
+      package <code>@evinced/mcp-server-web@1.0.28</code>), which applies four complementary detection strategies:
+    </p>
+    <ul>
+      <li><span class="engine-badge engine-axe">AXE</span> — Standard axe-core rules (WCAG A/AA violations)</li>
+      <li><span class="engine-badge engine-gen1">GEN1</span> — Evinced first-generation engine: interactable role &amp; keyboard accessibility</li>
+      <li><span class="engine-badge engine-gen2">GEN2</span> — Evinced component-pattern engine: navigation, combobox, checkbox, dialog patterns</li>
+      <li><span class="engine-badge engine-gen3">GEN3</span> — Evinced contextual engine: reflow, reading order, heading structure, focus order</li>
+    </ul>
+    <p>
+      A full user journey was traced: <strong>Homepage → Products Listing → Product Detail → Cart Drawer → Checkout → Order Confirmation</strong>.
+      Additionally, targeted component scans were run on the sort combobox widget and main navigation menu on the Products page.
+      No remediation was performed — this report documents findings only.
+    </p>
+  </div>
+
+  <!-- PAGES -->
+  <div class="section" id="pages">
+    <h2>2. Pages &amp; Entry Points</h2>
+    <table class="non-critical-table">
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Component</th>
+          <th>Source File</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>/</code></td>
+          <td><code>HomePage</code></td>
+          <td><code>src/pages/HomePage.jsx</code></td>
+          <td>Landing page with hero banner, popular section, featured pairs, trending collections, and "The Drop" section</td>
+        </tr>
+        <tr>
+          <td><code>/shop/new</code></td>
+          <td><code>NewPage</code></td>
+          <td><code>src/pages/NewPage.jsx</code></td>
+          <td>Products listing page with filter sidebar (Price / Size / Brand) and sort combobox</td>
+        </tr>
+        <tr>
+          <td><code>/product/:id</code></td>
+          <td><code>ProductPage</code></td>
+          <td><code>src/pages/ProductPage.jsx</code></td>
+          <td>Individual product detail page with add-to-cart and wishlist actions</td>
+        </tr>
+        <tr>
+          <td><code>/checkout</code></td>
+          <td><code>CheckoutPage</code></td>
+          <td><code>src/pages/CheckoutPage.jsx</code></td>
+          <td>Two-step checkout: (1) cart basket review, (2) shipping &amp; payment form</td>
+        </tr>
+        <tr>
+          <td><code>/order-confirmation</code></td>
+          <td><code>OrderConfirmationPage</code></td>
+          <td><code>src/pages/OrderConfirmationPage.jsx</code></td>
+          <td>Post-purchase confirmation page</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;">
+      All pages share a persistent <code>Header</code> (navigation + icon buttons), <code>Footer</code>,
+      <code>CartModal</code> drawer, and <code>WishlistModal</code> drawer. The HTML shell is at
+      <code>public/index.html</code>; the React entry point is <code>src/index.js</code>.
+    </p>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section" id="summary">
+    <h2>3. Issue Summary by Severity</h2>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="count count-total">79</div>
+        <div class="label">Total Issues</div>
+      </div>
+      <div class="summary-card">
+        <div class="count count-critical">53</div>
+        <div class="label">Critical</div>
+      </div>
+      <div class="summary-card">
+        <div class="count count-serious">18</div>
+        <div class="label">Serious</div>
+      </div>
+      <div class="summary-card">
+        <div class="count count-moderate">32</div>
+        <div class="label">Moderate</div>
+      </div>
+    </div>
+
+    <table class="non-critical-table">
+      <thead>
+        <tr>
+          <th>Engine</th>
+          <th>Rule / Pattern</th>
+          <th>Severity</th>
+          <th>Count</th>
+          <th>WCAG</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>image-alt</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>2</td><td>1.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>aria-valid-attr-value</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>duplicate-id-aria</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>4</td><td>4.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>aria-required-attr</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>5</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>color-contrast</td><td class="severity-serious">Serious</td><td>4</td><td>1.4.3 (AA)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>html-has-lang</td><td class="severity-serious">Serious</td><td>1</td><td>3.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>valid-lang</td><td class="severity-serious">Serious</td><td>1</td><td>3.1.2 (AA)</td></tr>
+        <tr><td><span class="engine-badge engine-axe">AXE</span></td><td>list</td><td class="severity-serious">Serious</td><td>1</td><td>1.3.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen1">GEN1</span></td><td>interactable-role + keyboard-accessible</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>15</td><td>1.3.1, 2.1.1, 4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen1">GEN1</span></td><td>accessible-name</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>10</td><td>1.3.1, 4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-combobox-no-role</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-combobox-no-accessible-name</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-checkbox-no-role</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-checkbox-no-focus-sequence</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>2.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-checkbox-no-accessible-name</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-checkbox-no-aria-checked</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-dialog-role</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-dialog-accessible-name</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>2</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-aria-label-on-buttons</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-focus-trap</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>2.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-accessible-name-launcher</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-listbox-role</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-option-role</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-keyboard-accessible</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>1</td><td>2.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>navigation-forbidden-roles</td><td class="severity-serious">Serious</td><td>1</td><td>1.3.1, 4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>navigation-unexpected-interactives</td><td class="severity-serious">Serious</td><td>1</td><td>1.3.1, 4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-combobox-no-aria-expanded</td><td class="severity-serious">Serious</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-disclosure-no-aria-expanded</td><td class="severity-serious">Serious</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-disclosure-no-esc-close</td><td class="severity-serious">Serious</td><td>3</td><td>2.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-aria-modal</td><td class="severity-serious">Serious</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-esc-close</td><td class="severity-serious">Serious</td><td>1</td><td>2.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>no-quantity-value-label</td><td class="severity-serious">Serious</td><td>1</td><td>1.1.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-group-role</td><td class="severity-serious">Serious</td><td>1</td><td>1.3.1, 4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen3">GEN3</span></td><td>reflow (overflow-x: hidden)</td><td class="severity-serious">Serious</td><td>1</td><td>1.4.10 (AA)</td></tr>
+        <tr><td><span class="engine-badge engine-gen3">GEN3</span></td><td>sr-order (DOM reading order)</td><td class="severity-serious">Serious</td><td>1</td><td>1.3.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen3">GEN3</span></td><td>heading-order</td><td class="severity-moderate">Moderate</td><td>14</td><td>1.3.1 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen3">GEN3</span></td><td>non-meaningful-label</td><td class="severity-moderate">Moderate</td><td>8</td><td>2.4.6 (AA)</td></tr>
+        <tr><td><span class="engine-badge engine-gen3">GEN3</span></td><td>keyboard-order</td><td class="severity-serious">Serious</td><td>1</td><td>2.4.3 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-aria-haspopup</td><td class="severity-moderate">Moderate</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>sort-dropdown-no-aria-controls</td><td class="severity-moderate">Moderate</td><td>1</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-disclosure-no-aria-controls</td><td class="severity-moderate">Moderate</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-gen2">GEN2</span></td><td>filter-disclosure-no-aria-owns</td><td class="severity-moderate">Moderate</td><td>3</td><td>4.1.2 (A)</td></tr>
+        <tr><td><span class="engine-badge engine-undetectable">UNDETECTABLE</span></td><td>live-region (missing dynamic announcements)</td><td class="severity-serious" style="color:#dc2626;font-weight:600;">Critical</td><td>2</td><td>4.1.3 (AA)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CRITICAL ISSUES -->
+  <div class="section" id="critical">
+    <h2>4. Critical Issues — Detailed Findings &amp; Recommended Fixes</h2>
+    <p>The following <strong>53 critical issues</strong> represent WCAG Level A/AA violations that prevent or severely impair access by screen reader users and keyboard-only users. No remediations were applied to the codebase; recommended fixes are provided for each.</p>
+
+    <!-- ======= GROUP A: IMAGE ALT ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">A. Missing Image Alternative Text (AXE: image-alt) — 2 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>A-1: Hero banner image missing <code>alt</code> attribute</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> image-alt &nbsp;·&nbsp; WCAG 1.1.1 (A) — Non-text Content &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Homepage</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/HeroBanner.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;img src="/images/home/New_Tees.png"&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">The hero banner image has no <code>alt</code> attribute. Screen readers will fall back to announcing the raw filename (<em>"New underscore Tees dot png"</em>), which conveys no meaningful information to a blind user.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <p>Add a descriptive <code>alt</code> attribute that conveys the image content and marketing intent:</p>
+          <pre><code>&lt;img src="/images/home/New_Tees.png" alt="New winter basics collection — seasonal tees and essentials" /&gt;</code></pre>
+          <p>If the image is purely decorative and the adjacent headline already conveys the meaning, use an empty alt instead: <code>alt=""</code>.</p>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>WCAG 1.1.1 requires all non-text content to have a text alternative. A descriptive <code>alt</code> is the lowest-friction, universally-supported solution — it works across all assistive technologies with no JavaScript dependency. Empty <code>alt=""</code> is used only when the image is purely decorative and nearby text provides the same information.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>A-2: "The Drop" section image missing <code>alt</code> attribute</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> image-alt &nbsp;·&nbsp; WCAG 1.1.1 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Homepage</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/TheDrop.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;img src="/images/home/2bags_charms1.png"&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">Same issue as A-1 — screen readers read the filename verbatim.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <pre><code>&lt;img src="/images/home/2bags_charms1.png" alt="The Drop featured product — bags and charm accessories" /&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>Same rationale as A-1. The filename <code>2bags_charms1.png</code> is not human-readable; a descriptive alt conveys product context to screen reader users.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP B: ARIA VALID ATTR VALUE ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">B. Invalid ARIA Attribute Values (AXE: aria-valid-attr-value) — 3 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>B-1: <code>aria-expanded="yes"</code> on a heading element</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> aria-valid-attr-value &nbsp;·&nbsp; WCAG 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Homepage</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/FeaturedPair.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;h1 aria-expanded="yes"&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value"><code>aria-expanded</code> accepts only <code>"true"</code> or <code>"false"</code>. The value <code>"yes"</code> is not a valid ARIA token; assistive technologies will ignore it entirely, leaving the state of the widget unannounced.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <p>Replace the invalid value and place <code>aria-expanded</code> only on interactive elements (buttons/links), not headings:</p>
+          <pre><code>&lt;!-- Remove aria-expanded from the heading entirely (headings are not interactive) --&gt;
+&lt;h2&gt;Featured Items&lt;/h2&gt;
+
+&lt;!-- If expand/collapse behaviour is needed, put it on the trigger button: --&gt;
+&lt;button aria-expanded={isExpanded} aria-controls="featured-panel"&gt;
+  Featured Items
+&lt;/button&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p><code>aria-expanded</code> communicates widget state; it belongs on the interactive trigger (button/link), not the heading. Placing it on a heading creates a false contract with assistive technologies. Correcting both the value and the element type ensures ATs can reliably announce expanded/collapsed state.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>B-2: <code>aria-sort="newest"</code> — invalid token on columnheader</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> aria-valid-attr-value &nbsp;·&nbsp; WCAG 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Products Page</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/pages/NewPage.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;div aria-sort="newest" role="columnheader"&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value"><code>aria-sort</code> accepts only <code>ascending</code>, <code>descending</code>, <code>none</code>, or <code>other</code>. The custom value <code>"newest"</code> is invalid and will be ignored by assistive technologies.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <pre><code>&lt;!-- Use the closest valid token. For "newest first" (descending by date): --&gt;
+&lt;div role="columnheader" aria-sort="descending"&gt;Newest&lt;/div&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>ARIA specification requires enumerated tokens. Replacing <code>"newest"</code> with <code>"descending"</code> faithfully maps the intent (most-recent items first) to the closest valid ARIA concept, allowing screen readers to announce the current sort direction correctly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>B-3: <code>aria-relevant="changes"</code> — invalid token</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> aria-valid-attr-value &nbsp;·&nbsp; WCAG 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Product Detail</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/pages/ProductPage.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;ul aria-relevant="changes"&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value"><code>aria-relevant</code> accepts space-separated tokens from: <code>additions</code>, <code>removals</code>, <code>text</code>, <code>all</code>. The value <code>"changes"</code> is not valid.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <pre><code>&lt;!-- Use a valid token combination (e.g. additions + text for a live list): --&gt;
+&lt;ul aria-relevant="additions text" aria-live="polite"&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>The intent of <code>aria-relevant="changes"</code> is to announce both added/removed content. Using <code>"additions text"</code> is the standardised approximation for "announce when content is added or changes".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP C: DUPLICATE ARIA IDs ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">C. Duplicate ARIA IDs (AXE: duplicate-id-aria) — 4 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>C-1 &amp; C-2: Duplicate ARIA IDs in FeaturedPair component</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> duplicate-id-aria &nbsp;·&nbsp; WCAG 4.1.1 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Homepage</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/FeaturedPair.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value">Two <code>&lt;p id="featured-card-label"&gt;</code> elements and two <code>&lt;img id="featured-card-img"&gt;</code> elements (rendered in a <code>.map()</code> loop)</span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">When the same <code>id</code> appears multiple times, an ARIA <code>aria-labelledby</code> or <code>aria-describedby</code> referencing that ID resolves to the first matching element only. The second card's label/image relationship is broken for assistive technologies.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <p>Make IDs unique by incorporating the loop index or item identifier:</p>
+          <pre><code>{featuredItems.map((item, index) =&gt; (
+  &lt;div key={item.id} className="featured-card"&gt;
+    &lt;img id={`featured-card-img-${item.id}`} src={item.image} alt={item.imageAlt} /&gt;
+    &lt;p id={`featured-card-label-${item.id}`} className="featured-eyebrow"&gt;
+      {item.eyebrow}
+    &lt;/p&gt;
+  &lt;/div&gt;
+))}</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>HTML IDs must be unique within a document. Namespacing with a stable item identifier (not just the loop index, to survive reordering) guarantees uniqueness while preserving the ARIA label relationships. Using <code>item.id</code> is preferred over <code>index</code> because it remains stable if the array is sorted or filtered.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>C-3 &amp; C-4: Duplicate <code>filter-section-title</code> ID in FilterSidebar</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> duplicate-id-aria &nbsp;·&nbsp; WCAG 4.1.1 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Products Page</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/FilterSidebar.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value">Three <code>&lt;span id="filter-section-title"&gt;</code> elements for Price, Size, and Brand sections</span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">Each filter group's header button references this ID via <code>aria-describedby</code>. The repeated ID causes all three buttons to use the same description (the first one in DOM order), corrupting the ARIA labelling of the Price and Size disclosure buttons.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix</h4>
+          <pre><code>{filterGroups.map((group) =&gt; (
+  &lt;div key={group.name} className="filter-group"&gt;
+    &lt;button
+      className="filter-group-header"
+      aria-describedby={`filter-title-${group.name}`}
+    &gt;
+      &lt;span id={`filter-title-${group.name}`}&gt;{group.label}&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+))}</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>Same principle as C-1/C-2. Embedding the group name (e.g., <code>filter-title-price</code>) in the ID ensures each section title is uniquely referenceable, restoring the correct ARIA description for each disclosure button.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP D: ARIA REQUIRED ATTR ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">D. Missing Required ARIA Attributes (AXE: aria-required-attr) — 5 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>D-1 through D-5: Elements with ARIA roles missing required ARIA state attributes</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-axe">AXE</span> aria-required-attr &nbsp;·&nbsp; WCAG 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <table class="non-critical-table" style="margin-bottom:12px;">
+          <thead>
+            <tr><th>#</th><th>Page</th><th>File</th><th>Element</th><th>Role</th><th>Missing Attributes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>D-1</td><td><span class="page-tag">Homepage</span></td><td><code>FeaturedPair.jsx</code></td><td><code>&lt;span role="checkbox"&gt;</code></td><td>checkbox</td><td><code>aria-checked</code></td></tr>
+            <tr><td>D-2</td><td><span class="page-tag">Homepage</span></td><td><code>TheDrop.jsx</code></td><td><code>&lt;div role="slider"&gt;</code></td><td>slider</td><td><code>aria-valuenow</code>, <code>aria-valuemin</code>, <code>aria-valuemax</code></td></tr>
+            <tr><td>D-3</td><td><span class="page-tag">Products</span></td><td><code>NewPage.jsx</code></td><td><code>&lt;div role="spinbutton"&gt;</code></td><td>spinbutton</td><td><code>aria-valuenow</code></td></tr>
+            <tr><td>D-4</td><td><span class="page-tag">Products</span></td><td><code>NewPage.jsx</code></td><td><code>&lt;div role="combobox"&gt;</code></td><td>combobox</td><td><code>aria-controls</code>, <code>aria-expanded</code></td></tr>
+            <tr><td>D-5</td><td><span class="page-tag">Product Detail</span></td><td><code>ProductPage.jsx</code></td><td><code>&lt;span role="meter"&gt;</code></td><td>meter</td><td><code>aria-valuenow</code>, <code>aria-valuemin</code>, <code>aria-valuemax</code></td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fix — Add all required ARIA state/property attributes</h4>
+          <pre><code>&lt;!-- D-1: checkbox --&gt;
+&lt;span role="checkbox" aria-checked={isChecked} tabIndex={0}&gt;...&lt;/span&gt;
+
+&lt;!-- D-2: slider --&gt;
+&lt;div role="slider"
+  aria-valuenow={currentValue}
+  aria-valuemin={0}
+  aria-valuemax={100}
+  aria-label="Volume"
+  tabIndex={0}
+&gt;...&lt;/div&gt;
+
+&lt;!-- D-3: spinbutton --&gt;
+&lt;div role="spinbutton"
+  aria-valuenow={qty}
+  aria-valuemin={1}
+  aria-valuemax={99}
+  aria-label="Quantity"
+  tabIndex={0}
+&gt;...&lt;/div&gt;
+
+&lt;!-- D-4: combobox --&gt;
+&lt;div role="combobox"
+  aria-expanded={isOpen}
+  aria-controls="sort-listbox"
+  aria-haspopup="listbox"
+&gt;...&lt;/div&gt;
+
+&lt;!-- D-5: meter --&gt;
+&lt;span role="meter"
+  aria-valuenow={rating}
+  aria-valuemin={0}
+  aria-valuemax={5}
+  aria-label={`Rating: ${rating} out of 5`}
+&gt;...&lt;/span&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>Every ARIA role has required state/property attributes defined by the ARIA specification. Without them, screen readers cannot convey the widget's current state to the user. Adding the required attributes completes the ARIA contract and re-enables correct announcements. Where possible, native HTML elements (<code>&lt;input type="checkbox"&gt;</code>, <code>&lt;input type="range"&gt;</code>) should be preferred over custom ARIA roles to reduce the maintenance burden.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP E: NON-SEMANTIC INTERACTIVE ELEMENTS ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">E. Non-Semantic Interactive Elements (GEN1: interactable-role + keyboard-accessible) — 15 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>E-1 through E-15: Interactive <code>&lt;div&gt;</code> elements missing role and keyboard accessibility</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-gen1">GEN1</span> interactable-role · keyboard-accessible &nbsp;·&nbsp; WCAG 1.3.1, 2.1.1, 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <table class="non-critical-table" style="margin-bottom:12px;">
+          <thead>
+            <tr><th>#</th><th>Page</th><th>File</th><th>Element / Selector</th><th>Issue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>E-1</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="icon-btn wishlist-btn"&gt;</code></td><td><code>div</code> acting as wishlist-open button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-2</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="icon-btn"&gt;</code> (Search)</td><td><code>div</code> acting as search button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-3</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="icon-btn"&gt;</code> (Login)</td><td><code>div</code> acting as login button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-4</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="flag-group"&gt;</code></td><td><code>div</code> acting as region-selector toggle — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-5</td><td><span class="page-tag">All Pages</span></td><td><code>Footer.jsx</code></td><td><code>&lt;div class="footer-nav-item"&gt;</code> (Sustainability)</td><td><code>div</code> acting as navigation link — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-6</td><td><span class="page-tag">All Pages</span></td><td><code>Footer.jsx</code></td><td><code>&lt;div class="footer-nav-item"&gt;</code> (FAQs)</td><td><code>div</code> acting as navigation link — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-7</td><td><span class="page-tag">Products</span></td><td><code>ProductCard.jsx</code></td><td><code>&lt;div class="product-card-quick-add"&gt;</code></td><td><code>div</code> acting as quick-add button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-8</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Drinkware)</td><td><code>div</code> acting as navigation link — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-9</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Fun and Games)</td><td><code>div</code> acting as navigation link — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-10</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Stationery)</td><td><code>div</code> acting as navigation link — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-11</td><td><span class="page-tag">All Pages</span></td><td><code>CartModal.jsx</code></td><td><code>&lt;div class="continueBtn"&gt;</code></td><td><code>div</code> acting as continue-shopping button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-12</td><td><span class="page-tag">All Pages</span></td><td><code>WishlistModal.jsx</code></td><td><code>&lt;div class="removeBtn"&gt;</code></td><td><code>div</code> acting as remove-from-wishlist button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-13</td><td><span class="page-tag">Checkout</span></td><td><code>CheckoutPage.jsx</code></td><td><code>&lt;div class="checkout-continue-btn"&gt;</code></td><td><code>div</code> acting as proceed button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-14</td><td><span class="page-tag">Checkout</span></td><td><code>CheckoutPage.jsx</code></td><td><code>&lt;div class="checkout-back-btn"&gt;</code></td><td><code>div</code> acting as back button — no <code>role="button"</code>, no <code>tabindex</code></td></tr>
+            <tr><td>E-15</td><td><span class="page-tag">Order Confirmation</span></td><td><code>OrderConfirmationPage.jsx</code></td><td><code>&lt;div class="confirm-home-link"&gt;</code></td><td><code>div</code> acting as navigation action — no <code>role="link"</code>, no <code>tabindex</code></td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fix — Replace <code>&lt;div&gt;</code> with semantic <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code></h4>
+          <pre><code>&lt;!-- E-11 example: replace the interactive div with a proper button --&gt;
+&lt;!-- BEFORE (broken): --&gt;
+&lt;div className={styles.continueBtn} onClick={closeCart} style={{cursor:'pointer'}}&gt;
+  &lt;span aria-hidden="true"&gt;Continue Shopping&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- AFTER (fixed): --&gt;
+&lt;button className={styles.continueBtn} onClick={closeCart}&gt;
+  Continue Shopping
+&lt;/button&gt;
+
+&lt;!-- For navigation actions (E-5, E-6, E-8–10, E-15): use &lt;a&gt; with href --&gt;
+&lt;a href="/shop/drinkware" className="shop-link"&gt;Shop Drinkware&lt;/a&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>The fundamental principle is to <em>use the correct native element</em>. Native <code>&lt;button&gt;</code> elements are focusable by default, respond to Enter/Space keyboard events, and carry an implicit <code>role="button"</code> — no extra ARIA or <code>tabindex</code> wiring required. Native <code>&lt;a href="..."&gt;</code> elements similarly provide link semantics and keyboard access. Replacing the <code>&lt;div&gt;</code> with the native element is safer, simpler, and more robust than adding <code>role="button"</code> + <code>tabIndex={0}</code> + manual keyboard event handlers to a div.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP F: ACCESSIBLE NAMES ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">F. Missing Accessible Names (GEN1: accessible-name) — 10 Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>F-1 through F-10: Interactive controls with no accessible name</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-gen1">GEN1</span> accessible-name &nbsp;·&nbsp; WCAG 1.3.1, 4.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <table class="non-critical-table" style="margin-bottom:12px;">
+          <thead>
+            <tr><th>#</th><th>Page</th><th>File</th><th>Element</th><th>Issue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>F-1</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="icon-btn"&gt;</code> (Search)</td><td>SVG <code>aria-hidden</code>, label text <code>aria-hidden</code> — no accessible name</td></tr>
+            <tr><td>F-2</td><td><span class="page-tag">All Pages</span></td><td><code>Header.jsx</code></td><td><code>&lt;div class="icon-btn"&gt;</code> (Login)</td><td>SVG <code>aria-hidden</code>, label text <code>aria-hidden</code> — no accessible name</td></tr>
+            <tr><td>F-3</td><td><span class="page-tag">All Pages</span></td><td><code>Footer.jsx</code></td><td><code>&lt;div class="footer-nav-item"&gt;</code> (FAQs)</td><td>Visible label is <code>aria-hidden</code>, no <code>aria-label</code></td></tr>
+            <tr><td>F-4</td><td><span class="page-tag">Products</span></td><td><code>ProductCard.jsx</code></td><td><code>&lt;Link class="product-card-image-link"&gt;</code></td><td><code>aria-label</code> removed from image link — insufficient name from child <code>&lt;img&gt;</code> alone</td></tr>
+            <tr><td>F-5</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Drinkware)</td><td>Visible label <code>aria-hidden</code>, no <code>aria-label</code></td></tr>
+            <tr><td>F-6</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Fun and Games)</td><td>Visible label <code>aria-hidden</code>, no <code>aria-label</code></td></tr>
+            <tr><td>F-7</td><td><span class="page-tag">Homepage</span></td><td><code>PopularSection.jsx</code></td><td><code>&lt;div class="shop-link"&gt;</code> (Stationery)</td><td>Visible label <code>aria-hidden</code>, no <code>aria-label</code></td></tr>
+            <tr><td>F-8</td><td><span class="page-tag">All Pages</span></td><td><code>CartModal.jsx</code></td><td><code>&lt;button class="closeBtn"&gt;</code></td><td><code>aria-label</code> removed, SVG <code>aria-hidden</code> — icon-only button with no name</td></tr>
+            <tr><td>F-9</td><td><span class="page-tag">All Pages</span></td><td><code>WishlistModal.jsx</code></td><td><code>&lt;button class="closeBtn"&gt;</code></td><td><code>aria-label</code> removed, SVG <code>aria-hidden</code> — icon-only button with no name</td></tr>
+            <tr><td>F-10</td><td><span class="page-tag">All Pages</span></td><td><code>CartModal.jsx</code></td><td><code>&lt;div class="continueBtn"&gt;</code></td><td>Visible text is <code>aria-hidden</code>, no <code>aria-label</code></td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fixes</h4>
+          <pre><code>&lt;!-- F-1, F-2: Remove aria-hidden from visible text labels, or add aria-label --&gt;
+&lt;button className="icon-btn" aria-label="Search"&gt;
+  &lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;
+  &lt;span&gt;Search&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- F-8, F-9: Add aria-label to icon-only close buttons --&gt;
+&lt;button className={styles.closeBtn} onClick={closeCart} aria-label="Close cart"&gt;
+  &lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- F-4: Add aria-label to product image link --&gt;
+&lt;Link to={`/product/${product.id}`} aria-label={`View ${product.name}`}&gt;
+  &lt;img src={product.image} alt="" /&gt;
+&lt;/Link&gt;
+
+&lt;!-- F-5–7: Remove aria-hidden from visible text OR add aria-label --&gt;
+&lt;a href="/shop/drinkware" className="shop-link"&gt;
+  Shop Drinkware  &lt;!-- visible text, not aria-hidden --&gt;
+&lt;/a&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>Every interactive element needs an accessible name so screen readers can announce it. The fix hierarchy is: <strong>(1)</strong> use visible text directly (do not hide it with <code>aria-hidden</code>), <strong>(2)</strong> add <code>aria-label</code> when visible text is insufficient or absent, <strong>(3)</strong> use <code>aria-labelledby</code> when the label exists elsewhere in the DOM. Using visible text is always preferred because it benefits both sighted and non-sighted users.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP G: SORT COMBOBOX ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">G. Sort Combobox / Listbox Failures (GEN2) — 4 Critical Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>G-1 through G-4: Sort combobox and listbox missing roles, names, and keyboard support</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-gen2">GEN2</span> sort-combobox · sort-dropdown &nbsp;·&nbsp; WCAG 4.1.2, 2.1.1 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Products Page</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/pages/NewPage.jsx</code></span></div>
+        <table class="non-critical-table" style="margin:8px 0 12px;">
+          <thead><tr><th>#</th><th>Rule</th><th>Element</th><th>Issue</th></tr></thead>
+          <tbody>
+            <tr><td>G-1</td><td>sort-combobox-no-role</td><td><code>&lt;button class="sort-btn"&gt;</code></td><td><code>role="combobox"</code> not set — AT cannot identify this as a combobox trigger</td></tr>
+            <tr><td>G-2</td><td>sort-combobox-no-accessible-name</td><td><code>&lt;button class="sort-btn"&gt;</code></td><td><code>aria-label</code> removed — no accessible name</td></tr>
+            <tr><td>G-3</td><td>sort-dropdown-no-listbox-role</td><td><code>&lt;ul class="sort-options"&gt;</code></td><td><code>role="listbox"</code> and <code>aria-label</code> removed — not identified as a listbox</td></tr>
+            <tr><td>G-4</td><td>sort-dropdown-no-option-role + no-keyboard-accessible</td><td><code>&lt;li class="sort-option"&gt;</code></td><td><code>role="option"</code>, <code>aria-selected</code>, <code>tabIndex</code>, and keyboard handler removed — options are invisible and unreachable via keyboard</td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fix — Restore full combobox ARIA pattern</h4>
+          <pre><code>&lt;div role="group" aria-label="Sort products"&gt;
+  &lt;button
+    className="sort-btn"
+    role="combobox"
+    aria-label="Sort by"
+    aria-expanded={sortOpen}
+    aria-haspopup="listbox"
+    aria-controls="sort-listbox"
+    onClick={() =&gt; setSortOpen(!sortOpen)}
+  &gt;
+    {selectedSort}
+  &lt;/button&gt;
+
+  {sortOpen &amp;&amp; (
+    &lt;ul id="sort-listbox" role="listbox" aria-label="Sort options"&gt;
+      {sortOptions.map((option) =&gt; (
+        &lt;li
+          key={option.value}
+          role="option"
+          aria-selected={selectedSort === option.label}
+          tabIndex={0}
+          onClick={() =&gt; handleSort(option)}
+          onKeyDown={(e) =&gt; { if (e.key === 'Enter' || e.key === ' ') handleSort(option); }}
+        &gt;
+          {option.label}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )}
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>The ARIA listbox/combobox pattern is the standard way to implement custom selects. Using <code>role="combobox"</code> on the trigger and <code>role="listbox"</code> + <code>role="option"</code> on the list establishes the semantic relationship between the trigger and the options panel. <code>aria-expanded</code> communicates open/closed state; <code>aria-controls</code> links the trigger to the options panel. Each option must be keyboard reachable and have <code>aria-selected</code> to convey selection state. Alternatively, replacing the custom widget with a native <code>&lt;select&gt;</code> element would eliminate all of these requirements at once.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP H: FILTER CHECKBOXES ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">H. Filter Checkbox ARIA Failures (GEN2: filter-checkbox-*) — 12 Issues (3 Checkboxes × 4 Rules)</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>H-1 through H-12: Price, Size, and Brand filter checkboxes missing role, focus, name, and state</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-gen2">GEN2</span> filter-checkbox-* &nbsp;·&nbsp; WCAG 4.1.2, 2.1.1 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Products Page</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/FilterSidebar.jsx</code></span></div>
+        <p>Each of the three filter groups (Price, Size, Brand) uses a custom <code>&lt;div&gt;</code> as a checkbox. All four required ARIA checkbox attributes are missing across all three:</p>
+        <table class="non-critical-table" style="margin:8px 0 12px;">
+          <thead><tr><th>Rule</th><th>Missing From</th><th>Impact</th></tr></thead>
+          <tbody>
+            <tr><td>filter-checkbox-no-role</td><td>All 3 checkboxes</td><td>Not identified as checkboxes by AT</td></tr>
+            <tr><td>filter-checkbox-no-focus-sequence</td><td>All 3 checkboxes</td><td>Not reachable via Tab key</td></tr>
+            <tr><td>filter-checkbox-no-accessible-name</td><td>All 3 checkboxes</td><td>No label announced by screen readers</td></tr>
+            <tr><td>filter-checkbox-no-aria-checked</td><td>All 3 checkboxes</td><td>Checked/unchecked state not announced</td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fix — Use native <code>&lt;input type="checkbox"&gt;</code> or full ARIA pattern</h4>
+          <pre><code>&lt;!-- Option 1 (preferred): native checkbox with visually-custom appearance --&gt;
+&lt;label className="filter-option"&gt;
+  &lt;input
+    type="checkbox"
+    checked={isChecked}
+    onChange={() =&gt; toggleFilter(option.value)}
+  /&gt;
+  &lt;span className="filter-option-label"&gt;{option.label}&lt;/span&gt;
+  &lt;span className="filter-count"&gt;({option.count})&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Option 2: custom ARIA checkbox (if custom appearance requires a div) --&gt;
+&lt;div
+  role="checkbox"
+  aria-checked={isChecked}
+  aria-label={`${option.label} (${option.count} products)`}
+  tabIndex={0}
+  onClick={() =&gt; toggleFilter(option.value)}
+  onKeyDown={(e) =&gt; { if (e.key === ' ' || e.key === 'Enter') toggleFilter(option.value); }}
+  className="filter-option"
+&gt;
+  {option.label}
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>Native <code>&lt;input type="checkbox"&gt;</code> is strongly preferred because it provides all four missing properties automatically (role, focusability, name from associated <code>&lt;label&gt;</code>, and <code>checked</code> state). The visual appearance can still be fully customised with CSS while retaining all keyboard and AT semantics. If a pure custom implementation is required, all four ARIA attributes plus <code>tabIndex={0}</code> and keyboard event handlers are mandatory — no property can be omitted.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP I: DIALOG / MODAL ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">I. Cart Drawer Dialog Failures (GEN2: dialog pattern) — 6 Critical Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>I-1 through I-6: Cart modal missing dialog role, accessible name, quantity labels, focus trap, and close button names</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-gen2">GEN2</span> no-dialog-role · no-dialog-accessible-name · no-aria-label-on-buttons · no-focus-trap &nbsp;·&nbsp; WCAG 4.1.2, 2.1.2 (A) &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">All Pages</span> (Cart Drawer)</span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/CartModal.jsx</code></span></div>
+        <table class="non-critical-table" style="margin:8px 0 12px;">
+          <thead><tr><th>#</th><th>Issue</th><th>Element</th></tr></thead>
+          <tbody>
+            <tr><td>I-1</td><td>no-dialog-role: <code>role="dialog"</code> removed from cart drawer</td><td><code>&lt;div id="cart-modal"&gt;</code></td></tr>
+            <tr><td>I-2</td><td>no-dialog-accessible-name: <code>aria-label="Shopping cart"</code> removed</td><td><code>&lt;div id="cart-modal"&gt;</code></td></tr>
+            <tr><td>I-3</td><td>no-dialog-accessible-name: <code>aria-label="Cart items"</code> removed from list</td><td><code>&lt;ul class={styles.cartList}&gt;</code></td></tr>
+            <tr><td>I-4</td><td>no-aria-label-on-buttons: decrease/increase/remove quantity buttons have no <code>aria-label</code></td><td>3× <code>&lt;button&gt;</code> per cart item</td></tr>
+            <tr><td>I-5</td><td>no-focus-trap: focus not moved into modal on open, not trapped inside</td><td>Cart drawer container</td></tr>
+            <tr><td>I-6</td><td>no-accessible-name-launcher (GEN2): cart button in header has no <code>aria-label</code></td><td><code>&lt;button class="cart-btn"&gt;</code></td></tr>
+          </tbody>
+        </table>
+        <div class="fix-block">
+          <h4>Recommended Fixes</h4>
+          <pre><code>&lt;!-- I-1, I-2: Restore role and label on drawer --&gt;
+&lt;div
+  id="cart-modal"
+  ref={modalRef}
+  role="dialog"
+  aria-modal="true"
+  aria-label="Shopping cart"
+  className={...}
+&gt;
+
+&lt;!-- I-3: Restore label on cart items list --&gt;
+&lt;ul className={styles.cartList} aria-label="Cart items"&gt;
+
+&lt;!-- I-4: Add contextual aria-labels to quantity buttons (per item) --&gt;
+&lt;button
+  aria-label={`Decrease quantity of ${item.name}`}
+  onClick={() =&gt; updateQuantity(item.id, item.quantity - 1)}
+&gt;−&lt;/button&gt;
+&lt;button
+  aria-label={`Increase quantity of ${item.name}`}
+  onClick={() =&gt; updateQuantity(item.id, item.quantity + 1)}
+&gt;+&lt;/button&gt;
+&lt;button
+  aria-label={`Remove ${item.name} from cart`}
+  onClick={() =&gt; removeFromCart(item.id)}
+&gt;...&lt;/button&gt;
+
+&lt;!-- I-5: Add focus management on open and Escape key handler --&gt;
+useEffect(() =&gt; {
+  if (isOpen) {
+    modalRef.current?.focus(); // Move focus into modal
+    const handleKeyDown = (e) =&gt; { if (e.key === 'Escape') closeCart(); };
+    document.addEventListener('keydown', handleKeyDown);
+    return () =&gt; document.removeEventListener('keydown', handleKeyDown);
+  }
+}, [isOpen, closeCart]);
+
+&lt;!-- I-6: Add aria-label to cart launcher button --&gt;
+&lt;button
+  className="icon-btn cart-btn"
+  onClick={openCart}
+  aria-label={`Shopping cart, ${totalCount} item${totalCount !== 1 ? 's' : ''}`}
+&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p><code>role="dialog"</code> + <code>aria-modal="true"</code> is the WAI-ARIA standard for modal overlays. It signals to screen readers that they should restrict virtual cursor navigation to the modal's contents. <code>aria-label</code> on the dialog identifies its purpose. Contextual labels on quantity buttons (including the item name) allow users acting out-of-context (e.g., review screen content) to know which item is being modified. Focus management (moving focus into the modal and trapping it there) is required by WCAG 2.1.2 so keyboard users cannot accidentally interact with obscured background content.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= GROUP J: LIVE REGIONS ======= -->
+    <h3 style="margin:28px 0 12px; color:#991b1b; font-size:1.1rem;">J. Missing Dynamic Announcements (UNDETECTABLE: live-region) — 2 Critical Issues</h3>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>J-1: Cart count badge has no live region — add-to-cart action is silent for screen reader users</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-undetectable">UNDETECTABLE</span> live-region &nbsp;·&nbsp; WCAG 4.1.3 (AA) Status Messages &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">All Pages</span> (Header)</span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/components/Header.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Element</span><span class="detail-value"><code>&lt;span class="cart-count" aria-hidden="true"&gt;{totalCount}&lt;/span&gt;</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">When a product is added to the cart, the badge number updates visually, but no ARIA live region announces the change. Screen reader users receive zero feedback that the add-to-cart action succeeded.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix — Add a visually-hidden live region for cart state announcements</h4>
+          <pre><code>&lt;!-- In Header.jsx, add a live region adjacent to the cart button --&gt;
+&lt;button className="icon-btn cart-btn" onClick={openCart}
+  aria-label={`Shopping cart, ${totalCount} item${totalCount !== 1 ? 's' : ''}`}&gt;
+  &lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;
+  &lt;span className="cart-count" aria-hidden="true"&gt;{totalCount}&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Announce changes dynamically --&gt;
+&lt;span
+  role="status"
+  aria-live="polite"
+  className="sr-only"  /* visually hidden */
+&gt;
+  {liveMessage}  {/* updated via state: "Item added. Cart now has 2 items." */}
+&lt;/span&gt;</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p>WCAG 4.1.3 requires that status messages (like "item added to cart") are programmatically determinable without receiving focus. A <code>role="status"</code> (implicit <code>aria-live="polite"</code>) region queued to announce the cart count change fulfils this requirement without disrupting the user's current reading position. The region must be present in the DOM before the update occurs (it cannot be dynamically inserted).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-header">
+        <div>
+          <h3>J-2: Checkout form validation errors are silent — <code>role="alert"</code> removed from error spans</h3>
+          <div class="wcag-ref"><span class="engine-badge engine-undetectable">UNDETECTABLE</span> live-region &nbsp;·&nbsp; WCAG 4.1.3 (AA) Status Messages &nbsp;·&nbsp; <span class="badge badge-critical" style="padding:2px 8px;font-size:0.75rem;">Critical</span></div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="detail-row"><span class="detail-label">Page</span><span class="detail-value"><span class="page-tag">Checkout</span></span></div>
+        <div class="detail-row"><span class="detail-label">File</span><span class="detail-value"><code>src/pages/CheckoutPage.jsx</code></span></div>
+        <div class="detail-row"><span class="detail-label">Elements</span><span class="detail-value"><code>#firstName-error</code>, <code>#lastName-error</code>, <code>#address-error</code>, <code>#cardNumber-error</code>, <code>#expirationDate-error</code></span></div>
+        <div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">When form validation fails, up to 5 error messages are injected into the DOM. Previously each carried <code>role="alert"</code> (assertive live region), causing immediate screen reader announcement. Without it, errors appear visually but are completely silent — blind users cannot know the form submission failed.</span></div>
+        <div class="fix-block">
+          <h4>Recommended Fix — Restore <code>role="alert"</code> on error spans + link errors to fields</h4>
+          <pre><code>&lt;!-- Restore role="alert" and aria-describedby association --&gt;
+&lt;input
+  id="firstName"
+  type="text"
+  aria-describedby="firstName-error"
+  aria-invalid={!!errors.firstName}
+/&gt;
+{errors.firstName &amp;&amp; (
+  &lt;span id="firstName-error" role="alert" className="form-error"&gt;
+    {errors.firstName}
+  &lt;/span&gt;
+)}</code></pre>
+        </div>
+        <div class="rationale-block">
+          <h4>Why This Approach</h4>
+          <p><code>role="alert"</code> creates an assertive live region that announces its content immediately when injected into the DOM — exactly the right behaviour for critical form errors. Pairing it with <code>aria-invalid="true"</code> on the field and <code>aria-describedby</code> pointing to the error span ensures the error is also announced when the user re-focuses the invalid field, providing two channels of discovery for keyboard users.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end critical section -->
+
+  <!-- NON-CRITICAL -->
+  <div class="section" id="non-critical">
+    <h2>5. Non-Critical Issues — Full Remaining List (Serious &amp; Moderate)</h2>
+    <p>The following <strong>26 issues</strong> (18 Serious, 32 Moderate instances across 14+ rule violations) were identified but are not classified as Critical. They should be addressed in a follow-up remediation cycle to achieve full WCAG AA conformance.</p>
+
+    <!-- Serious -->
+    <h3 style="margin:20px 0 10px; color:#c2410c;">Serious Issues</h3>
+    <table class="non-critical-table">
+      <thead>
+        <tr><th>Engine</th><th>Rule</th><th>Count</th><th>Page(s)</th><th>File(s)</th><th>Description</th><th>WCAG</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="engine-badge engine-axe">AXE</span></td>
+          <td>color-contrast</td>
+          <td>4</td>
+          <td><span class="page-tag">Homepage</span><span class="page-tag">Products</span><span class="page-tag">Product Detail</span></td>
+          <td><code>HeroBanner.css</code>, <code>NewPage.css</code>, <code>FilterSidebar.css</code>, <code>ProductPage.module.css</code></td>
+          <td>Text colour ratios below 4.5:1: hero subtitle (~1.3:1), "X Products Found" (~1.9:1), filter count (~1.4:1), product description (~1.6:1)</td>
+          <td>1.4.3 (AA)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-axe">AXE</span></td>
+          <td>html-has-lang</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>public/index.html</code></td>
+          <td><code>&lt;html&gt;</code> element is missing a <code>lang</code> attribute. Fix: <code>&lt;html lang="en"&gt;</code></td>
+          <td>3.1.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-axe">AXE</span></td>
+          <td>valid-lang</td>
+          <td>1</td>
+          <td><span class="page-tag">Homepage</span></td>
+          <td><code>TheDrop.jsx</code></td>
+          <td><code>&lt;p lang="zz"&gt;</code> — <code>"zz"</code> is not a valid BCP 47 language tag. Remove the attribute or use a valid tag.</td>
+          <td>3.1.2 (AA)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-axe">AXE</span></td>
+          <td>list</td>
+          <td>1</td>
+          <td><span class="page-tag">Homepage</span></td>
+          <td><code>TrendingCollections.jsx</code></td>
+          <td><code>&lt;ul class="trending-grid"&gt;</code> contains a direct child <code>&lt;div class="trending-grid-label"&gt;</code>. Move the label outside the <code>&lt;ul&gt;</code> or wrap it in an <code>&lt;li&gt;</code>.</td>
+          <td>1.3.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>navigation-forbidden-roles</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>Header.jsx</code></td>
+          <td>Submenu <code>&lt;ul&gt;</code> containers inside <code>&lt;nav&gt;</code> have <code>role="menu"</code>. The <code>menu</code> role is forbidden inside a navigation landmark. Remove the role or replace with a disclosure pattern.</td>
+          <td>1.3.1, 4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>navigation-unexpected-interactives</td>
+          <td>1 rule<br/>(30 links)</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>Header.jsx</code></td>
+          <td>Submenu <code>&lt;a&gt;</code> elements carry <code>role="menuitem"</code>. The <code>menuitem</code> role is not permitted inside a navigation landmark. Remove <code>role="menuitem"</code> from all submenu links.</td>
+          <td>1.3.1, 4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>sort-combobox-no-aria-expanded</td>
+          <td>1</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>NewPage.jsx</code></td>
+          <td>Sort trigger button missing <code>aria-expanded</code>. Screen readers cannot announce whether the sort list is open. Fix: add <code>aria-expanded={sortOpen}</code>.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>sort-dropdown-no-group-role</td>
+          <td>1</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>NewPage.jsx</code></td>
+          <td>Sort widget wrapper <code>&lt;div class="sort-dropdown"&gt;</code> missing <code>role="group"</code> and <code>aria-label="Sort products"</code>.</td>
+          <td>1.3.1, 4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>filter-disclosure-no-aria-expanded</td>
+          <td>3</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>FilterSidebar.jsx</code></td>
+          <td>Price, Size, and Brand disclosure buttons missing <code>aria-expanded</code>. Screen readers cannot announce whether each filter section is expanded. Fix: <code>aria-expanded={isOpen}</code> on each <code>&lt;button class="filter-group-header"&gt;</code>.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>filter-disclosure-no-esc-close</td>
+          <td>3</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>FilterSidebar.jsx</code></td>
+          <td>Price, Size, and Brand filter disclosure sections have no Escape key handler. Keyboard users cannot collapse them with Escape. Fix: add <code>onKeyDown</code> handler calling <code>setOpen(false)</code> on <code>Escape</code>.</td>
+          <td>2.1.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>no-aria-modal</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>CartModal.jsx</code></td>
+          <td>Cart drawer missing <code>aria-modal="true"</code>. Screen readers may allow browsing of content behind the open modal. Fix: add <code>aria-modal="true"</code> alongside <code>role="dialog"</code>.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>no-esc-close (cart)</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>CartModal.jsx</code></td>
+          <td>Cart modal has no Escape key handler — keyboard users cannot dismiss it with the Escape key. Fix: add <code>keydown</code> listener that calls <code>closeCart()</code> on Escape.</td>
+          <td>2.1.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>no-quantity-value-label</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>CartModal.jsx</code></td>
+          <td>Quantity <code>&lt;span&gt;</code> per cart item has no <code>aria-label</code>. Screen readers read the raw number without context. Fix: <code>&lt;span aria-label={`Quantity: ${item.quantity}`}&gt;{item.quantity}&lt;/span&gt;</code>.</td>
+          <td>1.1.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen3">GEN3</span></td>
+          <td>reflow — overflow-x: hidden</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>src/components/App.css</code></td>
+          <td><code>overflow-x: hidden</code> on <code>body</code> clips navigation content at high zoom levels — low-vision users cannot scroll to reach off-screen content. Fix: remove the property or use a clip wrapper that preserves scrollability.</td>
+          <td>1.4.10 (AA)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen3">GEN3</span></td>
+          <td>sr-order — DOM reading order</td>
+          <td>1</td>
+          <td><span class="page-tag">Homepage</span></td>
+          <td><code>FeaturedPair.jsx</code> + <code>FeaturedPair.css</code></td>
+          <td><code>flex-direction: column-reverse</code> reverses visual order from DOM order. Screen readers announce image before text in each featured card. Fix: reorder JSX to match the intended reading sequence (text first, then image) and remove <code>column-reverse</code>.</td>
+          <td>1.3.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen3">GEN3</span></td>
+          <td>keyboard-order — reverse tabindex</td>
+          <td>1</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td><code>Header.jsx</code></td>
+          <td>Navigation links use <code>tabIndex={navItems.length - index}</code>, forcing keyboard tab order to be the exact reverse of the visual left-to-right order. Fix: remove explicit <code>tabIndex</code> from nav links so browser default DOM order is used.</td>
+          <td>2.4.3 (A)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Moderate -->
+    <h3 style="margin:28px 0 10px; color:#b45309;">Moderate Issues</h3>
+    <table class="non-critical-table">
+      <thead>
+        <tr><th>Engine</th><th>Rule</th><th>Count</th><th>Page(s)</th><th>File(s)</th><th>Description</th><th>WCAG</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="engine-badge engine-gen3">GEN3</span></td>
+          <td>heading-order</td>
+          <td>14</td>
+          <td><span class="page-tag">All Pages</span></td>
+          <td>Multiple</td>
+          <td>
+            Headings use wrong levels throughout. Key violations:
+            <ul style="margin:4px 0;padding-left:16px;font-size:0.83rem;">
+              <li>HeroBanner.jsx: page title uses <code>&lt;h3&gt;</code> instead of <code>&lt;h1&gt;</code></li>
+              <li>FeaturedPair.jsx: card titles use <code>&lt;h1&gt;</code> (should be <code>&lt;h3&gt;</code>)</li>
+              <li>PopularSection.jsx: section heading uses <code>&lt;h4&gt;</code> (should be <code>&lt;h2&gt;</code>); card headings use <code>&lt;h1&gt;</code></li>
+              <li>TrendingCollections.jsx, TheDrop.jsx: section headings use <code>&lt;h4&gt;</code> (should be <code>&lt;h2&gt;</code>); card headings use <code>&lt;h1&gt;</code></li>
+              <li>NewPage.jsx, ProductPage.jsx, CheckoutPage.jsx, OrderConfirmationPage.jsx: page-level headings use <code>&lt;h3&gt;</code> (should be <code>&lt;h1&gt;</code>)</li>
+              <li>CheckoutPage.jsx: "Order Summary" uses <code>&lt;h5&gt;</code> (should be <code>&lt;h2&gt;</code>)</li>
+              <li>CartModal.jsx: "Shopping Cart" uses <code>&lt;h5&gt;</code> (should be <code>&lt;h2&gt;</code>)</li>
+              <li>WishlistModal.jsx: "Wishlist" uses <code>&lt;h5&gt;</code> (should be <code>&lt;h2&gt;</code>)</li>
+            </ul>
+          </td>
+          <td>1.3.1 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen3">GEN3</span></td>
+          <td>non-meaningful-label</td>
+          <td>8</td>
+          <td><span class="page-tag">Products</span><span class="page-tag">Product Detail</span><span class="page-tag">Checkout</span><span class="page-tag">All Pages</span></td>
+          <td><code>ProductCard.jsx</code>, <code>ProductPage.jsx</code>, <code>CheckoutPage.jsx</code>, <code>WishlistModal.jsx</code></td>
+          <td>
+            Generic, non-descriptive accessible labels:
+            <ul style="margin:4px 0;padding-left:16px;font-size:0.83rem;">
+              <li><code>ProductCard.jsx</code>: <code>aria-label="Product item"</code> on each card article — every card sounds identical</li>
+              <li><code>ProductPage.jsx</code>: "Add to cart" button lacks product name context; wishlist button uses <code>"Wishlist action"</code></li>
+              <li><code>CheckoutPage.jsx</code>: quantity buttons use <code>"Minus"</code>/<code>"Plus"</code>/<code>"Delete"</code>; quantity span uses <code>"Number"</code></li>
+              <li><code>WishlistModal.jsx</code>: image links use <code>"Click here"</code></li>
+            </ul>
+          </td>
+          <td>2.4.6 (AA)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>sort-dropdown-no-aria-haspopup</td>
+          <td>1</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>NewPage.jsx</code></td>
+          <td>Sort trigger button missing <code>aria-haspopup="listbox"</code>. Screen readers are not warned that activation opens a popup list.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>sort-dropdown-no-aria-controls</td>
+          <td>1</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>NewPage.jsx</code></td>
+          <td>Sort trigger button missing <code>aria-controls</code> reference to the options list. Screen readers cannot navigate from the trigger to the controlled element.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>filter-disclosure-no-aria-controls</td>
+          <td>3</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>FilterSidebar.jsx</code></td>
+          <td>Price, Size, and Brand disclosure buttons missing <code>aria-controls</code> references to their respective panels (<code>filter-price</code>, <code>filter-size</code>, <code>filter-brand</code>).</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+        <tr>
+          <td><span class="engine-badge engine-gen2">GEN2</span></td>
+          <td>filter-disclosure-no-aria-owns (missing panel IDs)</td>
+          <td>3</td>
+          <td><span class="page-tag">Products</span></td>
+          <td><code>FilterSidebar.jsx</code></td>
+          <td>Price, Size, and Brand filter option <code>&lt;ul&gt;</code> panels are missing <code>id</code> attributes (<code>filter-price</code>, <code>filter-size</code>, <code>filter-brand</code> removed). Without IDs the toggle buttons cannot reference them via <code>aria-controls</code>.</td>
+          <td>4.1.2 (A)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  Accessibility Audit Report &mdash; Demo Website &mdash; Generated 2026-03-18 &mdash; Powered by Evinced (GEN1 · GEN2 · GEN3 · AXE)
+</div>
+
+</body>
+</html>
