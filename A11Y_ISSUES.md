@@ -1,690 +1,468 @@
-# Accessibility Issues
+# Accessibility Audit Report — Demo Website
 
-## AXE
-
-Issues detected by axe-core rules, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-AXE` comment on the relevant line.
-
----
-
-### color-contrast (4 issues)
-
-> **Rule:** Elements must have sufficient color contrast  
-> **Impact:** Serious  
-> **WCAG:** 1.4.3 (AA) — minimum contrast ratio of 4.5:1 for normal text  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/color-contrast
-
-| # | Page | File | Element | Foreground | Background | Notes |
-|---|------|------|---------|-----------|-----------|-------|
-| 1 | Homepage | `src/components/HeroBanner.css` | `.hero-content p` (hero subtitle) | `#c8c0b8` | `#e8e0d8` | ~1.3:1 ratio |
-| 2 | Products Page | `src/pages/NewPage.css` | `.products-found` ("X Products Found" text) | `#b0b4b8` | `#ffffff` | ~1.9:1 ratio |
-| 3 | Products Page | `src/components/FilterSidebar.css` | `.filter-count` (product count in filter options) | `#c8c8c8` | `#ffffff` | ~1.4:1 ratio |
-| 4 | Product Detail | `src/pages/ProductPage.module.css` | `.productDescription` (product description text) | `#c0c0c0` | `#ffffff` | ~1.6:1 ratio |
+**Audit Date:** 2026-03-23  
+**Tool:** Evinced JS Playwright SDK v2.44.0  
+**Auditor:** Automated Cron Audit (Cursor Cloud Agent)  
+**Audit Type:** Per-page static snapshot (`evAnalyze()`) on 5 routes  
+**Standard:** WCAG 2.0 / 2.1 / 2.2 — Levels A, AA, AAA
 
 ---
 
-### image-alt (2 issues)
+## Executive Summary
 
-> **Rule:** Images must have alternative text  
-> **Impact:** Critical  
-> **WCAG:** 1.1.1 (A) — Non-text Content  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/image-alt
+| Page | Route | Total Issues | Critical | Serious |
+|------|-------|-------------|----------|---------|
+| Homepage | `/` | 35 | 32 | 3 |
+| Products (New) | `/shop/new` | 55 | 41 | 14 |
+| Product Detail | `/product/1` | 20 | 18 | 2 |
+| Checkout | `/checkout` | 21 | 18 | 3 |
+| Order Confirmation | `/order-confirmation` | 20 | 18 | 2 |
+| **TOTAL** | — | **151** | **127** | **24** |
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Homepage | `src/components/HeroBanner.jsx` | `<img src="/images/home/New_Tees.png">` | Missing `alt` attribute — screen readers will read the filename as content |
-| 2 | Homepage | `src/components/TheDrop.jsx` | `<img src="/images/home/2bags_charms1.png">` | Missing `alt` attribute — screen readers will read the filename as content |
-
----
-
-### aria-valid-attr-value (3 issues)
-
-> **Rule:** ARIA attributes must conform to valid values  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value
-
-| # | Page | File | Element | Invalid Attribute | Invalid Value | Valid Values |
-|---|------|------|---------|------------------|--------------|-------------|
-| 1 | Homepage | `src/components/FeaturedPair.jsx` | `<h1 aria-expanded="yes">` | `aria-expanded` | `"yes"` | `"true"` or `"false"` |
-| 2 | Products Page | `src/pages/NewPage.jsx` | `<div aria-sort="newest" role="columnheader">` | `aria-sort` | `"newest"` | `"ascending"`, `"descending"`, `"none"`, `"other"` |
-| 3 | Product Detail | `src/pages/ProductPage.jsx` | `<ul aria-relevant="changes">` | `aria-relevant` | `"changes"` | Space-separated tokens from: `additions`, `removals`, `text`, `all` |
+**127 Critical issues** and **24 Serious issues** were identified across all five pages. Critical issues directly block or severely impair access for users relying on keyboard navigation, screen readers, or assistive technologies. Serious issues reduce accessibility quality but do not outright prevent access.
 
 ---
 
-### duplicate-id-aria (4 issues)
+## Part 1 — Critical Issues (127 instances)
 
-> **Rule:** IDs used in ARIA and labels must be unique  
-> **Impact:** Critical  
-> **WCAG:** 4.1.1 (A) — Parsing  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/duplicate-id-aria
-
-| # | Page | File | Duplicate ID | Elements Affected | Notes |
-|---|------|------|-------------|------------------|-------|
-| 1 | Homepage | `src/components/FeaturedPair.jsx` | `featured-card-label` | Two `<p class="featured-eyebrow">` elements (one per card) | Rendered in a `.map()` loop |
-| 2 | Homepage | `src/components/FeaturedPair.jsx` | `featured-card-img` | Two `<img>` elements (one per card) | Rendered in a `.map()` loop |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | `filter-section-title` | `<span>Price</span>` and `<span>Size</span>` | Both referenced via `aria-describedby` on their parent buttons |
-| 4 | Products Page | `src/components/FilterSidebar.jsx` | `filter-section-title` | (same as above — second occurrence) | Creates two elements with the same ID in the DOM |
+Critical issues are classified as those that, if left unaddressed, prevent users with disabilities from interacting with or understanding key page content.
 
 ---
 
-### html-has-lang (1 issue)
+### CI-1: NOT_FOCUSABLE — Interactive elements unreachable by keyboard
 
-> **Rule:** `<html>` element must have a lang attribute  
-> **Impact:** Serious  
-> **WCAG:** 3.1.1 (A) — Language of Page  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/html-has-lang
+**Evinced Type ID:** `NOT_FOCUSABLE`  
+**Evinced Name:** Keyboard accessible  
+**Total Instances:** 48  
+**WCAG Criterion:** 2.1.1 Keyboard (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/keyboard-accessible
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages | `public/index.html` | `<html>` | Missing `lang` attribute entirely |
+**Description:** Interactive elements (those with `onClick` handlers and `cursor: pointer`) are implemented as `<div>` elements without `tabindex="0"`. These elements are excluded from the browser's default tab order, making them completely inaccessible to keyboard-only users who navigate using Tab.
 
----
+**Affected Elements by Page:**
 
-### valid-lang (1 issue)
+| Page | Selector | DOM Snippet |
+|------|----------|-------------|
+| All pages (×5) | `.wishlist-btn` | `<div class="icon-btn wishlist-btn" style="cursor: pointer;">` |
+| All pages (×5) | `.icon-btn:nth-child(2)` (Search) | `<div class="icon-btn" style="cursor: pointer;">` |
+| All pages (×5) | `.icon-btn:nth-child(4)` (Login) | `<div class="icon-btn" style="cursor: pointer;">` |
+| All pages (×5) | `.flag-group` | `<div class="flag-group" onClick={...} style="cursor: pointer;">` |
+| Homepage (×4) | `.shop-link` (product cards) | `<div class="shop-link" style="cursor: pointer;">` |
+| Products | `.filter-option` (×18 filter checkboxes) | `<div class="filter-option" onClick={...}>` |
+| Products | `.products-found` | count display div |
+| Checkout | `.checkout-continue-btn` | `<div class="checkout-continue-btn" style="cursor: pointer;">Continue</div>` |
+| Checkout | Checkout step divs | `<div class="checkout-step" onClick={...}>` |
+| Order Confirmation | `.confirm-home-link` | `<div class="confirm-home-link" style="cursor: pointer;">← Back to Shop</div>` |
+| Product Detail | `.footer-nav-item` | `<div class="footer-nav-item" style="cursor: pointer;">` |
 
-> **Rule:** lang attribute must have a valid value  
-> **Impact:** Serious  
-> **WCAG:** 3.1.2 (AA) — Language of Parts  
-> **Reference:** https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+**Source Files:**
+- `src/components/Header.jsx` (lines 131, 140, 156, 161) — wishlist-btn, icon-btns, flag-group
+- `src/components/PopularSection.jsx` (line 55) — shop-link divs
+- `src/components/FilterSidebar.jsx` (lines 74, 116, 156) — filter-option divs
+- `src/components/Footer.jsx` (lines 13, 18) — footer-nav-item divs
+- `src/pages/CheckoutPage.jsx` (line 157) — checkout-continue-btn
+- `src/pages/OrderConfirmationPage.jsx` (line 40) — confirm-home-link
 
-| # | Page | File | Element | Invalid Value | Notes |
-|---|------|------|---------|--------------|-------|
-| 1 | Homepage | `src/components/TheDrop.jsx` | `<p lang="zz">` | `"zz"` | Not a valid BCP 47 language tag |
+**Recommended Fix:** Replace `<div onClick={...}>` interactive elements with semantically appropriate `<button>` or `<a>` elements, which are natively focusable. For navigation-type actions, use `<button>` with `type="button"`. For links, use React Router's `<Link>`. If a `<div>` must be retained, add `tabIndex={0}` and a `role` attribute, and handle `onKeyDown` for Enter/Space — though replacing with a native element is the preferred approach.
 
----
-
-### list (1 issue)
-
-> **Rule:** `<ul>` and `<ol>` must only directly contain `<li>`, `<script>`, or `<template>` elements  
-> **Impact:** Serious  
-> **WCAG:** 1.3.1 (A) — Info and Relationships  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/list
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Homepage | `src/components/TrendingCollections.jsx` | `<ul class="trending-grid">` | Contains a `<div class="trending-grid-label">` as a direct child instead of only `<li>` elements |
-
----
-
-### aria-required-attr (5 issues)
-
-> **Rule:** Required ARIA attributes must be provided  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://dequeuniversity.com/rules/axe/4.11/aria-required-attr
-
-| # | Page | File | Element | Role | Missing Required Attributes |
-|---|------|------|---------|------|-----------------------------|
-| 1 | Homepage | `src/components/FeaturedPair.jsx` | `<span role="checkbox">` | `checkbox` | `aria-checked` |
-| 2 | Homepage | `src/components/TheDrop.jsx` | `<div role="slider">` | `slider` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax` |
-| 3 | Products Page | `src/pages/NewPage.jsx` | `<div role="spinbutton">` | `spinbutton` | `aria-valuenow` |
-| 4 | Products Page | `src/pages/NewPage.jsx` | `<div role="combobox">` | `combobox` | `aria-controls`, `aria-expanded` |
-| 5 | Product Detail | `src/pages/ProductPage.jsx` | `<span role="meter">` | `meter` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax` |
+**Why this approach:** Native HTML interactive elements (`<button>`, `<a>`) receive focus automatically, are announced correctly by screen readers, and already handle keyboard events. They also provide better baseline styling and behaviour across browser/AT combinations. Retrofitting `tabindex` onto `<div>` elements requires additional `role`, `onKeyDown`, and focus styling work — all of which is provided for free by native elements.
 
 ---
 
-## GEN1
+### CI-2: WRONG_SEMANTIC_ROLE — Interactive `<div>` elements lack proper ARIA roles
 
-Issues detected by Evinced engine rules, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN1` comment on the relevant line.
+**Evinced Type ID:** `WRONG_SEMANTIC_ROLE`  
+**Evinced Name:** Interactable role  
+**Total Instances:** 47  
+**WCAG Criterion:** 4.1.2 Name, Role, Value (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/interactable-role
 
----
+**Description:** The same `<div onClick={...}>` elements identified under CI-1 also lack any ARIA role. Screen readers cannot identify these elements as interactive, so users who rely on assistive technology will not be told they can activate them, will not hear their purpose, and may not even be able to locate them.
 
-### interactable-role + keyboard-accessible (15 issues)
+**Affected Elements by Page:**
 
-> **Rule:** Semantics of interactable elements must be conveyed by their tag or assigned role; all UI functionality must be accessible by keyboard  
-> **Impact:** Critical / Serious  
-> **WCAG:** 1.3.1 (A), 2.1.1 (A), 4.1.2 (A)  
-> **References:**  
-> - https://knowledge.evinced.com/system-validations/interactable-role  
-> - https://knowledge.evinced.com/system-validations/keyboard-accessible
+| Page | Selector | Expected Role |
+|------|----------|---------------|
+| All pages | `.wishlist-btn` | `button` |
+| All pages | `.icon-btn:nth-child(2)` (Search) | `button` |
+| All pages | `.icon-btn:nth-child(4)` (Login) | `button` |
+| All pages | `.flag-group` | `button` |
+| Homepage | `.shop-link` (×4 product cards) | `link` |
+| Products | `.filter-option` (×18 filter checkboxes) | `checkbox` or `button` |
+| Checkout | `.checkout-continue-btn` | `button` |
+| Checkout | Checkout step divs | `button` |
+| Order Confirmation | `.confirm-home-link` | `link` |
+| Product Detail / Footer | `.footer-nav-item` | `link` or `button` |
 
-Each issue below is a `<div>` (or similar non-semantic element) used as an interactive control without a proper `role` attribute and without `tabindex`, making it invisible to screen readers as an interactive element and inaccessible to keyboard users.
+**Source Files:** Same as CI-1.
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn wishlist-btn">` | `div` used as a wishlist-open button — no `role="button"`, no `tabindex` |
-| 2 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Search) | `div` used as a search button — no `role="button"`, no `tabindex` |
-| 3 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Login) | `div` used as a login button — no `role="button"`, no `tabindex` |
-| 4 | All pages (Header) | `src/components/Header.jsx` | `<div class="flag-group">` | `div` used as a region-selector toggle — no `role="button"`, no `tabindex` |
-| 5 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (Sustainability) | `div` used as a navigation item — no `role="link"`, no `tabindex` |
-| 6 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (FAQs) | `div` used as a navigation item — no `role="link"`, no `tabindex` |
-| 7 | Products Page | `src/components/ProductCard.jsx` | `<div class="product-card-quick-add">` | `div` used as a quick-add button — no `role="button"`, no `tabindex` |
-| 8 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Drinkware) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
-| 9 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Fun and Games) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
-| 10 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Stationery) | `div` used as a navigation link — no `role="link"`, no `tabindex` |
-| 11 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<div class="continueBtn">` | `div` used as a continue-shopping button — no `role="button"`, no `tabindex` |
-| 12 | All pages (Wishlist Drawer) | `src/components/WishlistModal.jsx` | `<div class="removeBtn">` | `div` used as a remove-from-wishlist button — no `role="button"`, no `tabindex` |
-| 13 | Checkout | `src/pages/CheckoutPage.jsx` | `<div class="checkout-continue-btn">` | `div` used as a proceed button — no `role="button"`, no `tabindex` |
-| 14 | Checkout | `src/pages/CheckoutPage.jsx` | `<div class="checkout-back-btn">` | `div` used as a back-to-cart button — no `role="button"`, no `tabindex` |
-| 15 | Order Confirmation | `src/pages/OrderConfirmationPage.jsx` | `<div class="confirm-home-link">` | `div` used as a back-to-shop navigation action — no `role="link"`, no `tabindex` |
+**Recommended Fix:** Identical to CI-1. Converting `<div>` interactive elements to `<button>` or `<a>`/`<Link>` automatically assigns the correct implicit ARIA role. Where the visual design requires a non-semantic container, add `role="button"` or `role="link"` explicitly. Filter options that behave as checkboxes should use `<input type="checkbox">` (or `role="checkbox"` with `aria-checked`).
+
+**Why this approach:** ARIA roles tell assistive technologies what an element *is* — without a correct role, screen readers announce the element as generic text or ignore it entirely. Using the correct native element is the most robust and maintainable approach because it leverages built-in browser semantics rather than requiring manually-maintained ARIA attributes.
 
 ---
 
-### accessible-name (10 issues)
+### CI-3: NO_DESCRIPTIVE_TEXT — Interactive elements have no accessible name
 
-> **Rule:** All interactable elements must have an accessible name  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A), 2.4.6 (AA), 4.1.2 (A)  
-> **Reference:** https://knowledge.evinced.com/system-validations/accessible-name
+**Evinced Type ID:** `NO_DESCRIPTIVE_TEXT`  
+**Evinced Name:** Accessible name  
+**Total Instances:** 18  
+**WCAG Criterion:** 4.1.2 Name, Role, Value (Level A); 2.4.6 Headings and Labels (Level AA)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/accessible-name
 
-Each issue below is an interactive element whose accessible name has been removed (either `aria-label` was stripped or the visible text was hidden from assistive technologies via `aria-hidden="true"`), leaving screen readers and voice control with no hook to identify or announce the control.
+**Description:** Several interactive elements contain no text visible to assistive technologies. The icon-only buttons (Search, Login) contain SVG icons whose text is wrapped in `aria-hidden="true"`. The `.shop-link` divs have their label text wrapped in `<span aria-hidden="true">`, meaning the clickable area has no accessible label. The "FAQs" footer nav item has identical hiding. Screen readers announce these elements as empty or by their tag name.
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Search) | Icon-only control — SVG is `aria-hidden`, visible text is `aria-hidden`; no accessible name |
-| 2 | All pages (Header) | `src/components/Header.jsx` | `<div class="icon-btn">` (Login) | Icon-only control — SVG is `aria-hidden`, visible text is `aria-hidden`; no accessible name |
-| 3 | All pages (Footer) | `src/components/Footer.jsx` | `<div class="footer-nav-item">` (FAQs) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
-| 4 | Products Page | `src/components/ProductCard.jsx` | `<Link class="product-card-image-link">` | `aria-label` removed from image link — link has no accessible name beyond the child `<img>` alt, which is insufficient for a standalone link |
-| 5 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Drinkware) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
-| 6 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Fun and Games) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
-| 7 | Homepage | `src/components/PopularSection.jsx` | `<div class="shop-link">` (Shop Stationery) | Visible label is `aria-hidden`; no `aria-label` — no accessible name |
-| 8 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<button class="closeBtn">` | Icon-only button — `aria-label` removed, SVG is `aria-hidden`; no accessible name |
-| 9 | All pages (Wishlist Drawer) | `src/components/WishlistModal.jsx` | `<button class="closeBtn">` | Icon-only button — `aria-label` removed, SVG is `aria-hidden`; no accessible name |
-| 10 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | `<div class="continueBtn">` | Interactive div — visible text is `aria-hidden`; no `aria-label` — no accessible name |
+**Affected Elements by Page:**
 
----
+| Page | Selector | Issue |
+|------|----------|-------|
+| All pages | `.icon-btn:nth-child(2)` | Search icon button — SVG with no label |
+| All pages | `.icon-btn:nth-child(4)` | Login icon button — SVG with no label |
+| Homepage | `.product-card:nth-child(n) > .product-card-info > .shop-link` | `<span aria-hidden="true">Shop Drinkware</span>` — label hidden |
+| All pages | `.footer-list:nth-child(2) > li > .footer-nav-item` | `<span aria-hidden="true">FAQs</span>` — label hidden |
 
-## GEN2
+**Source Files:**
+- `src/components/Header.jsx` — Search and Login icon-only `<div>` buttons without accessible names
+- `src/components/PopularSection.jsx` (line 59) — `<span aria-hidden="true">{product.shopLabel}</span>`
+- `src/components/Footer.jsx` (line 18) — `<span aria-hidden="true">FAQs</span>`
 
-Issues detected by Evinced engine rules, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN2` comment on the relevant line.
+**Recommended Fix:** Add `aria-label` to icon-only buttons (e.g., `aria-label="Search"`, `aria-label="Log in"`). Remove the `aria-hidden="true"` from the span labels inside `.shop-link` and `.footer-nav-item`, or keep it but add an `aria-label` on the parent interactive element.
 
----
-
-### navigation-forbidden-roles (1 issue)
-
-> **Rule:** Navigation patterns must not use `role="menu"` or `role="menubar"` on their submenu containers — these roles imply application-level widget semantics and are forbidden inside a navigation landmark  
-> **Impact:** Serious  
-> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/navigation#forbidden-roles
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | Submenu `<ul>` elements (Apparel, Lifestyle, Stationery, Collections, Shop by Brand) | `role="menu"` applied to submenu `<ul>` containers inside the main `<nav>` — the `menu` role is forbidden in a navigation landmark; assistive technologies will treat the nav as an application widget instead of a navigation region |
+**Why this approach:** An accessible name is required for every interactive control. Screen readers read the accessible name to announce the element's purpose when it receives focus. `aria-label` is the canonical approach for icon-only or text-that-must-be-visually-hidden controls, as it is universally supported across all major screen reader/browser combinations.
 
 ---
 
-### navigation-unexpected-interactives (1 issue)
+### CI-4: AXE-BUTTON-NAME — Close buttons on modals have no accessible name
 
-> **Rule:** Interactive elements inside a navigation landmark must carry a role of `link`, `button`, or `group`; other roles (e.g. `menuitem`) are unexpected and break the navigation pattern  
-> **Impact:** Serious  
-> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/navigation#unexpected-interactives
+**Evinced Type ID:** `AXE-BUTTON-NAME`  
+**Evinced Name:** Button-name  
+**Total Instances:** 8  
+**WCAG Criterion:** 4.1.2 Name, Role, Value (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/button-name
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | Submenu `<a>` elements (30 links across all submenus) | `role="menuitem"` applied to `<a>` elements inside the nav submenus — `menuitem` is not a permitted role for interactive elements within a navigation landmark; screen readers cannot correctly identify or announce these links as navigation links |
+**Description:** The close buttons on `CartModal` and `WishlistModal` are `<button>` elements that contain only an SVG icon. Neither an `aria-label` attribute nor any visible text label is present. Screen readers announce these as "button" with no name, providing no indication of the action they perform.
 
----
+**Affected Elements by Page:**
 
-### sort-combobox-no-role (1 issue)
+| Page | Selector | DOM Snippet |
+|------|----------|-------------|
+| Homepage, Products, Product Detail | `#cart-modal > div:nth-child(1) > button` | `<button class="[hashed]"><svg ...>` (CartModal close) |
+| Homepage, Products, Product Detail, Checkout, Order Confirmation | `div[role="dialog"] > div:nth-child(1) > button` | `<button class="[hashed]"><svg ...>` (WishlistModal close) |
+| Checkout, Order Confirmation | `div:nth-child(1) > button` | WishlistModal close button |
 
-> **Rule:** Custom combobox/select widgets must expose `role="combobox"` so assistive technologies identify and announce the control correctly  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/combobox#role
+**Source Files:**
+- `src/components/CartModal.jsx` (line 56) — `<button className={styles.closeBtn} onClick={closeCart}>` — no aria-label
+- `src/components/WishlistModal.jsx` — equivalent close button with no aria-label
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | `role="combobox"` not set — assistive technologies cannot identify the sort trigger as a combobox widget |
+**Recommended Fix:** Add `aria-label="Close cart"` to the CartModal close button and `aria-label="Close wishlist"` to the WishlistModal close button. Example:
 
----
+```jsx
+<button
+  className={styles.closeBtn}
+  onClick={closeCart}
+  aria-label="Close cart"
+>
+  {/* SVG icon */}
+</button>
+```
 
-### sort-combobox-no-accessible-name (1 issue)
-
-> **Rule:** All interactable elements must have an accessible name  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/combobox#accessibility-label
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | No accessible name (`aria-label` removed) — screen readers cannot announce the purpose of the sort combobox |
-
----
-
-### sort-combobox-no-aria-expanded (1 issue)
-
-> **Rule:** Combobox triggers must expose `aria-expanded` so assistive technologies can announce whether the options list is open or closed  
-> **Impact:** Serious  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/combobox#combobox-sanity
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | Sort `<button class="sort-btn">` | `aria-expanded` removed — screen readers cannot determine whether the sort options list is currently open or closed; the combobox state is undetectable |
+**Why this approach:** The `aria-label` attribute is the simplest, most widely supported mechanism to provide an accessible name for an icon-only button. It does not require DOM changes beyond adding the attribute, making it the lowest-risk fix. A `<span className="sr-only">Close cart</span>` visually-hidden text node inside the button is an equally valid alternative.
 
 ---
 
-### filter-checkbox-no-role (3 issues)
+### CI-5: AXE-ARIA-VALID-ATTR-VALUE — Invalid ARIA attribute values
 
-> **Rule:** Custom checkbox widgets must expose `role="checkbox"` so assistive technologies identify and announce the control correctly  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/checkbox#role
+**Evinced Type ID:** `AXE-ARIA-VALID-ATTR-VALUE`  
+**Evinced Name:** Aria-valid-attr-value  
+**Total Instances:** 3  
+**WCAG Criterion:** 4.1.2 Name, Role, Value (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/aria-valid-attr-value
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | `role="checkbox"` not set — screen readers cannot identify the element as a checkbox |
+**Description:** Two distinct invalid ARIA attribute values were detected:
 
----
+1. **`aria-expanded="yes"`** — Two `<h1>` elements in `FeaturedPair.jsx` use `aria-expanded="yes"`. The valid values for `aria-expanded` are `"true"`, `"false"`, or `"undefined"`. Browsers and screen readers may ignore or misinterpret a non-boolean string value.
 
-### filter-checkbox-no-focus-sequence (3 issues)
+2. **`aria-relevant="changes"`** — A `<ul>` in `ProductPage.jsx` uses `aria-relevant="changes"`. The valid tokenised values for `aria-relevant` are: `additions`, `removals`, `text`, `all`, and combinations thereof. `"changes"` is not a valid token.
 
-> **Rule:** All interactive elements must be reachable via keyboard tab navigation  
-> **Impact:** Critical  
-> **WCAG:** 2.1.1 (A) — Keyboard  
-> **Reference:** https://knowledge.evinced.com/components/checkbox#focus-sequence
+**Affected Elements by Page:**
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | No `tabindex` — the checkbox is not in the keyboard focus sequence; keyboard-only users cannot reach it |
+| Page | Selector | Invalid Attribute |
+|------|----------|-------------------|
+| Homepage | `.featured-card:nth-child(1) > .featured-card-info > h1` | `aria-expanded="yes"` |
+| Homepage | `.featured-card:nth-child(2) > .featured-card-info > h1` | `aria-expanded="yes"` |
+| Product Detail | `ul[aria-relevant="changes"]` | `aria-relevant="changes"` |
 
----
+**Source Files:**
+- `src/components/FeaturedPair.jsx` (line 46) — `<h1 aria-expanded="yes">`
+- `src/pages/ProductPage.jsx` (line 146) — `aria-relevant="changes"`
 
-### filter-checkbox-no-accessible-name (3 issues)
+**Recommended Fix:**
 
-> **Rule:** All interactable elements must have an accessible name  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/checkbox#accessible-name
+For `FeaturedPair.jsx`: `aria-expanded` is semantically incorrect on a static heading `<h1>`. It should be removed entirely, or if there is collapsible behaviour, the boolean value `"true"` or `"false"` should be used.
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | No `aria-label` or associated `<label>` — screen readers cannot announce what the checkbox controls |
+```jsx
+{/* Remove aria-expanded from static headings */}
+<h1>{item.title}</h1>
+```
 
----
+For `ProductPage.jsx`: Replace `aria-relevant="changes"` with a valid token such as `aria-relevant="additions text"`:
 
-### filter-checkbox-no-aria-checked (3 issues)
+```jsx
+<ul aria-relevant="additions text" aria-live="polite">
+```
 
-> **Rule:** Elements with `role="checkbox"` must expose `aria-checked` to convey their checked/unchecked state to assistive technologies  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-> **Reference:** https://knowledge.evinced.com/components/checkbox#aria-checked
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Price filter checkbox is checked or unchecked |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Size filter checkbox is checked or unchecked |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter custom checkbox `<div>` | `aria-checked` not defined — screen readers cannot announce whether the Brand filter checkbox is checked or unchecked |
+**Why this approach:** Invalid ARIA attribute values are silently ignored by some browsers or trigger warnings in AT. Using valid values ensures that the intended assistive behaviour (live region updates, expanded state) actually functions. Removing `aria-expanded` from a non-collapsible heading is the correct semantic choice.
 
 ---
 
-### no-dialog-role (1 issue)
+### CI-6: AXE-IMAGE-ALT — Images missing alternative text
 
-> **Rule:** Modal dialogs must expose `role="dialog"` (or `role="alertdialog"`) so assistive technologies announce and treat them as dialogs  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+**Evinced Type ID:** `AXE-IMAGE-ALT`  
+**Evinced Name:** Image-alt  
+**Total Instances:** 2  
+**WCAG Criterion:** 1.1.1 Non-text Content (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/image-alt
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart drawer `<div>` | `role="dialog"` removed — screen readers cannot identify the panel as a dialog and will not switch to dialog-reading mode |
+**Description:** Two decorative/informational images are rendered without an `alt` attribute. Screen readers will announce these as the raw filename (e.g., "New underscore Tees dot p-n-g"), which is confusing and meaningless to a visually impaired user.
 
----
+**Affected Elements by Page:**
 
-### no-aria-modal (1 issue)
+| Page | Selector | DOM Snippet |
+|------|----------|-------------|
+| Homepage | `img[src$="New_Tees.png"]` | `<img src="/images/home/New_Tees.png">` |
+| Homepage | `img[src$="2bags_charms1.png"]` | `<img src="/images/home/2bags_charms1.png" loading="lazy">` |
 
-> **Rule:** Modal dialogs should set `aria-modal="true"` to signal to screen readers that background content is inert  
-> **Impact:** Serious  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+**Source Files:**
+- `src/components/HeroBanner.jsx` (line 18) — `<img src={HERO_IMAGE} />` (no `alt`)
+- `src/components/TheDrop.jsx` (line 13) — `<img src={DROP_IMAGE} loading="lazy" />` (no `alt`)
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart drawer `<div>` | `aria-modal="true"` removed — screen readers may allow users to browse content behind the open modal |
+**Recommended Fix:**
 
----
+For `HeroBanner.jsx` — add a descriptive alt text reflecting the hero banner content:
+```jsx
+<img src={HERO_IMAGE} alt="New tees collection — winter clothing showcase" />
+```
 
-### no-dialog-accessible-name (2 issues)
+For `TheDrop.jsx` — add descriptive alt text for the product image:
+```jsx
+<img src={DROP_IMAGE} loading="lazy" alt="Limited-edition bag charms — The Drop collection" />
+```
 
-> **Rule:** All interactable elements and landmark regions must have an accessible name  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
+If the images are purely decorative and convey no information, use `alt=""` (empty string) to signal this to assistive technologies:
+```jsx
+<img src={HERO_IMAGE} alt="" role="presentation" />
+```
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart drawer `<div>` | `aria-label="Shopping cart"` removed — the modal has no accessible name; screen readers cannot announce what the dialog is about |
-| 2 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart items `<ul>` | `aria-label="Cart items"` removed — the list has no accessible name |
-
----
-
-### no-aria-label-on-buttons (3 issues)
-
-> **Rule:** Icon-only and symbol buttons must have an accessible name via `aria-label` or equivalent  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A), 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Decrease quantity `<button>` per cart item | `aria-label` removed — button renders only "−" symbol; screen readers cannot convey which item's quantity is being changed |
-| 2 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Increase quantity `<button>` per cart item | `aria-label` removed — button renders only "+" symbol; screen readers cannot convey which item's quantity is being changed |
-| 3 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Remove item `<button>` per cart item | `aria-label` removed — icon-only button; screen readers cannot identify which item is being removed |
+**Why this approach:** WCAG 1.1.1 requires every `<img>` to have an `alt` attribute. The `alt` attribute serves as the text equivalent for screen reader users. Providing a meaningful description conveys the visual information; an empty `alt=""` on a purely decorative image tells the AT to skip it. Either is correct depending on whether the image carries information.
 
 ---
 
-### no-quantity-value-label (1 issue)
+### CI-7: AXE-ARIA-REQUIRED-ATTR — `role="slider"` missing required ARIA attributes
 
-> **Rule:** Non-text content conveying information must have a text alternative  
-> **Impact:** Serious  
-> **WCAG:** 1.1.1 (A) — Non-text Content  
+**Evinced Type ID:** `AXE-ARIA-REQUIRED-ATTR`  
+**Evinced Name:** Aria-required-attr  
+**Total Instances:** 1  
+**WCAG Criterion:** 4.1.2 Name, Role, Value (Level A)  
+**Knowledge Base:** https://knowledge.evinced.com/system-validations/aria-required-attr
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Quantity `<span>` per cart item | `aria-label` (e.g. "Quantity: 2") removed — screen readers read the raw number without context |
+**Description:** The `.drop-popularity-bar` element in `TheDrop.jsx` declares `role="slider"` but does not provide the three required ARIA attributes for that role: `aria-valuenow`, `aria-valuemin`, and `aria-valuemax`. The WAI-ARIA specification mandates these attributes for the `slider` role. Without them, AT cannot convey the current or range value of the slider to users.
 
----
+**Affected Elements by Page:**
 
-### no-focus-trap (1 issue)
+| Page | Selector | DOM Snippet |
+|------|----------|-------------|
+| Homepage | `.drop-popularity-bar` | `<div role="slider" aria-label="Popularity indicator" class="drop-popularity-bar"></div>` |
 
-> **Rule:** When a modal dialog is open, keyboard focus must be trapped inside it  
-> **Impact:** Critical  
-> **WCAG:** 2.1.2 (A) — No Keyboard Trap (inverse: focus must stay inside the dialog)  
+**Source File:**
+- `src/components/TheDrop.jsx` (line 19)
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart drawer | Focus is not moved into the modal on open and is not trapped — keyboard users can Tab to elements behind the open modal |
+**Recommended Fix:**
 
----
+If this is a visual-only popularity indicator (not user-interactable):
+```jsx
+{/* Remove slider role — use a progressbar or status role for display-only indicators */}
+<div
+  role="progressbar"
+  aria-label="Popularity indicator"
+  aria-valuenow={75}
+  aria-valuemin={0}
+  aria-valuemax={100}
+  className="drop-popularity-bar"
+/>
+```
 
-### no-esc-close (1 issue)
+If it must remain a slider, add the required attributes:
+```jsx
+<div
+  role="slider"
+  aria-label="Popularity indicator"
+  aria-valuenow={75}
+  aria-valuemin={0}
+  aria-valuemax={100}
+  tabIndex={0}
+  className="drop-popularity-bar"
+/>
+```
 
-> **Rule:** Dialogs and overlays must be dismissible with the Escape key  
-> **Impact:** Serious  
-> **WCAG:** 2.1.1 (A) — Keyboard  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Cart Drawer) | `src/components/CartModal.jsx` | Cart drawer | `keydown` Escape handler removed — keyboard users cannot close the cart modal with the Escape key |
-
----
-
-### no-accessible-name-launcher (1 issue)
-
-> **Rule:** All interactable elements must have an accessible name  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | `<button class="icon-btn cart-btn">` | `aria-label` removed — the cart-open button has no accessible name; screen readers cannot announce its purpose or the number of items in the cart |
-
----
-
-### sort-dropdown-no-group-role (1 issue)
-
-> **Rule:** Widget containers that group related controls should use an appropriate ARIA `role` and accessible label so assistive technologies can identify and announce the grouping  
-> **Impact:** Serious  
-> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<div class="sort-dropdown">` | `role="group"` and `aria-label="Sort products"` removed — the sort widget wrapper has no group semantics or accessible label; screen readers cannot identify it as a named grouping |
+**Why this approach:** The WAI-ARIA specification defines `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` as required properties for `role="slider"`. Without them, validators flag the element as broken and screen readers may announce it incorrectly or not at all. If the element is only a display indicator (not interactive), using `role="progressbar"` or `role="meter"` with the same required attributes is more semantically accurate and still requires the value attributes.
 
 ---
 
-### sort-dropdown-no-aria-expanded (1 issue)
+## Part 2 — Critical Issues Summary Table
 
-> **Rule:** Buttons that open a popup or disclosure must expose `aria-expanded` so assistive technologies can announce whether the content is shown or hidden  
-> **Impact:** Serious  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<button class="sort-btn">` | `aria-expanded` removed — screen readers cannot tell whether the sort options list is currently open or closed |
-
----
-
-### sort-dropdown-no-aria-haspopup (1 issue)
-
-> **Rule:** Buttons that open a listbox, menu, or other popup should declare `aria-haspopup` so assistive technologies warn the user before activation  
-> **Impact:** Moderate  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<button class="sort-btn">` | `aria-haspopup="listbox"` removed — screen readers are not informed that activating this button opens a popup list |
+| # | Type ID | Name | Instances | Pages Affected | WCAG |
+|---|---------|------|-----------|----------------|------|
+| CI-1 | `NOT_FOCUSABLE` | Keyboard accessible | 48 | All 5 | 2.1.1 (A) |
+| CI-2 | `WRONG_SEMANTIC_ROLE` | Interactable role | 47 | All 5 | 4.1.2 (A) |
+| CI-3 | `NO_DESCRIPTIVE_TEXT` | Accessible name | 18 | All 5 | 4.1.2 (A) |
+| CI-4 | `AXE-BUTTON-NAME` | Button-name | 8 | All 5 | 4.1.2 (A) |
+| CI-5 | `AXE-ARIA-VALID-ATTR-VALUE` | Aria-valid-attr-value | 3 | Homepage, Product Detail | 4.1.2 (A) |
+| CI-6 | `AXE-IMAGE-ALT` | Image-alt | 2 | Homepage | 1.1.1 (A) |
+| CI-7 | `AXE-ARIA-REQUIRED-ATTR` | Aria-required-attr | 1 | Homepage | 4.1.2 (A) |
+| — | **Total** | | **127** | | |
 
 ---
 
-### sort-dropdown-no-aria-controls (1 issue)
+## Part 3 — Non-Critical Issues (24 instances — Serious severity)
 
-> **Rule:** Buttons that control another element should use `aria-controls` to programmatically associate them with the controlled element  
-> **Impact:** Moderate  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<button class="sort-btn">` | `aria-controls` removed — screen readers cannot navigate from the trigger button to the options list it controls |
+The following issues were identified as **Serious** severity. They reduce accessibility but do not completely block access. They are documented here for remediation planning but were not addressed in this audit cycle.
 
 ---
 
-### sort-dropdown-no-listbox-role (1 issue)
+### NC-1: AXE-COLOR-CONTRAST — Insufficient colour contrast (18 instances)
 
-> **Rule:** Custom select/listbox widgets must expose `role="listbox"` and an accessible label so assistive technologies identify the container as a list of selectable options  
-> **Impact:** Critical  
-> **WCAG:** 1.3.1 (A) — Info and Relationships; 4.1.2 (A) — Name, Role, Value  
+**Evinced Type ID:** `AXE-COLOR-CONTRAST`  
+**Evinced Name:** Color-contrast  
+**WCAG Criterion:** 1.4.3 Contrast (Minimum) — Level AA  
+**Total Instances:** 18
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<ul class="sort-options">` | `role="listbox"` and `aria-label="Sort options"` removed — screen readers cannot identify the dropdown list as a listbox widget |
+**Description:** Text and background colour combinations across multiple pages do not meet the WCAG AA minimum contrast ratio of 4.5:1 for normal text or 3:1 for large text.
 
----
+**Affected Elements:**
 
-### sort-dropdown-no-option-role (1 issue)
+| Page | Selector | Element Description |
+|------|----------|---------------------|
+| Homepage | `.hero-content > p` | Hero tagline ("Warm hues for cooler days") — light text on hero background |
+| Products | `.filter-count` (×3) | Filter count spans `(8)`, `(4)`, `(4)` — grey text on white |
+| Products | `.products-found` / `.new-page` | "X Products Found" text |
+| Product Detail | `p:nth-child(4)` | Product description paragraph — low contrast grey text |
+| Checkout | `.step-label` | "Shipping & Payment" step label |
+| Checkout | `.summary-tax-note` | "Taxes calculated at next step" note |
+| Order Confirmation | `.confirm-order-id-label` | "Order ID" label text |
 
-> **Rule:** Items inside a `listbox` must carry `role="option"` and `aria-selected` so assistive technologies can announce each choice and its selection state  
-> **Impact:** Critical  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<li class="sort-option">` (each option) | `role="option"` and `aria-selected` removed — screen readers cannot identify list items as selectable options or announce which one is currently selected |
-
----
-
-### sort-dropdown-no-keyboard-accessible (1 issue)
-
-> **Rule:** All UI functionality must be operable via keyboard; interactive elements must be focusable and respond to keyboard events  
-> **Impact:** Critical  
-> **WCAG:** 2.1.1 (A) — Keyboard  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/pages/NewPage.jsx` | `<li class="sort-option">` (each option) | `tabIndex={0}` and `onKeyDown` handler removed — sort options cannot be focused or activated via keyboard; keyboard-only users cannot select a sort order |
+**Recommended Fix (not applied this cycle):** Increase foreground text colour darkness or background lightness in the corresponding CSS files to achieve at least 4.5:1 ratio. Tools like the WebAIM Contrast Checker can validate specific colour pairs. Primary CSS files: `HeroBanner.css`, `FilterSidebar.css`, `NewPage.css`, `ProductPage.module.css`, `CheckoutPage.css`, `OrderConfirmationPage.css`.
 
 ---
 
-### filter-disclosure-no-aria-expanded (3 issues)
+### NC-2: AXE-HTML-HAS-LANG — `<html>` element missing `lang` attribute (5 instances)
 
-> **Rule:** Disclosure buttons must expose `aria-expanded` so assistive technologies can announce whether the controlled section is open or collapsed  
-> **Impact:** Serious  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+**Evinced Type ID:** `AXE-HTML-HAS-LANG`  
+**Evinced Name:** Html-has-lang  
+**WCAG Criterion:** 3.1.1 Language of Page — Level A  
+**Total Instances:** 5 (one per page — all from the same root `public/index.html`)
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price `<button class="filter-group-header">` | `aria-expanded` removed — screen readers cannot announce whether the Price filter section is expanded or collapsed |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size `<button class="filter-group-header">` | `aria-expanded` removed — screen readers cannot announce whether the Size filter section is expanded or collapsed |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand `<button class="filter-group-header">` | `aria-expanded` removed — screen readers cannot announce whether the Brand filter section is expanded or collapsed |
+**Description:** The root `<html>` element in `public/index.html` does not have a `lang` attribute. This means screen readers cannot automatically switch to the correct language voice/dialect for the page content. All five pages are affected since they share a single HTML shell.
 
----
+**Affected Element:**
+- `html` element — `public/index.html` line 3: `<html>` (no lang attribute)
 
-### filter-disclosure-no-aria-controls (3 issues)
+**Recommended Fix (not applied this cycle):**
+```html
+<html lang="en">
+```
 
-> **Rule:** Disclosure buttons should use `aria-controls` to programmatically associate them with the region they show/hide  
-> **Impact:** Moderate  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price `<button class="filter-group-header">` | `aria-controls="filter-price"` removed — no programmatic link between the Price toggle button and its controlled panel |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size `<button class="filter-group-header">` | `aria-controls="filter-size"` removed — no programmatic link between the Size toggle button and its controlled panel |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand `<button class="filter-group-header">` | `aria-controls="filter-brand"` removed — no programmatic link between the Brand toggle button and its controlled panel |
+**Why not fixed:** Although this affects all 5 pages and the fix is a one-line change to `public/index.html`, it was classified as Serious (not Critical) by the Evinced engine. However, this is arguably the highest-value single fix in terms of effort-to-impact ratio and should be prioritised in the next remediation cycle.
 
 ---
 
-### filter-disclosure-no-aria-owns (3 issues)
+### NC-3: AXE-VALID-LANG — Invalid `lang` attribute value (1 instance)
 
-> **Rule:** The `id` attribute on a controlled panel is required for `aria-controls` / `aria-owns` associations; without it the relationship between the toggle button and its panel cannot be established  
-> **Impact:** Moderate  
-> **WCAG:** 4.1.2 (A) — Name, Role, Value  
+**Evinced Type ID:** `AXE-VALID-LANG`  
+**Evinced Name:** Valid-lang  
+**WCAG Criterion:** 3.1.2 Language of Parts — Level AA  
+**Total Instances:** 1
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price `<ul class="filter-options">` | `id="filter-price"` removed — the panel has no ID; the toggle button cannot reference it via `aria-controls` or `aria-owns` |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size `<ul class="filter-options">` | `id="filter-size"` removed — the panel has no ID; the toggle button cannot reference it via `aria-controls` or `aria-owns` |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand `<ul class="filter-options">` | `id="filter-brand"` removed — the panel has no ID; the toggle button cannot reference it via `aria-controls` or `aria-owns` |
+**Description:** A `<p>` element in `TheDrop.jsx` has `lang="zz"`, which is not a valid BCP 47 language tag. Screen readers rely on the `lang` attribute to switch pronunciation models; an invalid tag may trigger incorrect pronunciation or be silently ignored.
 
----
+**Affected Element:**
 
-### filter-disclosure-no-esc-close (3 issues)
+| Page | Selector | DOM Snippet |
+|------|----------|-------------|
+| Homepage | `p[lang="zz"]` | `<p lang="zz">Our brand-new, limited-edition plushie bag charms have officially dropped...</p>` |
 
-> **Rule:** Disclosures and expandable sections should be collapsible with the Escape key to give keyboard users a quick way to dismiss them  
-> **Impact:** Serious  
-> **WCAG:** 2.1.1 (A) — Keyboard  
+**Source File:** `src/components/TheDrop.jsx` (line 21)
 
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Products Page | `src/components/FilterSidebar.jsx` | Price filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Price section with the Escape key |
-| 2 | Products Page | `src/components/FilterSidebar.jsx` | Size filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Size section with the Escape key |
-| 3 | Products Page | `src/components/FilterSidebar.jsx` | Brand filter disclosure | No `keydown` Escape handler — keyboard users cannot collapse the Brand section with the Escape key |
+**Recommended Fix (not applied this cycle):**
+Remove the invalid `lang` attribute (since the text is in English, the document-level `lang="en"` is sufficient):
+```jsx
+<p>Our brand-new, limited-edition plushie bag charms have officially dropped...</p>
+```
 
 ---
 
-## GEN3
+## Part 4 — Non-Critical Issues Summary Table
 
-Issues related to content order and focus sequence, intentionally introduced for demo/testing purposes. Each issue is marked in the source code with an `A11Y-GEN3` comment on the relevant line.
-
----
-
-### reflow — Content Clipped at 300% Zoom (1 issue)
-
-> **Rule:** Content must not require two-dimensional scrolling at 320 CSS pixels viewport width (equivalent to 400% zoom on a 1280px-wide screen); zooming must not cause content to be clipped or hidden  
-> **Impact:** Serious  
-> **WCAG:** 1.4.10 (AA) — Reflow  
-
-`overflow-x: hidden` is applied to the `<body>` element, which suppresses horizontal scrolling entirely. When the page is zoomed to 300% (or viewed on a narrow viewport), the navigation bar and other fixed-width content exceed the visible area but cannot be scrolled to — they are silently clipped and cut off. Users who rely on zoom (low-vision users) lose access to the main navigation links without any indication that content is missing.
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages | `src/components/App.css` | `body` | `overflow-x: hidden` prevents horizontal scrolling — at 300% zoom the navigation menu and header content are clipped and inaccessible; users cannot scroll to reach the cut-off content |
+| # | Type ID | Name | Instances | Pages Affected | WCAG |
+|---|---------|------|-----------|----------------|------|
+| NC-1 | `AXE-COLOR-CONTRAST` | Color-contrast | 18 | All 5 | 1.4.3 (AA) |
+| NC-2 | `AXE-HTML-HAS-LANG` | Html-has-lang | 5 | All 5 | 3.1.1 (A) |
+| NC-3 | `AXE-VALID-LANG` | Valid-lang | 1 | Homepage | 3.1.2 (AA) |
+| — | **Total** | | **24** | | |
 
 ---
 
-### sr-order — Screen Reader Reading Order (1 issue)
+## Part 5 — Source-to-Issue Mapping
 
-> **Rule:** Content that has a meaningful sequence must preserve that sequence in the DOM so screen readers announce it in the correct logical order  
-> **Impact:** Serious  
-> **WCAG:** 1.3.2 (A) — Meaningful Sequence  
+The table below maps source files to the critical issue categories they are responsible for, to aid remediation planning.
 
-The DOM order of elements does not match the visual order. CSS (`flex-direction: column-reverse`) is used to make the layout appear correct visually, but screen readers follow DOM order — causing them to announce content in a sequence that does not match the visual reading flow.
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Homepage | `src/components/FeaturedPair.jsx` | `.featured-card` (both cards) | `<div class="featured-card-image">` is placed before `<div class="featured-card-info">` in the DOM. `flex-direction: column-reverse` in `FeaturedPair.css` restores the correct visual order (text on top, image on bottom), but screen readers announce the image alt text before the eyebrow, heading, and CTA link — the reverse of the meaningful sequence |
-
----
-
-### heading-order — Wrong Heading Levels (14 issues)
-
-> **Rule:** Heading levels must convey a logical document structure — levels should not be skipped or used out of order  
-> **Impact:** Moderate  
-> **WCAG:** 1.3.1 (A) — Info and Relationships  
-
-Heading elements have been deliberately set to wrong levels to break the document outline. CSS class-based styles preserve the visual appearance, but the semantic heading hierarchy is incorrect — screen readers and assistive technologies rely on heading levels to understand page structure and enable navigation.
-
-| # | Page | File | Element | Wrong Level | Correct Level | Issue |
-|---|------|------|---------|-------------|---------------|-------|
-| 1 | Homepage | `src/components/HeroBanner.jsx` | "Winter Basics" | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
-| 2 | Homepage | `src/components/FeaturedPair.jsx` | Item titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
-| 3 | Homepage | `src/components/PopularSection.jsx` | "Popular on the Merch Shop" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
-| 4 | Homepage | `src/components/PopularSection.jsx` | Product card titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
-| 5 | Homepage | `src/components/TrendingCollections.jsx` | "Shop Trending Collections" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
-| 6 | Homepage | `src/components/TrendingCollections.jsx` | Collection card titles | `<h1>` | `<h3>` | Card headings use h1, jumping above section level |
-| 7 | Homepage | `src/components/TheDrop.jsx` | "The Drop" | `<h4>` | `<h2>` | Section heading uses h4, skipping h2 and h3 |
-| 8 | Products Page | `src/pages/NewPage.jsx` | Page title | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
-| 9 | Product Detail | `src/pages/ProductPage.jsx` | Product name | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
-| 10 | Checkout | `src/pages/CheckoutPage.jsx` | "Shopping Cart" / "Shipping & Payment" | `<h3>` | `<h1>` | Page-level headings use h3, skipping h1 |
-| 11 | Checkout | `src/pages/CheckoutPage.jsx` | "Order Summary" (×2) | `<h5>` | `<h2>` | Section headings use h5, skipping multiple levels |
-| 12 | Order Confirmation | `src/pages/OrderConfirmationPage.jsx` | "Thank you!" | `<h3>` | `<h1>` | Page-level heading uses h3, skipping h1 |
-| 13 | All pages (Cart drawer) | `src/components/CartModal.jsx` | "Shopping Cart" drawer title | `<h5>` | `<h2>` | Drawer heading uses h5, skipping multiple levels |
-| 14 | All pages (Wishlist drawer) | `src/components/WishlistModal.jsx` | "Wishlist" drawer title | `<h5>` | `<h2>` | Drawer heading uses h5, skipping multiple levels |
+| Source File | Issues |
+|-------------|--------|
+| `src/components/Header.jsx` | CI-1, CI-2, CI-3 (icon buttons, flag selector, wishlist button) |
+| `src/components/CartModal.jsx` | CI-4 (close button) |
+| `src/components/WishlistModal.jsx` | CI-4 (close button) |
+| `src/components/FilterSidebar.jsx` | CI-1, CI-2 (filter option divs) |
+| `src/components/Footer.jsx` | CI-1, CI-2, CI-3 (footer nav items, FAQs) |
+| `src/components/PopularSection.jsx` | CI-1, CI-2, CI-3 (shop-link divs) |
+| `src/components/FeaturedPair.jsx` | CI-5 (`aria-expanded="yes"` on h1) |
+| `src/components/HeroBanner.jsx` | CI-6 (missing alt on hero image) |
+| `src/components/TheDrop.jsx` | CI-6 (missing alt on drop image), CI-7 (slider missing attrs), NC-3 (invalid lang) |
+| `src/pages/CheckoutPage.jsx` | CI-1, CI-2 (checkout-continue-btn, step divs) |
+| `src/pages/OrderConfirmationPage.jsx` | CI-1, CI-2 (confirm-home-link) |
+| `src/pages/ProductPage.jsx` | CI-5 (`aria-relevant="changes"`) |
+| `public/index.html` | NC-2 (missing `lang` on `<html>`) |
 
 ---
 
-### non-meaningful-label — Non-Descriptive Accessible Labels (9 issues)
+## Part 6 — Audit Methodology
 
-> **Rule:** Accessible names must be meaningful and uniquely identify the purpose of an element — generic, vague, or context-free labels fail to convey intent to screen reader users  
-> **Impact:** Serious  
-> **WCAG:** 2.4.6 (AA) — Headings and Labels; 2.4.9 (AAA) — Link Purpose (Link Only); 4.1.2 (A) — Name, Role, Value  
+### Pages Audited
 
-`aria-label` values have been replaced with generic, context-free strings. Visually the UI is unchanged, but screen reader users hear labels like "Minus", "Plus", "Click here", or "Product item" with no way to determine which product, which item, or what action is involved.
+The audit covered all five routes defined in the React SPA's router configuration:
 
-| # | Page | File | Element | Bad Label | Meaningful Label It Replaced | Issue |
-|---|------|------|---------|-----------|------------------------------|-------|
-| 1 | Products Page | `src/components/ProductCard.jsx` | `<article>` product card | `"Product item"` | Product name (e.g. `"Google Super G Trucker Hat"`) | Every product card announces identically — screen readers cannot distinguish between products in the grid |
-| 2 | Product Detail | `src/pages/ProductPage.jsx` | "ADD TO CART" `<button>` | `"Add to cart"` | `"Add [product name] to cart"` | No product name — when multiple pages are open or announced out of context, the button purpose is ambiguous |
-| 3 | Product Detail | `src/pages/ProductPage.jsx` | Wishlist `<button>` | `"Wishlist action"` | `"Add [product name] to wishlist"` / `"Remove [product name] from wishlist"` | Neither the product nor the current state (add vs. remove) is conveyed |
-| 4 | Checkout | `src/pages/CheckoutPage.jsx` | Decrease quantity `<button>` (per cart item) | `"Minus"` | `"Decrease quantity of [item name]"` | No item context — screen readers cannot tell which item's quantity is being changed |
-| 5 | Checkout | `src/pages/CheckoutPage.jsx` | Quantity `<span>` (per cart item) | `"Number"` | `"Quantity: [n]"` | Raw number with no semantic context — screen readers cannot convey what the number represents |
-| 6 | Checkout | `src/pages/CheckoutPage.jsx` | Increase quantity `<button>` (per cart item) | `"Plus"` | `"Increase quantity of [item name]"` | No item context — screen readers cannot tell which item's quantity is being changed |
-| 7 | Checkout | `src/pages/CheckoutPage.jsx` | Remove item `<button>` (per cart item) | `"Delete"` | `"Remove [item name] from cart"` | No item context — screen readers cannot tell which item is being removed |
-| 8 | All pages (Wishlist drawer) | `src/components/WishlistModal.jsx` | Product image `<a>` link (per wishlist item) | `"Click here"` | `"View [item name]"` | Non-descriptive link text — screen readers announce "Click here" with no indication of destination or product |
+| Page | Route | Entry Point |
+|------|-------|-------------|
+| Homepage | `/` | `src/pages/HomePage.jsx` |
+| Products (New) | `/shop/new` | `src/pages/NewPage.jsx` |
+| Product Detail | `/product/:id` | `src/pages/ProductPage.jsx` |
+| Checkout | `/checkout` | `src/pages/CheckoutPage.jsx` |
+| Order Confirmation | `/order-confirmation` | `src/pages/OrderConfirmationPage.jsx` |
 
----
+### Tool and Configuration
 
-### keyboard-order — Keyboard Focus Order (1 issue)
+- **SDK:** `@evinced/js-playwright-sdk` v2.44.0  
+- **Method:** `evAnalyze()` — static single-point snapshot per page  
+- **Browser:** Chromium (Playwright headless, viewport 1280×800)  
+- **Server:** `npx serve dist -p 3000 --single` (production build)  
+- **Auth:** Evinced Service Account (online mode)
 
-> **Rule:** If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability  
-> **Impact:** Serious  
-> **WCAG:** 2.4.3 (A) — Focus Order  
+### Limitations
 
-Explicit `tabIndex` values are used to force keyboard tab order into the reverse of the visual left-to-right sequence. Sighted users read the navigation as **New → Apparel → Lifestyle → Stationery → Collections → Shop by Brand → Sale**, but keyboard users tab through it as **Sale → Shop by Brand → Collections → Stationery → Lifestyle → Apparel → New**.
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | Main navigation `<nav>` links | `tabIndex` values are set in descending order (`navItems.length - index`) on each nav `<Link>`, reversing the tab sequence relative to the visual left-to-right order — keyboard focus order does not match the visual/logical reading order |
+- The `evAnalyze()` method captures issues visible in the DOM at the time of the snapshot. Dynamic components that only appear after user interaction (e.g., the CartModal drawer, dropdown menus, toast notifications) may contain additional issues not captured here.
+- The checkout and order-confirmation pages were reached via a simulated user flow to ensure the correct application state was present.
+- Colour contrast ratios are approximated by the axe-core engine used internally by Evinced; actual ratios depend on rendering conditions (font rendering, subpixel antialiasing).
 
 ---
 
-## UNDETECTABLE
-
-Issues that are **not detectable by automated accessibility scanners** (axe-core, Evinced engine) because the DOM is structurally valid — the problem is a missing dynamic announcement pattern. Each issue is marked in the source code with an `A11Y-UNDETECTABLE` comment on the relevant line.
-
----
-
-### live-region — Missing Live Region Announcements (2 issues)
-
-> **Rule:** Dynamic content changes that convey status, feedback, or errors must be announced to screen reader users via an ARIA live region (`role="alert"`, `role="status"`, `aria-live="polite"`, or `aria-live="assertive"`)  
-> **Impact:** Critical  
-> **WCAG:** 4.1.3 (AA) — Status Messages; 1.3.1 (A) — Info and Relationships  
-> **References:**  
-> - https://www.w3.org/WAI/WCAG21/Understanding/status-messages  
-> - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-
----
-
-#### Issue 1 — Checkout form validation errors
-
-When the user submits the Shipping & Payment form with missing fields, up to 5 inline error messages are injected into the DOM. Each error `<span>` previously carried `role="alert"` (an implicit `aria-live="assertive"` live region), which caused screen readers to immediately announce the error text. With `role="alert"` removed, the errors appear visually but are completely silent — screen reader users receive no indication that the form submission failed or which fields are invalid. They must manually navigate the entire form to discover the errors.
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="firstName-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
-| 2 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="lastName-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
-| 3 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="address-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
-| 4 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="cardNumber-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
-| 5 | Checkout | `src/pages/CheckoutPage.jsx` | `<span id="expirationDate-error" class="form-error">` | `role="alert"` removed — error appears visually but is not announced by screen readers |
-
----
-
-#### Issue 2 — Cart count badge update
-
-When a product is added to the cart, the cart icon badge in the header updates its count (e.g. "0" → "1"). The badge `<span>` carries `aria-hidden="true"` (so the raw number is not read redundantly), but there is no `aria-live` region anywhere in the component to announce the change. Screen reader users receive no feedback that the add-to-cart action succeeded or that the cart now contains items.
-
-| # | Page | File | Element | Issue |
-|---|------|------|---------|-------|
-| 1 | All pages (Header) | `src/components/Header.jsx` | `<span class="cart-count" aria-hidden="true">` | No `aria-live` region exists to announce cart count changes — screen reader users receive no feedback when an item is added to the cart |
+*Report generated by Cursor Cloud Agent — Evinced Playwright SDK v2.44.0*  
+*Raw JSON results: `tests/e2e/test-results/page-{slug}.json`*  
+*HTML reports: `tests/e2e/test-results/page-{slug}.html`*
