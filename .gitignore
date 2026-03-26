@@ -4,4 +4,4 @@ tests/e2e/test-results/
 .cache
 node_modules
 dist
-.playwright-mcp
+.playwright-mcptests/e2e/test-results/
